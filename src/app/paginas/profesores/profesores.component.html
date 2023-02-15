@@ -1,0 +1,28 @@
+<div id="registro">
+    <button id="botonProfesor" routerLink="../profesores" routerLinkActive="active"><b>Profesor</b></button>
+    <button id="botonAlumno" routerLink="../alumnos" routerLinkActive="active"><b>Alumno</b></button>
+    <form>
+        <hr>
+        <div>
+            <input [formControl]="mote" id="mote" type="text" placeholder="Ponga su mote">
+            <br>
+            <input [formControl]="correo" id="email" type="email" placeholder="Ponga su correo">
+            <br>
+            <input [formControl]="password" id="contraseña" type="password" placeholder="Ponga su contraseña">
+            <br>
+            <input id="contraseñaRepe" type="password" placeholder="Ponga de nuevo su contraseña">
+            <br>
+            <input [formControl]="nombre" id="nombre" type="text" placeholder="Ponga su nombre" name="Nombre">
+            <br>
+            <input [formControl]="apellidos" id="apellidos" type="text" placeholder="Ponga sus apellidos">
+            <br>
+            <input [formControl]="centro" id="centro" type="text" placeholder="Ponga el centro donde trabaja">
+            <br>
+            <button (click)="addProfesor()" id="registrar" title="Registrar Profesor" routerLink="../home"
+                routerLinkActive="active"><b>Registrar
+                    Profesor</b></button>
+            <hr>
+            <button id="volver" title="Volver" routerLink=""><b>Volver</b></button>
+        </div>
+    </form>
+</div>

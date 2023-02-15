@@ -1,0 +1,20 @@
+<div id="izquierda">
+  <h1>¡¡Bienvenido!!</h1>
+  <p>a la paguina para alumnos y profesores.</p>
+</div>
+
+<form id="derecha">
+  <div>
+    <input [formControl]="nombre" id="nombre" type="text" placeholder="Ponga su usuario">
+    <br>
+    <input [formControl]="password" id="password" type="password" placeholder="Ponga su contraseña">
+    <br>
+    <button id="login" routerLink="./home" routerLinkActive="active" title="Iniciar Sesion"><b>Iniciar
+        Sesion</b></button>
+  </div>
+  <hr>
+  <div>
+    <button id="registro" routerLink="./alumnos" routerLinkActive="active"
+      title="Iniciar Sesion"><b>Registro</b></button>
+  </div>
+</form>
