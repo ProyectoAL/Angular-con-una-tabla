@@ -4,7 +4,8 @@
     <form [formGroup]="registerForm">
         <hr>
         <div>
-            <input formControlName="mote" id="mote" type="text" placeholder="Ponga su mote">
+            <input formControlName="mote" id="mote" type="text" onkeydown="return /[a-z,0-9,_,A-Z]/i.test(event.key)"
+                placeholder="Ponga su mote">
             <p id="error" *ngIf="this.registerForm.controls.mote.hasError('required')">Campo vacio</p>
             <input formControlName="correo" id="email" type="email" placeholder="Ponga su correo">
             <p id="error" *ngIf="this.registerForm.controls.correo.hasError('required')">Campo vacio</p>
