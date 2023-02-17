@@ -6,8 +6,7 @@
     border-radius: 20px;
     background-color: white;
     width: 475px;
-    margin-left: 700px;
-    margin-top: 60px;
+    margin: 0 auto;
 }
 
 #botonProfesor {
@@ -65,6 +64,15 @@
     font-size: 15px;
     border-radius: 10px;
     border: 2px solid gainsboro;
+}
+
+#error {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    color: rgb(135, 16, 16);
+    background-color: rgba(221, 62, 62, 0.686);
+    border-radius: 10px;
+
 }
 
 #registrar {

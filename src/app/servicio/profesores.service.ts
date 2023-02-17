@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Profesores } from '../models/profesores.model';
-import { map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { Login } from '../models/login.model';
 
 @Injectable({
     providedIn: 'root'
@@ -12,16 +13,21 @@ export class ProfesorService {
 
     constructor(private _http: HttpClient) { }
 
+    datosprofesor: any;
+
     getProfesores() {
         return this._http.get<Profesores[]>(this.URL + "showteacher")
             .pipe(
-                map((response: any) => {
-                    if (response.status == 1) {
-                        return response.roleshow;
+                filter((response: any) => {
+                    let found = false;
+                    if (response != null) {
+                        found = true;
                     }
                     else {
-                        return [];
+                        found = true;
                     }
+                    this.datosprofesor = response;
+                    return found;
                 }
                 ));
     }
@@ -29,17 +35,35 @@ export class ProfesorService {
     addProfesores(profesor: Profesores) {
         return this._http.post(this.URL + "registert", profesor)
             .pipe(
-                map((response: any) => {
-                    if (response.status == 1) {
-                        return response.roleshow;
-                        console.log(response)
+                filter((response: any) => {
+                    let found = false;
+                    if (response != null) {
+                        found = true;
                     }
                     else {
-                        return [];
+                        found = true;
                     }
+                    this.datosprofesor = response;
+                    return found;
                 }
                 ));
     }
 
+    login(login: Login) {
+        return this._http.post(this.URL + "logint", login)
+            .pipe(
+                filter((response: any) => {
+                    let found = false;
+                    if (response != null) {
+                        found = true;
+                    }
+                    else {
+                        found = true;
+                    }
+                    this.datosprofesor = response;
+                    return found;
+                }
+                ));
+    }
 
 }

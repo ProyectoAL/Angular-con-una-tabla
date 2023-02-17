@@ -1,29 +1,30 @@
 <div id="registro">
     <button id="botonProfesor" routerLink="../profesores" routerLinkActive="active"><b>Profesor</b></button>
     <button id="botonAlumno" routerLink="../alumnos" routerLinkActive="active"><b>Alumno</b></button>
-    <form>
+    <form [formGroup]="registerForm">
         <hr>
-        <div>
-            <input [formControl]="mote" id="mote" type="text" placeholder="Ponga su mote">
-            <br>
-            <input [formControl]="correo" id="email" type="email" placeholder="Ponga su correo">
-            <br>
-            <input [formControl]="password" id="contraseña" type="password" placeholder="Ponga su contraseña">
-            <br>
-            <input id="contraseñaRepe" type="password" placeholder="Ponga de nuevo su contraseña">
-            <br>
-            <input [formControl]="nombre" id="nombre" type="text" placeholder="Ponga su nombre" name="Nombre">
-            <br>
-            <input [formControl]="apellidos" id="apellidos" type="text" placeholder="Ponga sus apellidos">
-            <br>
-            <p>Ponga su fecha de nacimiento:</p>
-            <input [formControl]="date" id="fecha" type="date" placeholder="Ponga su fecha de nacimiento">
-            <br>
-            <button (click)="addAlumno()" id="registrar" title="Registrar Profesor" routerLink="../home"
-                routerLinkActive="active"><b>Registrar
-                    Alumno</b></button>
-            <hr>
-            <button id="volver" title="Volver" routerLink=""><b>Volver</b></button>
-        </div>
+        <input formControlName="mote" id="mote" type="text" placeholder="Ponga su mote">
+        <p id="error" *ngIf="this.registerForm.controls.mote.hasError('required')">Campo vacio</p>
+        <input formControlName="correo" id="email" type="email" placeholder="Ponga su correo">
+        <p id="error" *ngIf="this.registerForm.controls.correo.hasError('required')">Campo vacio</p>
+        <p id="error" *ngIf="this.registerForm.controls.correo.hasError('email')"> El correo debe de tener un @
+        </p>
+        <input formControlName="password" id="contraseña" type="password" placeholder="Ponga su contraseña">
+        <p id="error" *ngIf="this.registerForm.controls.password.hasError('required')">Campo vacio</p>
+        <input formControlName="passwordRepe" id="contraseñaRepe" type="password"
+            placeholder="Ponga de nuevo su contraseña">
+        <p id="error" *ngIf="this.registerForm.controls.passwordRepe.hasError('required')">Campo vacio</p>
+        <input formControlName="nombre" id="nombre" type="text" placeholder="Ponga su nombre" name="Nombre">
+        <p id="error" *ngIf="this.registerForm.controls.nombre.hasError('required')">Campo vacio</p>
+        <input formControlName="apellidos" id="apellidos" type="text" placeholder="Ponga sus apellidos">
+        <p id="error" *ngIf="this.registerForm.controls.apellidos.hasError('required')">Campo vacio</p>
+        <p id="tituloFecha">Ponga su fecha de nacimiento:</p>
+        <input formControlName="date" id="fecha" type="date" placeholder="Ponga su fecha de nacimiento">
+        <p id="error" *ngIf="this.registerForm.controls.date.hasError('required')">Campo necesario</p>
+        <button [disabled]="!registerForm.valid" (click)="addAlumno()" id="registrar"
+            title="Registrar Profesor"><b>Registrar
+                Alumno</b></button>
+        <hr>
+        <button id="volver" title="Volver" routerLink=""><b>Volver</b></button>
     </form>
 </div>

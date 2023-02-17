@@ -5,15 +5,15 @@ import { HomeComponent } from './home/home.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { ProfesoresComponent } from './profesores/profesores.component';
 
-const routes: Routes = [
-  { path: '', component: MainPageComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'alumnos', component: AlumnosComponent },
-  { path: 'profesores', component: ProfesoresComponent }
-];
+// const routes: Routes = [
+//   { path: '', component: MainPageComponent },
+//   { path: 'home', component: HomeComponent },
+//   { path: 'alumnos', component: AlumnosComponent },
+//   { path: 'profesores', component: ProfesoresComponent }
+// ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule],
   exports: [RouterModule]
 })
 export class PaginasRoutingModule {

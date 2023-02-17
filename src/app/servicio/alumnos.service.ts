@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Alumnos } from '../models/alumnos.model';
-import { map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { Login } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,21 @@ export class AlumnosService {
 
   constructor(private _http: HttpClient) { }
 
+  datosalumno: any;
+
   getAlumnos() {
     return this._http.get<Alumnos[]>(this.URL + "showstuden")
       .pipe(
-        map((response: any) => {
-          if (response.status == 1) {
-            return response.roleshow;
+        filter((response: any) => {
+          let found = false;
+          if (response != null) {
+            found = true;
           }
           else {
-            return [];
+            found = true;
           }
+          this.datosalumno = response;
+          return found;
         }
         ));
   }
@@ -29,17 +35,35 @@ export class AlumnosService {
   addAlumnos(alumno: Alumnos) {
     return this._http.post(this.URL + "registers", alumno)
       .pipe(
-        map((response: any) => {
-          if (response.status == 1) {
-            return response.roleshow;
-            console.log(response)
+        filter((response: any) => {
+          let found = false;
+          if (response != null) {
+            found = true;
           }
           else {
-            return [];
+            found = true;
           }
+          this.datosalumno = response;
+          return found;
         }
         ));
   }
 
+  login(login: Login) {
+    return this._http.post(this.URL + "logins", login)
+      .pipe(
+        filter((response: any) => {
+          let found = false;
+          if (response != null) {
+            found = true;
+          }
+          else {
+            found = true;
+          }
+          this.datosalumno = response;
+          return found;
+        }
+        ));
+  }
 
 }

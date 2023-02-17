@@ -16,7 +16,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     PaginasRoutingModule,
     ReactiveFormsModule, FormsModule
-  ]
+  ],
 })
 export class PaginasModule {
 }

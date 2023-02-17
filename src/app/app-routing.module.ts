@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotfoundPageComponent } from './notfound-page/notfound-page.component';
+import { AlumnosComponent } from './paginas/alumnos/alumnos.component';
+import { HomeComponent } from './paginas/home/home.component';
+import { MainPageComponent } from './paginas/main-page/main-page.component';
+import { ProfesoresComponent } from './paginas/profesores/profesores.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main', pathMatch: 'full'},
-  {
-    path: 'main', loadChildren: () => import('./paginas/paginas.module').then((m) => m.PaginasModule)
-  },
-  { path: '**', component: NotfoundPageComponent}
+  { path: '', component: MainPageComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'alumnos', component: AlumnosComponent },
+  { path: 'profesores', component: ProfesoresComponent }
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Alumnos } from 'src/app/models/alumnos.model';
 import { AlumnosService } from 'src/app/servicio/alumnos.service';
 
@@ -10,50 +11,62 @@ import { AlumnosService } from 'src/app/servicio/alumnos.service';
 })
 export class AlumnosComponent implements OnInit {
 
-  mote: FormControl = new FormControl('')
-  correo: FormControl = new FormControl('')
-  password: FormControl = new FormControl('')
-  nombre: FormControl = new FormControl('')
-  apellidos: FormControl = new FormControl('')
-  date: FormControl = new FormControl('')
+  registerForm = new FormGroup({
+    mote: new FormControl('', Validators.required),
+
+    correo: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+
+    password: new FormControl('', Validators.required),
+
+    passwordRepe: new FormControl('', Validators.required),
+
+    nombre: new FormControl('', Validators.required),
+
+    apellidos: new FormControl('', Validators.required),
+
+    date: new FormControl('', Validators.required),
+  });
 
   constructor(
-    private alumnos: AlumnosService
+    private alumnos: AlumnosService, public router: Router
   ) { }
 
   ngOnInit(): void {
-    this.alumnos.getAlumnos().subscribe(
-      (value: Alumnos[]) => {
-        console.log(value);
-      }
-    )
   }
-  addAlumno(): void {
-    let mote = this.mote.value;
-    let correo = this.correo.value;
-    let password = this.password.value;
-    let nombre = this.nombre.value;
-    let apellidos = this.apellidos.value;
-    let date = this.date.value;
-    const alumno: Alumnos = {
-      mote: mote,
-      correo: correo,
-      password: password,
-      nombre: nombre,
-      apellidos: apellidos,
-      date: date
-    };
-    this.alumnos.addAlumnos(alumno).subscribe({
 
-      next: (value: Alumnos) => {
-        console.log(value)
-      }
-    });
-    this.mote.reset()
-    this.correo.reset()
-    this.password.reset()
-    this.nombre.reset()
-    this.apellidos.reset()
-    this.date.reset();
+  addAlumno(): void {
+
+    let mote = this.registerForm.controls.mote.value!;
+    let correo = this.registerForm.controls.correo.value!;
+    let password = this.registerForm.controls.password.value!;
+    let passwordRepe = this.registerForm.controls.passwordRepe.value!;
+    let nombre = this.registerForm.controls.nombre.value!;
+    let apellidos = this.registerForm.controls.apellidos.value!;
+    let date = this.registerForm.controls.date.value!;
+
+    const alumno: Alumnos = {
+      "mote": mote,
+      "correo": correo,
+      "password": password,
+      "nombre": nombre,
+      "apellidos": apellidos,
+      "date": date
+    };
+
+    console.log(alumno);
+
+    if (password === passwordRepe) {
+      this.alumnos.addAlumnos(alumno).subscribe({
+        next: (value: Alumnos) => {
+          console.log(value);
+          this.router.navigate(['home']);
+        }
+      });
+
+      this.registerForm.reset();
+    } else {
+      console.log("las contraseña no son iguales");
+    }
+
   }
 }
