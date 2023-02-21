@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Profesores } from '../models/profesores.model';
 import { filter } from 'rxjs/operators';
 import { Login } from '../models/login.model';
+import { Registro } from '../models/registro.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProfesorService {
+export class UsuariosService {
 
     readonly URL = "http://127.0.0.1:8000/api/";
 
     constructor(private _http: HttpClient) { }
 
-    datosprofesor: any;
+    datosusuario: any;
 
-    getProfesores() {
-        return this._http.get<Profesores[]>(this.URL + "showteacher")
+    getUsuarios() {
+        return this._http.get<Registro[]>(this.URL + "showteacher")
             .pipe(
                 filter((response: any) => {
                     let found = false;
@@ -24,16 +24,16 @@ export class ProfesorService {
                         found = true;
                     }
                     else {
-                        found = true;
+                        found = false;
                     }
-                    this.datosprofesor = response;
+                    this.datosusuario = response;
                     return found;
                 }
                 ));
     }
 
-    addProfesores(profesor: Profesores) {
-        return this._http.post(this.URL + "registert", profesor)
+    addUsuarios(registro: Registro) {
+        return this._http.post(this.URL + "registert", registro)
             .pipe(
                 filter((response: any) => {
                     let found = false;
@@ -41,9 +41,9 @@ export class ProfesorService {
                         found = true;
                     }
                     else {
-                        found = true;
+                        found = false;
                     }
-                    this.datosprofesor = response;
+                    this.datosusuario = response;
                     return found;
                 }
                 ));
@@ -58,9 +58,9 @@ export class ProfesorService {
                         found = true;
                     }
                     else {
-                        found = true;
+                        found = false;
                     }
-                    this.datosprofesor = response;
+                    this.datosusuario = response;
                     return found;
                 }
                 ));

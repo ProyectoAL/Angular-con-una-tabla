@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlumnosService } from 'src/app/servicio/alumnos.service';
-import { ProfesorService } from 'src/app/servicio/profesores.service';
+import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +8,10 @@ import { ProfesorService } from 'src/app/servicio/profesores.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private alumno: AlumnosService, private profesor: ProfesorService) { }
+  constructor(private usuarios: UsuariosService) { }
 
   ngOnInit(): void {
-    console.log(this.alumno.datosalumno);
-    console.log(this.profesor.datosprofesor);
+    console.log(this.usuarios.datosusuario);
   }
 
 }

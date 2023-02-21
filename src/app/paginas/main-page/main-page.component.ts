@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Alumnos } from 'src/app/models/alumnos.model';
 import { Login } from 'src/app/models/login.model';
-import { Profesores } from 'src/app/models/profesores.model';
-import { AlumnosService } from 'src/app/servicio/alumnos.service';
-import { ProfesorService } from 'src/app/servicio/profesores.service';
+import { Registro } from 'src/app/models/registro.model';
+import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 @Component({
   selector: 'app-main-page',
@@ -23,7 +21,7 @@ export class MainPageComponent implements OnInit {
 
   });
 
-  constructor(private alumnos: AlumnosService, private profesores: ProfesorService, public router: Router) { }
+  constructor(private usuarios: UsuariosService, public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -47,19 +45,13 @@ export class MainPageComponent implements OnInit {
 
     console.log(login);
 
-    this.alumnos.login(login).subscribe({
-      next: (value: Alumnos) => {
+    this.usuarios.login(login).subscribe({
+      next: (value: Registro) => {
         console.log(value)
         this.router.navigate(['home']);
       }
     })
 
-    this.profesores.login(login).subscribe({
-      next: (value: Profesores) => {
-        console.log(value)
-        this.router.navigate(['home']);
-      }
-    })
     this.loginForm.reset();
   }
 

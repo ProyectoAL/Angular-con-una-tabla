@@ -1,8 +1,9 @@
-export interface Profesores {
+export interface Registro {
     mote: string,
     correo: string,
     password: string,
     nombre: string,
     apellidos: string,
-    centro: string
+    date: string | null,
+    centro: string | null
 }
