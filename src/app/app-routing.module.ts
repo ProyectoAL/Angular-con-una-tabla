@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsuariosComponent } from './paginas/usuarios/usuarios.component';
-import { HomeComponent } from './paginas/home/home.component';
-import { MainPageComponent } from './paginas/main-page/main-page.component';
+import { RegistroComponent } from './paginas/registro/registro.component';
+import { PerfilComponent } from './paginas/perfil/perfil.component';
+import { LoginComponent } from './paginas/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'alumnos', component: UsuariosComponent },
+  { path: '', component: LoginComponent },
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'registro', component: RegistroComponent },
 ];
 
 @NgModule({

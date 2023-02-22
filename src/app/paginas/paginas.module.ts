@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginasRoutingModule } from './paginas-routing.module';
-import { HomeComponent } from './home/home.component';
+import { PerfilComponent } from './perfil/perfil.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    UsuariosComponent],
+    PerfilComponent,
+    RegistroComponent],
   imports: [
     CommonModule,
     PaginasRoutingModule,

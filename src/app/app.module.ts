@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './paginas/main-page/main-page.component';
+import { LoginComponent } from './paginas/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PaginasModule } from './paginas/paginas.module';
@@ -10,7 +10,7 @@ import { PaginasModule } from './paginas/paginas.module';
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,7 @@ import { PaginasModule } from './paginas/paginas.module';
     ReactiveFormsModule,
     PaginasModule
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -6,11 +6,11 @@ import { Registro } from 'src/app/models/registro.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class LoginComponent implements OnInit {
   [x: string]: any;
 
   public loginForm = new FormGroup({
@@ -48,7 +48,7 @@ export class MainPageComponent implements OnInit {
     this.usuarios.login(login).subscribe({
       next: (value: Registro) => {
         console.log(value)
-        this.router.navigate(['home']);
+        this.router.navigate(['perfil']);
       }
     })
 

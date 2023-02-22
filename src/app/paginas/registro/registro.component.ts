@@ -6,10 +6,10 @@ import { Registro } from 'src/app/models/registro.model';
 
 @Component({
   selector: 'app-usuarios',
-  templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class UsuariosComponent implements OnInit {
+export class RegistroComponent implements OnInit {
 
   element = true;
 
@@ -46,25 +46,26 @@ export class UsuariosComponent implements OnInit {
     let passwordRepe = this.registerForm.controls.passwordRepe.value!;
     let nombre = this.registerForm.controls.nombre.value!;
     let apellidos = this.registerForm.controls.apellidos.value!;
+    let centro = this.registerForm.controls.centro.value!;
     let date = this.registerForm.controls.date.value!;
 
-    const alumno: Registro = {
+    const usuario: Registro = {
       "mote": mote,
       "correo": correo,
       "password": password,
       "nombre": nombre,
       "apellidos": apellidos,
       "date": date,
-      centro: null
+      "centro": centro
     };
 
-    console.log(alumno);
+    console.log(usuario);
 
     if (password === passwordRepe) {
-      this.alumnos.addUsuarios(alumno).subscribe({
+      this.alumnos.addUsuarios(usuario).subscribe({
         next: (value: Registro) => {
           console.log(value);
-          this.router.navigate(['home']);
+          this.router.navigate(['perfil']);
         }
       });
       this.registerForm.reset();
