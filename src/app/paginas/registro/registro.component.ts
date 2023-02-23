@@ -93,7 +93,7 @@ export class RegistroComponent implements OnInit {
         next: (value: Alumnos) => {
           console.log(value);
           // Comando para ir a la paguina de perfiles.
-          this.router.navigate(['perfil']);
+          this.router.navigate(['']);
         }
       });
       // Comando para borrar el contenido de los inputs del formulario.
@@ -136,7 +136,7 @@ export class RegistroComponent implements OnInit {
         next: (value: Profesores) => {
           console.log(value);
           // Comando para ir a la paguina de perfiles.
-          this.router.navigate(['perfil']);
+          this.router.navigate(['']);
         }
       });
       // Comando para borrar el contenido de los inputs del formulario.
