@@ -1,24 +1,33 @@
+<!-- Mensaje de bienvenida. -->
 <div id="izquierda">
   <h1>¡¡Bienvenido!!</h1>
+
   <p>a la paguina para alumnos y profesores.</p>
 </div>
 
+<!-- Formulario con los componentes del login. -->
 <form [formGroup]="loginForm" id="derecha">
   <div>
+    <!-- Input para poner el mote del usuario. -->
     <input formControlName="mote" id="mote" type="text" placeholder="Ponga su mote">
-
+    <!-- Mensaje de error (campo vacio). -->
     <p id="error" *ngIf="this.loginForm.controls.mote.hasError('required')">Campo vacio</p>
-
+    <!-- Input para poner la contraseña del usuario. -->
     <input formControlName="password" id="password" type="password" placeholder="Ponga su contraseña">
-
+    <!-- Mensaje de error (campo vacio). -->
     <p id="error" *ngIf="this.loginForm.controls.password.hasError('required')">Campo vacio</p>
-
-    <button id="login" [disabled]="!loginForm.valid" title="Iniciar Sesion" (click)="login()"><b>Iniciar Sesion</b></button>
+    <!-- Boton para enviar los datos de los inputs al servidor. -->
+    <button id="login" [disabled]="!loginForm.valid" title="Iniciar Sesion" (click)="login()">
+      <b>Iniciar Sesion</b>
+    </button>
   </div>
 
   <hr>
 
+  <!-- Boton para ir al registro de usuarios. -->
   <div>
-    <button id="registro" routerLink="./registro" routerLinkActive="active" title="Registrar"><b>Registro</b></button>
+    <button id="registro" routerLink="./registro" routerLinkActive="active" title="Registrar">
+      <b>Registro</b>
+    </button>
   </div>
 </form>

@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { filter } from 'rxjs/operators';
 import { Login } from '../models/login.model';
-import { Registro } from '../models/registro.model';
+import { Profesores } from '../models/profesores.model';
+import { Alumnos } from '../models/alumnos.model';
+
 
 @Injectable({
     providedIn: 'root'
@@ -15,8 +17,8 @@ export class UsuariosService {
 
     datosusuario: any;
 
-    getUsuarios() {
-        return this._http.get<Registro[]>(this.URL + "showteacher")
+    addAlumnos(alumno: Alumnos) {
+        return this._http.post(this.URL + "signup", alumno)
             .pipe(
                 filter((response: any) => {
                     let found = false;
@@ -32,8 +34,8 @@ export class UsuariosService {
                 ));
     }
 
-    addUsuarios(registro: Registro) {
-        return this._http.post(this.URL + "registert", registro)
+    addProfesores(profesor: Profesores) {
+        return this._http.post(this.URL + "signup", profesor)
             .pipe(
                 filter((response: any) => {
                     let found = false;
@@ -50,7 +52,7 @@ export class UsuariosService {
     }
 
     login(login: Login) {
-        return this._http.post(this.URL + "logint", login)
+        return this._http.post(this.URL + "login", login)
             .pipe(
                 filter((response: any) => {
                     let found = false;
