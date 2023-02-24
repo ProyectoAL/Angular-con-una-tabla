@@ -12,29 +12,10 @@ export class PerfilComponent implements OnInit {
 
   constructor(public usuarios: UsuariosService) { }
 
-  alumnos: Alumnos[] = [];
-  profesores: Profesores[] = [];
-
   ngOnInit(): void {
-    console.log(this.usuarios.datosusuario);
-  }
-
-  getAlumno(): void {
-    this.usuarios.getAlumnos().subscribe({
-      next: (value: Alumnos[]) => {
-        this.alumnos = [];
-        this.alumnos = value;
-      }
-    })
-  }
-
-  getProfesor(): void {
-    this.usuarios.getProfesores().subscribe({
-      next: (value: Profesores[]) => {
-        this.profesores = [];
-        this.profesores = value;
-      }
-    })
+    console.log(this.usuarios.datosusuario.mote);
+    let divsito = document.getElementById("contenido")!;
+    divsito.innerHTML = JSON.stringify(this.usuarios.datosusuario.mote);
   }
 
 } 

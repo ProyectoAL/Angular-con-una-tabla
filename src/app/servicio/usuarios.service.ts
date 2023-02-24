@@ -62,18 +62,9 @@ export class UsuariosService {
                         found = false;
                     }
                     this.datosusuario = response;
-                    return found;
+                    return this.datosusuario;
                 }
                 ));
     }
 
-    getAlumnos() {
-        let url: string = this.URL;
-        return this._http.get<Alumnos[]>(url + "");
-    }
-
-    getProfesores() {
-        let url: string = this.URL
-        return this._http.get<Profesores[]>(url);
-    }
 }
