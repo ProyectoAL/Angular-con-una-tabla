@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Alumnos } from 'src/app/models/alumnos.model';
-import { Profesores } from 'src/app/models/profesores.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 @Component({
@@ -10,12 +8,22 @@ import { UsuariosService } from 'src/app/servicio/usuarios.service';
 })
 export class PerfilComponent implements OnInit {
 
+
   constructor(public usuarios: UsuariosService) { }
 
+  info = [{
+    "mote": this.usuarios.datosusuario.mote,
+    "email": this.usuarios.datosusuario.email,
+    "password": this.usuarios.datosusuario.password,
+    "name": this.usuarios.datosusuario.name,
+    "lastname": this.usuarios.datosusuario.lastname,
+    "date": this.usuarios.datosusuario.date,
+    "centro": this.usuarios.datosusuario.centro
+  }];
+
   ngOnInit(): void {
-    console.log(this.usuarios.datosusuario.mote);
-    let divsito = document.getElementById("contenido")!;
-    divsito.innerHTML = JSON.stringify(this.usuarios.datosusuario.mote);
+
+    console.log(this.info);
   }
 
 } 

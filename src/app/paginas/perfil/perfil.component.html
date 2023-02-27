@@ -1,1 +1,9 @@
-<div id="contenido"></div>
+<div *ngFor="let datos of info">
+    <p>{{datos.mote}}</p>
+    <p>{{datos.email}}</p>
+    <p>{{datos.password}}</p>
+    <p>{{datos.name}}</p>
+    <p>{{datos.lastname}}</p>
+    <p>{{datos.date}}</p>
+    <p>{{datos.centro}}</p>
+</div>
