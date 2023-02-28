@@ -13,6 +13,8 @@ import { UsuariosService } from 'src/app/servicio/usuarios.service';
 export class LoginComponent implements OnInit {
   [x: string]: any;
 
+  error = false;
+
   // Creacion del FromGroup "loginForm" y comprobando si los campos estan vacios o no.
   loginForm = new FormGroup({
     mote: new FormControl('', Validators.required),
@@ -46,7 +48,12 @@ export class LoginComponent implements OnInit {
       next: (value: Login) => {
         console.log(value)
         // Comando para ir a la paguina de perfiles.
-        this.router.navigate(['perfil']);
+
+        if (this.usuarios.datosusuario == "Username_bad" || this.usuarios.datosusuario == "Password_bad") {
+          this.error = true;
+        } else {
+          this.router.navigate(['perfil']);
+        }
       }
     })
     // Comando para borrar el contenido de los inputs del formulario.

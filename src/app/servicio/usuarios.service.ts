@@ -15,20 +15,20 @@ export class UsuariosService {
     constructor(private _http: HttpClient) { }
 
     datosusuario: any;
+    found = false;
 
     addAlumnos(alumno: Alumnos) {
         return this._http.post(this.URL + "signup", alumno)
             .pipe(
                 filter((response: any) => {
-                    let found = false;
                     if (response != null) {
-                        found = true;
+                        this.found = true;
                     }
                     else {
-                        found = false;
+                        this.found = false;
                     }
                     this.datosusuario = response;
-                    return found;
+                    return this.found;
                 }
                 ));
     }
@@ -37,15 +37,14 @@ export class UsuariosService {
         return this._http.post(this.URL + "signup", profesor)
             .pipe(
                 filter((response: any) => {
-                    let found = false;
                     if (response != null) {
-                        found = true;
+                        this.found = true;
                     }
                     else {
-                        found = false;
+                        this.found = false;
                     }
                     this.datosusuario = response;
-                    return found;
+                    return this.found;
                 }
                 ));
     }
@@ -54,14 +53,14 @@ export class UsuariosService {
         return this._http.post(this.URL + "login", login)
             .pipe(
                 filter((response: any) => {
-                    let found = false;
                     if (response != null) {
-                        found = true;
+                        this.found = true;
                     }
                     else {
-                        found = false;
+                        this.found = false;
                     }
                     this.datosusuario = response;
+
                     return this.datosusuario;
                 }
                 ));

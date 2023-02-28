@@ -20,6 +20,7 @@
     <button id="login" [disabled]="!loginForm.valid" title="Iniciar Sesion" (click)="login()">
       <b>Iniciar Sesion</b>
     </button>
+    <p id="error" *ngIf="error == true">El usuario y/o la contraseña no existe</p>
   </div>
 
   <hr>
