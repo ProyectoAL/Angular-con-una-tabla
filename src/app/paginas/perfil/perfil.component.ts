@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 @Component({
@@ -8,8 +9,7 @@ import { UsuariosService } from 'src/app/servicio/usuarios.service';
 })
 export class PerfilComponent implements OnInit {
 
-
-  constructor(public usuarios: UsuariosService) { }
+  constructor(public usuarios: UsuariosService, public router: Router) { }
 
   info = [{
     "mote": this.usuarios.datosusuario.mote,
@@ -18,12 +18,19 @@ export class PerfilComponent implements OnInit {
     "name": this.usuarios.datosusuario.name,
     "lastname": this.usuarios.datosusuario.lastname,
     "date": this.usuarios.datosusuario.date,
-    "centro": this.usuarios.datosusuario.centro
+    "centro": this.usuarios.datosusuario.centro,
+    "rol": this.usuarios.datosusuario.role
   }];
 
   ngOnInit(): void {
-
     console.log(this.info);
   }
+
+  logout() {
+    console.log(this.info);
+    this.info.splice(0, this.info.length);
+    this.router.navigate(['']);
+  }
+
 
 } 

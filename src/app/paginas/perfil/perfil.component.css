@@ -1,0 +1,111 @@
+#navegador ul {
+    text-align: center;
+    border: solid 1px grey;
+    width: 100%;
+    height: 80px;
+    margin-left: -10px;
+    margin-top: -10px;
+
+    background-color: rgb(174, 167, 167);
+}
+
+#navegador li {
+    display: inline;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+#Usuario {
+    /* DIV de la foto */
+    text-align: center;
+    margin-left: -8px;
+    margin-top: -16px;
+    padding-top: 44px;
+    padding-bottom: 30px;
+    border-bottom-right-radius: 5px;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    width: 550px;
+
+    background-color: rgb(211, 201, 201);
+}
+
+#InfoUser {
+    /* DIV de la informacion del usuario */
+    margin-top: -402px;
+    margin-left: 570px;
+    border-bottom-left-radius: 5px;
+    border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
+    width: 1300px;
+    font-family: Arial;
+    font-size: 20px;
+    height: 403px;
+    background-color: rgb(211, 201, 201);
+}
+
+#InfoUser>tr>th {
+    text-align: left;
+    padding-left: 20px;
+}
+
+#InfoUser>tr>td {
+    text-align: left;
+}
+
+#th,
+#td {
+    border-bottom: solid 1px grey;
+}
+
+#Ranking {
+    /* DIV del ranking */
+    text-align: center;
+    margin-left: -8px;
+    margin-top: 30px;
+    width: 550px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+
+    background-color: rgb(211, 201, 201);
+}
+
+p {
+    font-family: Arial;
+    font-size: 20px;
+}
+
+h1 {
+    font-family: Arial;
+}
+
+#ProPic {
+    /* Modificador de la foto perfil hace que la foto sea circulary otras cosas */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+#BtnPsw {
+    /* Boton de la contraseña */
+    color: white;
+    border-radius: 5px;
+    background-color: #3072ed;
+    border: none;
+    height: 40px;
+    width: 150px;
+}
+
+#logout{
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(58, 218, 58);
+    border: none;
+    height: 40px;
+    width: 150px;  
+    margin-top: 20px;
+}

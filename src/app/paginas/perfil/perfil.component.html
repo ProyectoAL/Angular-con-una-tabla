@@ -1,9 +1,52 @@
-<div *ngFor="let datos of info">
-    <p>{{datos.mote}}</p>
-    <p>{{datos.email}}</p>
-    <p>{{datos.password}}</p>
-    <p>{{datos.name}}</p>
-    <p>{{datos.lastname}}</p>
-    <p>{{datos.date}}</p>
-    <p>{{datos.centro}}</p>
+<div id="navegador">
+    <ul>
+        <li>buscador</li>
+        <li>buscador</li>
+        <li>
+            <button id="logout" (click)="logout()">Logout</button>
+        </li>
+    </ul>
+</div>
+<div id="Usuario" *ngFor="let datos of info">
+    <img id="ProPic"
+        src="Https://pbs.twimg.com/ext_tw_video_thumb/1620310062433435648/pu/img/xlFGPbn8IyghBE90.jpg:large"
+        alt="FotoHumanoNormal">
+    <h1><b>Nick: {{datos.mote}}</b></h1>
+    <p>{{datos.rol}}</p>
+</div>
+<table id="InfoUser" *ngFor="let datos of info">
+    <tr>
+        <th id="th">Nombre:</th>
+        <td id="td">{{datos.name}}</td>
+    </tr>
+    <tr>
+        <th id="th">Apellidos:</th>
+        <td id="td">{{datos.lastname}}</td>
+    </tr>
+    <tr>
+        <th id="th">Email:</th>
+        <td id="td">{{datos.email}}</td>
+    </tr>
+    <tr *ngIf="datos.centro != null">
+        <th id="th">Centro:</th>
+        <td id="td">{{datos.centro}}</td>
+    </tr>
+    <tr *ngIf="datos.date != null">
+        <th id="th">Fecha de nacimeinto:</th>
+        <td id="td">{{datos.date}}</td>
+    </tr>
+    <tr>
+        <th>Contraseña:</th>
+        <td>
+            <button id="BtnPsw">Cambiar contraseña</button>
+        </td>
+    </tr>
+</table>
+<div id="Ranking">
+    <p> Posicion 1 </p>
+    <p> Posicion </p>
+    <p> Posicion </p>
+    <p> Posicion </p>
+    <p> Posicion </p>
+    <p> Posicion 6</p>
 </div>
