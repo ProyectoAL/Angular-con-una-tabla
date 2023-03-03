@@ -5,8 +5,8 @@
     height: 80px;
     margin-left: -10px;
     margin-top: -10px;
-
-    background-color: rgb(174, 167, 167);
+    background-color: rgb(255, 255, 255,0.451);
+    border-radius: 10px;
 }
 
 #navegador li {
@@ -19,30 +19,31 @@
 #Usuario {
     /* DIV de la foto */
     text-align: center;
-    margin-left: -8px;
+    margin-left: 125px;
     margin-top: -16px;
     padding-top: 44px;
     padding-bottom: 30px;
     border-bottom-right-radius: 5px;
     border-right: 1px solid grey;
     border-bottom: 1px solid grey;
-    width: 550px;
-
-    background-color: rgb(211, 201, 201);
+    width: 450px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255,0.451);
 }
 
 #InfoUser {
     /* DIV de la informacion del usuario */
-    margin-top: -402px;
-    margin-left: 570px;
+    margin-top: -401px;
+    margin-left: 650px;
     border-bottom-left-radius: 5px;
     border-left: 1px solid grey;
     border-bottom: 1px solid grey;
-    width: 1300px;
+    width: 700px;
     font-family: Arial;
     font-size: 20px;
     height: 403px;
-    background-color: rgb(211, 201, 201);
+    background-color: rgb(255, 255, 255,0.451);
+    border-radius: 10px;
 }
 
 #InfoUser>tr>th {
@@ -62,16 +63,16 @@
 #Ranking {
     /* DIV del ranking */
     text-align: center;
-    margin-left: -8px;
+    margin-left: 125px;
     margin-top: 30px;
-    width: 550px;
+    width: 450px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: 1px solid grey;
     border-right: 1px solid grey;
     border-bottom: 1px solid grey;
-
-    background-color: rgb(211, 201, 201);
+    background-color: rgb(255, 255, 255,0.451);
+    border-radius: 10px;
 }
 
 p {
@@ -99,6 +100,9 @@ h1 {
     height: 40px;
     width: 150px;
 }
+#BtnPsw:hover{
+  background-color: #6593e8;
+}
 
 #logout{
     color: white;
@@ -106,6 +110,9 @@ h1 {
     background-color: rgb(58, 218, 58);
     border: none;
     height: 40px;
-    width: 150px;  
+    width: 150px;
     margin-top: 20px;
+}
+#logout:hover{
+  background-color: rgb(151, 213, 151);
 }
