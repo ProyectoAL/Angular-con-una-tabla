@@ -4,6 +4,7 @@ import { filter } from 'rxjs/operators';
 import { Login } from '../models/login.model';
 import { Profesores } from '../models/profesores.model';
 import { Alumnos } from '../models/alumnos.model';
+import { Password } from '../models/password.model';
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +29,7 @@ export class UsuariosService {
                         this.found = false;
                     }
                     this.datosusuario = response;
-                    return this.found;
+                    return this.datosusuario;
                 }
                 ));
     }
@@ -44,7 +45,7 @@ export class UsuariosService {
                         this.found = false;
                     }
                     this.datosusuario = response;
-                    return this.found;
+                    return this.datosusuario;
                 }
                 ));
     }
@@ -55,8 +56,23 @@ export class UsuariosService {
                 filter((response: any) => {
                     if (response != null) {
                         this.found = true;
+                    } else {
+                        this.found = false;
                     }
-                    else {
+                    this.datosusuario = response;
+
+                    return this.datosusuario;
+                }
+                ));
+    }
+
+    changepassword(password: Password) {
+        return this._http.put(this.URL + `update/${password.id}`, password)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
                         this.found = false;
                     }
                     this.datosusuario = response;

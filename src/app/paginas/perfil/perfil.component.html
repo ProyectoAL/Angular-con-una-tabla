@@ -37,8 +37,9 @@
     </tr>
     <tr>
         <th>Contraseña:</th>
-        <td>
-            <button id="BtnPsw">Cambiar contraseña</button>
+        <td [formGroup]="cambiarContra">
+            <button id="BtnPsw" (click)="changepassword()">Cambiar contraseña</button>
+            <input formControlName="newpassword" type="password" placeholder="Ponga su nueva contraseña">
         </td>
     </tr>
 </table>

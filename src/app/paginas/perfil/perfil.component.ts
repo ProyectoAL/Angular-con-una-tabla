@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Password } from 'src/app/models/password.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 
 @Component({
@@ -9,9 +11,14 @@ import { UsuariosService } from 'src/app/servicio/usuarios.service';
 })
 export class PerfilComponent implements OnInit {
 
+  cambiarContra = new FormGroup({
+    newpassword: new FormControl('', Validators.required)
+  });
+
   constructor(public usuarios: UsuariosService, public router: Router) { }
 
   info = [{
+    "id": this.usuarios.datosusuario.id,
     "mote": this.usuarios.datosusuario.mote,
     "email": this.usuarios.datosusuario.email,
     "password": this.usuarios.datosusuario.password,
@@ -32,5 +39,24 @@ export class PerfilComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  changepassword(): void {
+    let password = this.cambiarContra.controls.newpassword.value!;
+    let id = this.usuarios.datosusuario.id;
+
+    const changedpassword: Password = {
+      "id": id,
+      "password": password
+    };
+
+    console.log(changedpassword);
+
+    this.usuarios.changepassword(changedpassword).subscribe({
+      next: (value: Password) => {
+        console.log(value);
+        console.log(this.usuarios.datosusuario)
+      }
+    });
+    this.cambiarContra.reset();
+  }
 
 } 
