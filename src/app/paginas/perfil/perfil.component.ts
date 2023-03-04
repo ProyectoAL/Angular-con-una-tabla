@@ -11,7 +11,9 @@ import { UsuariosService } from 'src/app/servicio/usuarios.service';
 })
 export class PerfilComponent implements OnInit {
 
-  element = true;
+  element1 = true;
+  element2 = true;
+
 
   cambiarContra = new FormGroup({
     newpassword: new FormControl('', Validators.required)
@@ -61,12 +63,19 @@ export class PerfilComponent implements OnInit {
     this.cambiarContra.reset();
   }
 
-  showButton() {
-    this.element = false;
+  showButton1() {
+    this.element1 = false;
   }
 
-  hideButton() {
-    this.element = true;
+  hideButton1() {
+    this.element1 = true;
   }
 
+  showButton2() {
+    this.element2 = false;
+  }
+
+  hideButton2() {
+    this.element2 = true;
+  }
 } 

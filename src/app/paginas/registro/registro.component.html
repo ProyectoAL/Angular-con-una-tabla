@@ -13,7 +13,7 @@
     <!-- Formulario de los alumnos. -->
     <form *ngIf="element == true" [formGroup]="AlumnosForm">
         <hr>
-
+        <div id="titulo1">REGISTRO DE ALUMNOS</div>
         <!-- Input para poner el mote del alumno. -->
         <input formControlName="mote" id="mote" type="text" onkeydown="return /[a-z,0-9,_,A-Z]/i.test(event.key)"
             placeholder="Ponga su mote">
@@ -83,7 +83,7 @@
     <!-- Formulario de los profesores. -->
     <form *ngIf="element == false" [formGroup]="ProfesoresForm">
         <hr>
-
+        <div id="titulo2">REGISTRO DE PROFESORES</div>
         <!-- Input para poner el mote del profesor. -->
         <input formControlName="mote" id="mote" type="text" onkeydown="return /[a-z,0-9,_,A-Z]/i.test(event.key)"
             placeholder="Ponga su mote">

@@ -7,7 +7,7 @@
     padding-left: 40px;
     padding-right: 40px;
 
-    background-color: rgb(255, 255, 255,0.451);
+    background-color: rgb(255, 255, 255, 0.451);
 
     width: 475px;
 
@@ -30,7 +30,7 @@
 
     cursor: pointer;
 
-    background-color: rgb(255, 255, 255,0.451);
+    background-color: rgb(255, 255, 255, 0.451);
     color: white;
 }
 
@@ -50,7 +50,7 @@
 
     cursor: pointer;
 
-    background-color: rgb(255, 255, 255,0.451);
+    background-color: rgb(255, 255, 255, 0.451);
     color: white;
 }
 
@@ -62,6 +62,16 @@
 #botonAlumno:hover {
     color: black;
     background-color: gainsboro;
+}
+
+#titulo1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+
+#titulo2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
 }
 
 #mote,
@@ -83,7 +93,7 @@
 
     border-radius: 10px;
     border: 2px solid gainsboro;
-    background-color: rgb(255, 255, 255,0.451);
+    background-color: rgb(255, 255, 255, 0.451);
 }
 
 #tituloFecha {
@@ -116,7 +126,7 @@
 
     border-radius: 10px;
     border: 2px solid gainsboro;
-    background-color: rgb(255, 255, 255,0.451);
+    background-color: rgb(255, 255, 255, 0.451);
 }
 
 #registrar {
@@ -137,8 +147,9 @@
 
     cursor: pointer;
 }
-#registrar:hover{
-  background-color: #6593e8;
+
+#registrar:hover {
+    background-color: #6593e8;
 }
 
 #volver {
@@ -159,6 +170,7 @@
     background-color: rgb(23, 168, 23);
     color: white;
 }
-#volver:hover{
-  background-color: rgb(151, 213, 151);
+
+#volver:hover {
+    background-color: rgb(151, 213, 151);
 }

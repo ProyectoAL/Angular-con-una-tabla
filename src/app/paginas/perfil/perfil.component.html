@@ -1,13 +1,13 @@
 <div id="navegador" *ngFor="let datos of info">
-    <ul>
-        <li id="bienvenida">Bienvenido a tu perfil <b>{{datos.mote}}</b></li>
-        <li>
-            <button id="rankingbutton" *ngIf="datos.rol === 'Alumno'"><b>Añadirse en un nuevo ranking</b></button>
-        </li>
-        <li>
-            <button id="logout" (click)="logout()"><b>Logout</b></button>
-        </li>
-    </ul>
+    <p id="bienvenida">Bienvenido a tu perfil <b>{{datos.mote}}</b></p>
+    <button id="rankingbutton" *ngIf="datos.rol === 'Alumno' && element2 == true" (click)="showButton2()"><b>Añadirse en
+            un nuevo
+            ranking</b></button>
+    <input id="codigo" formControlName="codigo" type="text" *ngIf="element2 == false"
+        placeholder="Ponga el codigo del ranking">
+    <button id="Si1" *ngIf="element2 == false" (click)="hideButton2()"><b>Si</b></button>
+    <button id="No1" *ngIf="element2 == false" (click)="hideButton2()"><b>No</b></button>
+    <button id="logout" (click)="logout()"><b>Logout</b></button>
 </div>
 <div id="Usuario" *ngFor="let datos of info">
     <img id="ProPic"
@@ -40,12 +40,12 @@
     <tr>
         <th>Contraseña:</th>
         <td [formGroup]="cambiarContra">
-            <button id="BtnPsw" *ngIf="element == true" (click)="showButton()"><b>Cambiar contraseña</b></button>
-            <input id="contraseña" formControlName="newpassword" type="password" *ngIf="element == false"
+            <button id="BtnPsw" *ngIf="element1 == true" (click)="showButton1()"><b>Cambiar contraseña</b></button>
+            <input id="contraseña" formControlName="newpassword" type="password" *ngIf="element1 == false"
                 placeholder="Ponga su nueva contraseña">
             <br>
-            <button id="Si" *ngIf="element == false" (click)="changepassword(); hideButton()"><b>Si</b></button>
-            <button id="No" *ngIf="element == false" (click)="hideButton()"><b>No</b></button>
+            <button id="Si2" *ngIf="element1 == false" (click)="changepassword(); hideButton1()"><b>Si</b></button>
+            <button id="No2" *ngIf="element1 == false" (click)="hideButton1()"><b>No</b></button>
         </td>
     </tr>
 </table>
