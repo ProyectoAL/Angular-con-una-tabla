@@ -119,27 +119,31 @@
 
 #Usuario {
     /* DIV de la foto */
+    position: absolute;
     text-align: center;
-    margin-left: 125px;
-    margin-top: 10px;
+    margin-left: 20px;
+    margin-top: 50px;
     padding-top: 44px;
     padding-bottom: 30px;
     border-bottom-right-radius: 5px;
     border-right: 1px solid grey;
     border-bottom: 1px solid grey;
-    width: 450px;
+    width: 600px;
+    height: 330px;
     border-radius: 10px;
     background-color: rgb(255, 255, 255, 0.451);
 }
 
 #InfoUser {
     /* DIV de la informacion del usuario */
-    margin-top: -401px;
-    margin-left: 650px;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 800px;
     border-bottom-left-radius: 5px;
     border-left: 1px solid grey;
     border-bottom: 1px solid grey;
-    width: 700px;
+    width: 1050px;
+    height: 330px;
     font-family: Arial;
     font-size: 20px;
     height: 403px;
@@ -163,10 +167,12 @@
 
 #Ranking {
     /* DIV del ranking */
+    position: absolute;
     text-align: center;
-    margin-left: 125px;
-    margin-top: 30px;
-    width: 450px;
+    margin-left: 20px;
+    margin-top: 480px;
+    width: 600px;
+    height: 320px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: 1px solid grey;
@@ -190,6 +196,10 @@ h1 {
     width: 200px;
     height: 200px;
     border-radius: 50%;
+}
+
+#ProPic:hover {
+    cursor: pointer;
 }
 
 #BtnPsw {

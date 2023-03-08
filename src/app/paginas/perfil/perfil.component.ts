@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Password } from 'src/app/models/password.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from './DialogComponent.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-perfil',
@@ -13,34 +16,38 @@ export class PerfilComponent implements OnInit {
 
   element1 = true;
   element2 = true;
-
+  element3 = true;
 
   cambiarContra = new FormGroup({
     newpassword: new FormControl('', Validators.required)
   });
 
-  constructor(public usuarios: UsuariosService, public router: Router) { }
+  constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog, private location: Location) { }
 
-  info = [{
-    "id": this.usuarios.datosusuario.id,
-    "mote": this.usuarios.datosusuario.mote,
-    "email": this.usuarios.datosusuario.email,
-    "password": this.usuarios.datosusuario.password,
-    "name": this.usuarios.datosusuario.name,
-    "lastname": this.usuarios.datosusuario.lastname,
-    "date": this.usuarios.datosusuario.date,
-    "centro": this.usuarios.datosusuario.centro,
-    "rol": this.usuarios.datosusuario.role
-  }];
+  info: any;
 
-  ngOnInit(): void {
-    console.log(this.info);
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'home') {
+        localStorage.removeItem('currentUser');
+        this.info = null;
+        console.log(this.info);
+        this.router.navigate(['']);
+      }
+    });
   }
 
-  logout() {
-    console.log(this.info);
-    this.info.splice(0, this.info.length);
-    this.router.navigate(['']);
+
+  ngOnInit(): void {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      this.info = JSON.parse(currentUser);
+      console.log(this.info);
+    }
   }
 
   changepassword(): void {
@@ -77,5 +84,13 @@ export class PerfilComponent implements OnInit {
 
   hideButton2() {
     this.element2 = true;
+  }
+
+  showButton3() {
+    this.element3 = false;
+  }
+
+  hideButton3() {
+    this.element3 = true;
   }
 } 

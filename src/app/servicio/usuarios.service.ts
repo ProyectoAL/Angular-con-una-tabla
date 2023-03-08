@@ -61,6 +61,8 @@ export class UsuariosService {
                     }
                     this.datosusuario = response;
 
+                    localStorage.setItem('currentUser', JSON.stringify(this.datosusuario));
+
                     return this.datosusuario;
                 }
                 ));

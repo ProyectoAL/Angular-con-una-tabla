@@ -6,6 +6,8 @@ import { LoginComponent } from './paginas/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PaginasModule } from './paginas/paginas.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PaginasModule } from './paginas/paginas.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    PaginasModule
+    PaginasModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
 
   providers: [],

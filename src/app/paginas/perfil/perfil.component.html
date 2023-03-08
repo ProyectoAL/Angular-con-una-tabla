@@ -1,41 +1,44 @@
-<div id="navegador" *ngFor="let datos of info">
-    <p id="bienvenida">Bienvenido a tu perfil <b>{{datos.mote}}</b></p>
-    <button id="rankingbutton" *ngIf="datos.rol === 'Alumno' && element2 == true" (click)="showButton2()"><b>Añadirse en
+<div id="navegador">
+    <p id="bienvenida">Bienvenido a tu perfil <b>{{info.mote}}</b></p>
+    <button id="rankingbutton" *ngIf="info.role === 'Alumno' && element2 == true" (click)="showButton2()"><b>Añadirse en
             un nuevo
             ranking</b></button>
     <input id="codigo" formControlName="codigo" type="text" *ngIf="element2 == false"
         placeholder="Ponga el codigo del ranking">
     <button id="Si1" *ngIf="element2 == false" (click)="hideButton2()"><b>Si</b></button>
     <button id="No1" *ngIf="element2 == false" (click)="hideButton2()"><b>No</b></button>
-    <button id="logout" (click)="logout()"><b>Logout</b></button>
+    <button id="logout" (click)="openDialog()"><b>Logout</b></button>
 </div>
-<div id="Usuario" *ngFor="let datos of info">
+<div id="Usuario">
     <img id="ProPic"
         src="Https://pbs.twimg.com/ext_tw_video_thumb/1620310062433435648/pu/img/xlFGPbn8IyghBE90.jpg:large"
-        alt="FotoHumanoNormal">
-    <h1><b>Nick: {{datos.mote}}</b></h1>
-    <p>{{datos.rol}}</p>
+        alt="FotoHumanoNormal" (click)="showButton3()">
+    <input id="cambiaFoto" type="text" *ngIf="element3 == false" placeholder="Ponga el enlace de la imagen">
+    <button id="Si3" *ngIf="element3 == false" (click)="hideButton3()"><b>Cambiar</b></button>
+    <button id="No3" *ngIf="element3 == false" (click)="hideButton3()"><b>Volver</b></button>
+    <h1><b>Nick: {{info.mote}}</b></h1>
+    <p>{{info.role}}</p>
 </div>
-<table id="InfoUser" *ngFor="let datos of info">
+<table id="InfoUser">
     <tr>
         <th id="th">Nombre:</th>
-        <td id="td">{{datos.name}}</td>
+        <td id="td">{{info.name}}</td>
     </tr>
     <tr>
         <th id="th">Apellidos:</th>
-        <td id="td">{{datos.lastname}}</td>
+        <td id="td">{{info.lastname}}</td>
     </tr>
     <tr>
         <th id="th">Email:</th>
-        <td id="td">{{datos.email}}</td>
+        <td id="td">{{info.email}}</td>
     </tr>
-    <tr *ngIf="datos.centro != null">
+    <tr *ngIf="info.centro != null">
         <th id="th">Centro:</th>
-        <td id="td">{{datos.centro}}</td>
+        <td id="td">{{info.centro}}</td>
     </tr>
-    <tr *ngIf="datos.date != null">
+    <tr *ngIf="info.date != null">
         <th id="th">Fecha de nacimeinto:</th>
-        <td id="td">{{datos.date}}</td>
+        <td id="td">{{info.date}}</td>
     </tr>
     <tr>
         <th>Contraseña:</th>
@@ -44,18 +47,25 @@
             <input id="contraseña" formControlName="newpassword" type="password" *ngIf="element1 == false"
                 placeholder="Ponga su nueva contraseña">
             <br>
-            <button id="Si2" *ngIf="element1 == false" (click)="changepassword(); hideButton1()"><b>Si</b></button>
-            <button id="No2" *ngIf="element1 == false" (click)="hideButton1()"><b>No</b></button>
+            <button id="Si2" *ngIf="element1 == false" (click)="changepassword(); hideButton1()"><b>Cambiar</b></button>
+            <button id="No2" *ngIf="element1 == false" (click)="hideButton1()"><b>Volver</b></button>
         </td>
     </tr>
 </table>
-<div *ngFor="let datos of info">
-    <div *ngIf="datos.rol === 'Alumno'" id="Ranking">
+<div>
+    <div *ngIf="info.role === 'Alumno'" id="Ranking">
+        <br>
         <p> Posicion 1 </p>
+        <br>
         <p> Posicion </p>
+        <br>
         <p> Posicion </p>
+        <br>
         <p> Posicion </p>
+        <br>
         <p> Posicion </p>
+        <br>
         <p> Posicion 6</p>
+        <br>
     </div>
 </div>
