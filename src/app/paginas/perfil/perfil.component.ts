@@ -5,7 +5,6 @@ import { Password } from 'src/app/models/password.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './DialogComponent.component';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-perfil',
@@ -22,7 +21,7 @@ export class PerfilComponent implements OnInit {
     newpassword: new FormControl('', Validators.required)
   });
 
-  constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog, private location: Location) { }
+  constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog) { }
 
   info: any;
 
