@@ -51,7 +51,7 @@ export class PerfilComponent implements OnInit {
 
   changepassword(): void {
     let password = this.cambiarContra.controls.newpassword.value!;
-    let id = this.usuarios.datosusuario.id;
+    let id = this.info[0].id;
 
     const changedpassword: Password = {
       "id": id,
