@@ -44,14 +44,14 @@ export class PerfilComponent implements OnInit {
   ngOnInit(): void {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
-      this.info = JSON.parse(currentUser);
+      this.info = JSON.parse(currentUser).value;
       console.log(this.info);
     }
   }
 
   changepassword(): void {
     let password = this.cambiarContra.controls.newpassword.value!;
-    let id = this.info[0].id;
+    let id = this.info.id;
 
     const changedpassword: Password = {
       "id": id,

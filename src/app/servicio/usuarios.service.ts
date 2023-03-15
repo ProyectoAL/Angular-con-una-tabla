@@ -70,7 +70,7 @@ export class UsuariosService {
                     this.httpOptions = {
                         headers: new HttpHeaders({
                             'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '')[1]}`
+                            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
                         })
                     };
 
@@ -80,7 +80,8 @@ export class UsuariosService {
     }
 
     changepassword(password: Password) {
-        const id = JSON.parse(localStorage.getItem('currentUser') || '')[0].id;
+        console.log(this.httpOptions);
+        const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
         return this._http.put(this.URL + `update/${id}`, password, this.httpOptions)
             .pipe(
                 catchError((error: HttpErrorResponse) => {

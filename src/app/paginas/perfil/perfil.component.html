@@ -1,6 +1,6 @@
 <div id="navegador">
     <p id="bienvenida">Bienvenido a tu perfil <b>{{info.mote}}</b></p>
-    <button id="rankingbutton" *ngIf="info[0].role === 'Alumno' && element2 == true" (click)="showButton2()"><b>Añadirse en
+    <button id="rankingbutton" *ngIf="info.role === 'Alumno' && element2 == true" (click)="showButton2()"><b>Añadirse en
             un nuevo
             ranking</b></button>
     <input id="codigo" formControlName="codigo" type="text" *ngIf="element2 == false"
@@ -16,29 +16,29 @@
     <input id="cambiarFoto" type="text" *ngIf="element3 == false" placeholder="Ponga el enlace de la imagen">
     <button id="Si3" *ngIf="element3 == false" (click)="hideButton3()"><b>Cambiar</b></button>
     <button id="No3" *ngIf="element3 == false" (click)="hideButton3()"><b>Volver</b></button>
-    <h1><b>Nick: {{info[0].mote}}</b></h1>
-    <p>{{info[0].role}}</p>
+    <h1><b>Nick: {{info.mote}}</b></h1>
+    <p>{{info.role}}</p>
 </div>
 <table id="InfoUser">
     <tr>
         <th id="th">Nombre:</th>
-        <td id="td">{{info[0].name}}</td>
+        <td id="td">{{info.name}}</td>
     </tr>
     <tr>
         <th id="th">Apellidos:</th>
-        <td id="td">{{info[0].lastname}}</td>
+        <td id="td">{{info.lastname}}</td>
     </tr>
     <tr>
         <th id="th">Email:</th>
-        <td id="td">{{info[0].email}}</td>
+        <td id="td">{{info.email}}</td>
     </tr>
     <tr *ngIf="info.centro != null">
         <th id="th">Centro:</th>
-        <td id="td">{{info[0].centro}}</td>
+        <td id="td">{{info.centro}}</td>
     </tr>
     <tr *ngIf="info.date != null">
         <th id="th">Fecha de nacimeinto:</th>
-        <td id="td">{{info[0].date}}</td>
+        <td id="td">{{info.date}}</td>
     </tr>
     <tr>
         <th>Contraseña:</th>
@@ -53,7 +53,7 @@
     </tr>
 </table>
 <div>
-    <div *ngIf="info[0].role === 'Alumno'" id="Ranking">
+    <div *ngIf="info.role === 'Alumno'" id="Ranking">
         <br>
         <p> Posicion 1 </p>
         <br>

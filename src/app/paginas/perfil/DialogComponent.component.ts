@@ -29,7 +29,7 @@ export class DialogComponent {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '')[1]}`
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
       })
     };
 
