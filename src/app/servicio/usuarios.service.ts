@@ -13,12 +13,8 @@ import { Password } from '../models/password.model';
 export class UsuariosService {
 
     readonly URL = "http://127.0.0.1:8000/api/";
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '')[1]}`
-        })
-    };
+
+    httpOptions: any;
 
     constructor(private _http: HttpClient) { }
 
@@ -69,6 +65,14 @@ export class UsuariosService {
                     this.datosusuario = response;
 
                     localStorage.setItem('currentUser', JSON.stringify(this.datosusuario));
+
+
+                    this.httpOptions = {
+                        headers: new HttpHeaders({
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '')[1]}`
+                        })
+                    };
 
                     return this.datosusuario;
                 }
