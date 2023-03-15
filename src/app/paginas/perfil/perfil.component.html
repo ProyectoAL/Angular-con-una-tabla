@@ -1,4 +1,4 @@
-<div id="navegador">
+<div id="navegador" [formGroup]="ponerCodigo">
     <p id="bienvenida">Bienvenido a tu perfil <b>{{info.mote}}</b></p>
     <button id="rankingbutton" *ngIf="info.role === 'Alumno' && element2 == true" (click)="showButton2()"><b>Añadirse en
             un nuevo

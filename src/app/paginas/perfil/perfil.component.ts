@@ -21,6 +21,10 @@ export class PerfilComponent implements OnInit {
     newpassword: new FormControl('', Validators.required)
   });
 
+  ponerCodigo = new FormGroup({
+    codigo: new FormControl('', Validators.required)
+  });
+
   constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog) { }
 
   info: any;
