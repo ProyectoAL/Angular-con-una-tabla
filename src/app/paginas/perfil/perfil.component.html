@@ -5,8 +5,8 @@
             ranking</b></button>
     <input id="codigo" formControlName="codigo" type="text" *ngIf="element2 == false"
         placeholder="Ponga el codigo del ranking">
-    <button id="Si1" *ngIf="element2 == false" (click)="hideButton2()"><b>Si</b></button>
-    <button id="No1" *ngIf="element2 == false" (click)="hideButton2()"><b>No</b></button>
+    <button id="Si1" *ngIf="element2 == false" (click)="hideButton2()"><b>Unirse</b></button>
+    <button id="No1" *ngIf="element2 == false" (click)="hideButton2()"><b>Volver</b></button>
     <button id="logout" (click)="openDialog()"><b>Logout</b></button>
 </div>
 <div id="Usuario">
@@ -52,20 +52,11 @@
         </td>
     </tr>
 </table>
-<div>
-    <div *ngIf="info.role === 'Alumno'" id="Ranking">
-        <br>
-        <p> Posicion 1 </p>
-        <br>
-        <p> Posicion </p>
-        <br>
-        <p> Posicion </p>
-        <br>
-        <p> Posicion </p>
-        <br>
-        <p> Posicion </p>
-        <br>
-        <p> Posicion 6</p>
-        <br>
-    </div>
-</div>
+<table *ngIf="info.role === 'Alumno'" id="Ranking">
+    <tr>
+        <th>Ranking 1</th>
+        <td>
+            <button id="Entrar" routerLink="../ranking" routerLinkActive="active">Entrar</button>
+        </td>
+    </tr>
+</table>

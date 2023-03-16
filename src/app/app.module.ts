@@ -8,11 +8,13 @@ import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PaginasModule } from './paginas/paginas.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
