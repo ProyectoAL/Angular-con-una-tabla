@@ -9,16 +9,17 @@
     <button id="No1" *ngIf="element2 == false" (click)="hideButton2()"><b>Volver</b></button>
     <button id="logout" (click)="openDialog()"><b>Logout</b></button>
 </div>
-<div id="Usuario">
+<form id="Usuario" [formGroup]="cambiarContra" enctype="multipart/form-data">
     <img id="ProPic"
         src="Https://pbs.twimg.com/ext_tw_video_thumb/1620310062433435648/pu/img/xlFGPbn8IyghBE90.jpg:large"
         alt="FotoHumanoNormal" (click)="showButton3()">
-    <input id="cambiarFoto" type="text" *ngIf="element3 == false" placeholder="Ponga el enlace de la imagen">
-    <button id="Si3" *ngIf="element3 == false" (click)="hideButton3()"><b>Cambiar</b></button>
+    <input id="cambiarFoto" formControlName="foto" type="file" *ngIf="element3 == false">
+    <button id="Si3" [disabled]="!cambiarContra.valid" *ngIf="element3 == false"
+        (click)="changepassword(); hideButton3()"><b>Cambiar</b></button>
     <button id="No3" *ngIf="element3 == false" (click)="hideButton3()"><b>Volver</b></button>
     <h1><b>Nick: {{info.mote}}</b></h1>
     <p>{{info.role}}</p>
-</div>
+</form>
 <table id="InfoUser">
     <tr>
         <th id="th">Nombre:</th>
@@ -47,7 +48,8 @@
             <input id="contraseña" formControlName="newpassword" type="password" *ngIf="element1 == false"
                 placeholder="Ponga su nueva contraseña">
             <br>
-            <button id="Si2" *ngIf="element1 == false" (click)="changepassword(); hideButton1()"><b>Cambiar</b></button>
+            <button id="Si2" [disabled]="!cambiarContra.valid" *ngIf="element1 == false"
+                (click)="changepassword(); hideButton1()"><b>Cambiar</b></button>
             <button id="No2" *ngIf="element1 == false" (click)="hideButton1()"><b>Volver</b></button>
         </td>
     </tr>

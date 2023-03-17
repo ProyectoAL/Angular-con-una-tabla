@@ -18,7 +18,8 @@ export class PerfilComponent implements OnInit {
   element3 = true;
 
   cambiarContra = new FormGroup({
-    newpassword: new FormControl('', Validators.required)
+    newpassword: new FormControl('', Validators.required),
+    foto: new FormControl('', Validators.required)
   });
 
   ponerCodigo = new FormGroup({
@@ -55,11 +56,13 @@ export class PerfilComponent implements OnInit {
 
   changepassword(): void {
     let password = this.cambiarContra.controls.newpassword.value!;
+    let img = this.cambiarContra.controls.foto.value!;
     let id = this.info.id;
 
     const changedpassword: Password = {
       "id": id,
-      "password": password
+      "password": password,
+      "img": img
     };
 
     console.log(changedpassword);

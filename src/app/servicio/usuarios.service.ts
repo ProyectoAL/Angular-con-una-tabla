@@ -80,6 +80,12 @@ export class UsuariosService {
     }
 
     changepassword(password: Password) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
         console.log(this.httpOptions);
         const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
         return this._http.put(this.URL + `update/${id}`, password, this.httpOptions)
