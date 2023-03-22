@@ -6,6 +6,7 @@ import { Login } from '../models/login.model';
 import { Profesores } from '../models/profesores.model';
 import { Alumnos } from '../models/alumnos.model';
 import { Password } from '../models/password.model';
+import { Photo } from '../models/photo.model';
 
 @Injectable({
     providedIn: 'root'
@@ -78,6 +79,37 @@ export class UsuariosService {
                 }
                 ));
     }
+    
+    changephoto(photo: Photo) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+        console.log(this.httpOptions);
+        const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
+        return this._http.put(this.URL + `updatePhoto/${id}`, photo, this.httpOptions)
+            .pipe(
+                catchError((error: HttpErrorResponse) => {
+                    if (error.status === 401) {
+                        // Si la respuesta es 401, el usuario no está autenticado, por lo que se redirige a la página de inicio de sesión
+                        console.log("Esta mal");
+                    }
+                    return throwError(error);
+                }),
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+                    this.datosusuario = response;
+
+                    return this.datosusuario;
+                }
+                ));
+    }
 
     changepassword(password: Password) {
         this.httpOptions = {
@@ -88,7 +120,7 @@ export class UsuariosService {
         };
         console.log(this.httpOptions);
         const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
-        return this._http.put(this.URL + `update/${id}`, password, this.httpOptions)
+        return this._http.put(this.URL + `updatePassword/${id}`, password, this.httpOptions)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
                     if (error.status === 401) {
