@@ -1,8 +1,10 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogComponent } from '../paginas/perfil/DialogComponent.component';
 import { PerfilComponent } from '../paginas/perfil/perfil.component';
+import { UsuariosService } from '../servicio/usuarios.service';
 
 @Component({
   selector: 'app-ranking',
@@ -11,7 +13,11 @@ import { PerfilComponent } from '../paginas/perfil/perfil.component';
 })
 export class RankingComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public router: Router) { }
+  httpOptions: any;
+
+  datos: any[] = [];
+
+  constructor(public usuarios: UsuariosService, public dialog: MatDialog, public router: Router, private _http: HttpClient) { }
 
   info: any;
 
@@ -35,6 +41,17 @@ export class RankingComponent implements OnInit {
       this.info = JSON.parse(currentUser).value;
       console.log(this.info);
     }
+
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+      })
+    };
+
+    this._http.get(this.usuarios.URL + 'indexm', this.httpOptions).subscribe((data: any) => {
+      this.datos = data;
+    });
   }
 
 }

@@ -6,6 +6,8 @@ import { Photo } from 'src/app/models/photo.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './DialogComponent.component';
+import { HttpClient } from '@angular/common/http';
+import { Rankings } from 'src/app/models/rankings.model';
 
 @Component({
   selector: 'app-perfil',
@@ -62,6 +64,35 @@ export class PerfilComponent implements OnInit {
       console.log(this.token);
 
     }
+  }
+
+
+  Ranking(): void {
+    // Insertamos la información del Formgroup en unas nuevas variables.
+    let codigo = this.ponerCodigo.controls.codigo.value!;
+    let mote = this.info.mote;
+
+    // Insertamos la información de las variables anteriores en las variables del modelo "Registro".
+    const ranking: Rankings = {
+      "codigo": codigo,
+      "mote": mote
+    };
+
+    // Comando para comprobar que la información se guarda en el modelo.
+    console.log(ranking);
+
+    //Linea de comandos para enviar la información a la funciond el service 
+    //si la comprobacion de la contaseña es correcta.
+    this.usuarios.Rankings(ranking).subscribe({
+      next: (value: Rankings) => {
+        console.log(value);
+        // Comando para ir a la paguina de perfiles.
+        this.router.navigate(['../ranking']);
+      }
+    });
+    // Comando para borrar el contenido de los inputs del formulario.
+    this.ponerCodigo.reset();
+
   }
 
   onFileChange(event: any) {

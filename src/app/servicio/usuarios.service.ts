@@ -7,6 +7,7 @@ import { Profesores } from '../models/profesores.model';
 import { Alumnos } from '../models/alumnos.model';
 import { Password } from '../models/password.model';
 import { Photo } from '../models/photo.model';
+import { Rankings } from '../models/rankings.model';
 
 @Injectable({
     providedIn: 'root'
@@ -63,6 +64,7 @@ export class UsuariosService {
                     } else {
                         this.found = false;
                     }
+
                     this.datosusuario = response;
 
                     localStorage.setItem('currentUser', JSON.stringify(this.datosusuario));
@@ -79,7 +81,34 @@ export class UsuariosService {
                 }
                 ));
     }
-    
+
+    Rankings(ranking: Rankings) {
+        return this._http.post(this.URL + "login", ranking)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+
+                    this.datosusuario = response;
+
+                    localStorage.setItem('currentUser', JSON.stringify(this.datosusuario));
+
+
+                    this.httpOptions = {
+                        headers: new HttpHeaders({
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+                        })
+                    };
+
+                    return this.datosusuario;
+                }
+                ));
+    }
+
     changephoto(photo: Photo) {
         this.httpOptions = {
             headers: new HttpHeaders({
@@ -87,8 +116,11 @@ export class UsuariosService {
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
             })
         };
+
         console.log(this.httpOptions);
+
         const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
+
         return this._http.put(this.URL + `updatePhoto/${id}`, photo, this.httpOptions)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
@@ -118,8 +150,11 @@ export class UsuariosService {
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
             })
         };
+
         console.log(this.httpOptions);
+
         const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
+
         return this._http.put(this.URL + `updatePassword/${id}`, password, this.httpOptions)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
