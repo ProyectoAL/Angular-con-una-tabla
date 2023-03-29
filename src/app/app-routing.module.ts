@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegistroComponent } from './paginas/registro/registro.component';
 import { PerfilComponent } from './paginas/perfil/perfil.component';
 import { LoginComponent } from './paginas/login/login.component';
-import { RankingComponent } from './ranking/ranking.component';
+import { RankingComponent } from './paginas/ranking/ranking.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },

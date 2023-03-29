@@ -18,10 +18,14 @@ export class UsuariosService {
 
     httpOptions: any;
 
-    constructor(private _http: HttpClient) { }
+    parametro: any;
 
     datosusuario: any;
+
     found = false;
+
+    constructor(private _http: HttpClient) { }
+
 
     addAlumnos(alumno: Alumnos) {
         return this._http.post(this.URL + "signup", alumno)
@@ -83,7 +87,16 @@ export class UsuariosService {
     }
 
     Rankings(ranking: Rankings) {
-        return this._http.post(this.URL + "login", ranking)
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
+
+        return this._http.post(this.URL + `creater/${id}`, ranking, this.httpOptions)
             .pipe(
                 filter((response: any) => {
                     if (response != null) {
@@ -94,15 +107,7 @@ export class UsuariosService {
 
                     this.datosusuario = response;
 
-                    localStorage.setItem('currentUser', JSON.stringify(this.datosusuario));
-
-
-                    this.httpOptions = {
-                        headers: new HttpHeaders({
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
-                        })
-                    };
+                    localStorage.setItem('ranking', JSON.stringify(this.datosusuario));
 
                     return this.datosusuario;
                 }
@@ -175,5 +180,13 @@ export class UsuariosService {
                     return this.datosusuario;
                 }
                 ));
+    }
+
+    setParametro(nuevoParametro: any) {
+        this.parametro = nuevoParametro;
+    }
+
+    getParametro() {
+        return this.parametro;
     }
 }

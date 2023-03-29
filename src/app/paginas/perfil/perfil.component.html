@@ -9,7 +9,7 @@
     <input id="codigo" formControlName="codigo" type="text" *ngIf="element2 == false"
         placeholder="Ponga el codigo del ranking">
 
-    <button id="Si1" *ngIf="element2 == false" (click)="hideButton2()">
+    <button id="Si1" *ngIf="element2 == false" (click)="Ranking(); hideButton2()">
         <b>Unirse</b>
     </button>
 
@@ -30,8 +30,7 @@
     <input id="cambiarFoto" formControlName="foto" type="file" *ngIf="element3 == false"
         (change)="onFileChange($event)">
 
-    <button id="Si3" [disabled]="!cambiarFoto.valid" *ngIf="element3 == false"
-        (click)="changephoto(); hideButton3()">
+    <button id="Si3" [disabled]="!cambiarFoto.valid" *ngIf="element3 == false" (click)="changephoto(); hideButton3()">
         <b>Cambiar</b>
     </button>
 
@@ -105,12 +104,13 @@
 
 <table *ngIf="info.role === 'Alumno'" id="Ranking">
 
-    <tr>
+    <tr *ngFor="let dato of datos">
 
-        <th>Ranking 1</th>
+        <th>Ranking {{dato.codigo}}</th>
 
         <td>
-            <button id="Entrar" routerLink="../ranking" routerLinkActive="active">
+            <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
+                (click)="pillarCodigo($event, dato.codigo)">
                 Entrar
             </button>
         </td>
@@ -118,3 +118,9 @@
     </tr>
 
 </table>
+
+<div *ngIf="info.role === 'Alumno' && datos.length == 0" id="Ranking">
+
+    <p id="NoRanking">No estas registrado en ningun ranking.</p>
+
+</div>

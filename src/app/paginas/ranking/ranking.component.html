@@ -1,0 +1,16 @@
+<div id="navegador">
+    <p id="bienvenida">Bienvenido al ranking <b>NombreDelRanking</b></p>
+    <button id="perfil" routerLink="../perfil" routerLinkActive="active">Perfil</button>
+    <button id="logout" (click)="openDialog()"><b>Logout</b></button>
+</div>
+
+<table id="InfoUser">
+    <tr>
+        <th id="th">Nick:</th>
+        <th id="th">Puntos:</th>
+    </tr>
+    <tr *ngFor="let dato of datos"> 
+        <td id="td">{{dato.alumno}}</td>
+        <td id="td">{{dato.puntos}}</td>
+    </tr>
+</table>

@@ -6,7 +6,7 @@ import { Photo } from 'src/app/models/photo.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './DialogComponent.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Rankings } from 'src/app/models/rankings.model';
 
 @Component({
@@ -16,9 +16,14 @@ import { Rankings } from 'src/app/models/rankings.model';
 })
 export class PerfilComponent implements OnInit {
 
+  httpOptions: any;
+
+  datos: any[] = [];
+
   element1 = true;
   element2 = true;
   element3 = true;
+  element4 = true;
 
   foto: any;
 
@@ -34,7 +39,7 @@ export class PerfilComponent implements OnInit {
     codigo: new FormControl('', Validators.required)
   });
 
-  constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog) { }
+  constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog, private _http: HttpClient) { }
 
   info: any;
   token: any;
@@ -61,9 +66,24 @@ export class PerfilComponent implements OnInit {
     if (currentUser) {
       this.info = JSON.parse(currentUser).value;
       this.token = JSON.parse(currentUser).access_token;
+      console.log(this.info);
       console.log(this.token);
 
     }
+
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+      })
+    };
+
+    this._http.post(this.usuarios.URL + `indexr/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
+      this.datos = data;
+      console.log(this.datos);
+
+    });
+
   }
 
 
@@ -75,7 +95,7 @@ export class PerfilComponent implements OnInit {
     // Insertamos la información de las variables anteriores en las variables del modelo "Registro".
     const ranking: Rankings = {
       "codigo": codigo,
-      "mote": mote
+      "alumno": mote
     };
 
     // Comando para comprobar que la información se guarda en el modelo.
@@ -88,6 +108,7 @@ export class PerfilComponent implements OnInit {
         console.log(value);
         // Comando para ir a la paguina de perfiles.
         this.router.navigate(['../ranking']);
+        this.usuarios.setParametro(codigo);
       }
     });
     // Comando para borrar el contenido de los inputs del formulario.
@@ -170,6 +191,13 @@ export class PerfilComponent implements OnInit {
       }
     });
     this.cambiarContra.reset();
+  }
+
+  pillarCodigo(event: any, codigoranking: string) {
+
+    this.usuarios.setParametro(codigoranking);
+
+    console.log(codigoranking);
   }
 
   showButton1() {
