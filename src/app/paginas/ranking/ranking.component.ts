@@ -41,6 +41,13 @@ export class RankingComponent implements OnInit {
   }
   ngOnInit(): void {
 
+    const currentUser = localStorage.getItem('currentUser');
+
+    if (currentUser) {
+      this.info = JSON.parse(currentUser).value;
+      console.log(this.info);
+    }
+
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

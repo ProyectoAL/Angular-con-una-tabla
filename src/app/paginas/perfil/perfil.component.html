@@ -119,8 +119,31 @@
 
 </table>
 
+<table *ngIf="info.role === 'Profesor'" id="Ranking">
+
+    <tr *ngFor="let dato of datos">
+
+        <th>Ranking {{dato.codigo}}</th>
+
+        <td>
+            <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
+                (click)="pillarCodigo($event, dato.codigo)">
+                Entrar
+            </button>
+        </td>
+
+    </tr>
+
+</table>
+
 <div *ngIf="info.role === 'Alumno' && datos.length == 0" id="Ranking">
 
     <p id="NoRanking">No estas registrado en ningun ranking.</p>
+
+</div>
+
+<div *ngIf="info.role === 'Profesor' && datos.length == 0" id="Ranking">
+
+    <p id="NoRanking">No has creado ningun ranking.</p>
 
 </div>

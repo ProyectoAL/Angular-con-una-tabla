@@ -78,11 +78,21 @@ export class PerfilComponent implements OnInit {
       })
     };
 
-    this._http.post(this.usuarios.URL + `indexa/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
-      this.datos = data;
-      console.log(this.datos);
+    if (this.info.role === 'Alumno') {
+      this._http.post(this.usuarios.URL + `indexa/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
+        this.datos = data;
+        console.log(this.datos);
 
-    });
+      });
+    }
+
+    if (this.info.role === 'Profesor') {
+      this._http.post(this.usuarios.URL + `indexranking/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
+        this.datos = data;
+        console.log(this.datos);
+
+      });
+    }
 
   }
 
