@@ -78,7 +78,7 @@ export class PerfilComponent implements OnInit {
       })
     };
 
-    this._http.post(this.usuarios.URL + `indexr/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
+    this._http.post(this.usuarios.URL + `indexa/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
       this.datos = data;
       console.log(this.datos);
 
@@ -90,12 +90,14 @@ export class PerfilComponent implements OnInit {
   Ranking(): void {
     // Insertamos la información del Formgroup en unas nuevas variables.
     let codigo = this.ponerCodigo.controls.codigo.value!;
+    let id = this.info.id;
     let mote = this.info.mote;
 
     // Insertamos la información de las variables anteriores en las variables del modelo "Registro".
     const ranking: Rankings = {
       "codigo": codigo,
-      "alumno": mote
+      "id_usuario": id,
+      "mote": mote
     };
 
     // Comando para comprobar que la información se guarda en el modelo.
@@ -108,7 +110,7 @@ export class PerfilComponent implements OnInit {
         console.log(value);
         // Comando para ir a la paguina de perfiles.
         this.router.navigate(['../ranking']);
-        this.usuarios.setParametro(codigo);
+        this.usuarios.setParametro(ranking.codigo);
       }
     });
     // Comando para borrar el contenido de los inputs del formulario.

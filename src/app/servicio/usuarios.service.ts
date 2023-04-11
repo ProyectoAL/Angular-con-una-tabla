@@ -96,7 +96,9 @@ export class UsuariosService {
 
         const id = JSON.parse(localStorage.getItem('currentUser') || '').value.id;
 
-        return this._http.post(this.URL + `creater/${id}`, ranking, this.httpOptions)
+        console.log(this.URL + `unitedranking/${ranking.id_usuario}, ${ranking.codigo}`);
+
+        return this._http.post(this.URL + `unitedranking/${ranking.id_usuario}, ${ranking.codigo}`, ranking, this.httpOptions)
             .pipe(
                 filter((response: any) => {
                     if (response != null) {

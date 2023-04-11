@@ -52,7 +52,7 @@ export class RankingComponent implements OnInit {
 
     console.log(this.parametro);
 
-    this._http.post(this.usuarios.URL + `contenido/${this.parametro}`, this.parametro, this.httpOptions).subscribe((data: any) => {
+    this._http.post(this.usuarios.URL + `indexall/${this.parametro}`, this.parametro, this.httpOptions).subscribe((data: any) => {
       this.datos = data;
       console.log(this.datos);
     });
