@@ -9,12 +9,14 @@ import { PaginasModule } from './paginas/paginas.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RankingComponent } from './paginas/ranking/ranking.component';
+import { DialogComponent } from './paginas/ranking/DialogComponent.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RankingComponent
+    RankingComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

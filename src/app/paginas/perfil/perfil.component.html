@@ -17,7 +17,7 @@
         <b>Volver</b>
     </button>
 
-    <button id="logout" (click)="openDialog()">
+    <button id="logout" *ngIf="element2 == true" (click)="openDialog()">
         <b>Logout</b>
     </button>
 
@@ -106,28 +106,11 @@
 
     <tr *ngFor="let dato of datos">
 
-        <th>Ranking {{dato.codigo}}</th>
+        <th>Ranking {{dato.nombre}}</th>
 
         <td>
             <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
-                (click)="pillarCodigo($event, dato.codigo)">
-                Entrar
-            </button>
-        </td>
-
-    </tr>
-
-</table>
-
-<table *ngIf="info.role === 'Profesor'" id="Ranking">
-
-    <tr *ngFor="let dato of datos">
-
-        <th>Ranking {{dato.codigo}}</th>
-
-        <td>
-            <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
-                (click)="pillarCodigo($event, dato.codigo)">
+                (click)="pillarCodigo($event, dato.codigo, dato.nombre)">
                 Entrar
             </button>
         </td>
@@ -141,6 +124,23 @@
     <p id="NoRanking">No estas registrado en ningun ranking.</p>
 
 </div>
+
+<table *ngIf="info.role === 'Profesor'" id="Ranking">
+
+    <tr *ngFor="let dato of datos">
+
+        <th>Ranking {{dato.nombre}}</th>
+
+        <td>
+            <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
+                (click)="pillarCodigo($event, dato.codigo, dato.nombre)">
+                Entrar
+            </button>
+        </td>
+
+    </tr>
+
+</table>
 
 <div *ngIf="info.role === 'Profesor' && datos.length == 0" id="Ranking">
 

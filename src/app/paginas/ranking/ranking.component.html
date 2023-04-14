@@ -1,7 +1,14 @@
 <div id="navegador">
-    <p id="bienvenida" *ngFor="let dato of datos">Bienvenido al ranking <b>{{dato.codigo}}</b></p>
-    <button id="perfil" routerLink="../perfil" routerLinkActive="active">Perfil</button>
-    <button id="logout" (click)="openDialog()"><b>Logout</b></button>
+    <p id="bienvenida" *ngFor="let dato of datos">Bienvenido al ranking <b>{{nombre}}</b></p>
+
+    <button id="practica" *ngIf="info.role === 'Profesor' && element == true" (click)="openDialog()">
+        <b>Crear Practica</b>
+    </button>
+
+    <button *ngIf="element == true" id="perfil" routerLink="../perfil" routerLinkActive="active">
+        <b>Perfil</b>
+    </button>
+
 </div>
 
 <table id="InfoUser" *ngIf="info.role === 'Alumno'">
@@ -28,4 +35,20 @@
         <td id="td">{{dato.lastname}}</td>
         <td id="td">{{dato.puntos}}</td>
     </tr>
+</table>
+
+<table *ngIf="info.role === 'Profesor'" id="Entregas">
+
+    <tr>
+
+        <th>Practica</th>
+
+        <td>
+            <button id="Entrar" routerLink="../ranking" routerLinkActive="active">
+                Entrar
+            </button>
+        </td>
+
+    </tr>
+
 </table>

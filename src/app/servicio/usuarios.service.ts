@@ -8,6 +8,7 @@ import { Alumnos } from '../models/alumnos.model';
 import { Password } from '../models/password.model';
 import { Photo } from '../models/photo.model';
 import { Rankings } from '../models/rankings.model';
+import { CrearPracticas } from '../models/Crearpracticas.model';
 
 @Injectable({
     providedIn: 'root'
@@ -17,15 +18,38 @@ export class UsuariosService {
     readonly URL = "http://127.0.0.1:8000/api/";
 
     httpOptions: any;
-
-    parametro: any;
-
+    codigoRanking: any;
     datosusuario: any;
+    idProfesor: any;
+    nombre: any;
 
     found = false;
 
     constructor(private _http: HttpClient) { }
 
+    setCodigoRanking(codigo: any) {
+        this.codigoRanking = codigo;
+    }
+
+    setNombreRanking(nombre: any) {
+        this.nombre = nombre;
+    }
+
+    setIdProfesor(id: any) {
+        this.idProfesor = id;
+    }
+
+    getCodigoRanking() {
+        return this.codigoRanking;
+    }
+
+    getNombreRanking() {
+        return this.nombre;
+    }
+
+    getIdProfesor() {
+        return this.idProfesor;
+    }
 
     addAlumnos(alumno: Alumnos) {
         return this._http.post(this.URL + "signup", alumno)
@@ -184,11 +208,30 @@ export class UsuariosService {
                 ));
     }
 
-    setParametro(nuevoParametro: any) {
-        this.parametro = nuevoParametro;
+    Practicas(practica: CrearPracticas) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        // return this._http.post(this.URL + `unitedranking/${ranking.id_usuario}, ${ranking.codigo}`, ranking, this.httpOptions)
+        //     .pipe(
+        //         filter((response: any) => {
+        //             if (response != null) {
+        //                 this.found = true;
+        //             } else {
+        //                 this.found = false;
+        //             }
+
+        //             this.datosusuario = response;
+
+        //             localStorage.setItem('ranking', JSON.stringify(this.datosusuario));
+
+        //             return this.datosusuario;
+        //         }
+        //         ));
     }
 
-    getParametro() {
-        return this.parametro;
-    }
 }

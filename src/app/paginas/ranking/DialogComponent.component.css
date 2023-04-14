@@ -1,0 +1,50 @@
+#nombre {
+    margin-bottom: 10px;
+    width: 200px;
+    padding-left: 10px;
+}
+
+#descripcion {
+    margin-bottom: 10px;
+    width: 220px;
+    padding-left: 10px;
+}
+
+#puntuacion {
+    margin-bottom: 10px;
+    width: 260px;
+    padding-left: 10px;
+}
+
+#Si {
+    background-color: #3072ed;
+    color: white;
+    border: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 2px;
+    width: 80px;
+    height: 30px;
+    margin-left: 50px;
+}
+
+#Si:hover {
+    background-color: #6593e8;
+    cursor: pointer;
+}
+
+#No {
+    color: white;
+    border-radius: 2px;
+    background-color: rgb(23, 168, 23);
+    border: none;
+    margin-left: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 80px;
+    height: 30px;
+
+}
+
+#No:hover {
+    background-color: rgb(151, 213, 151);
+    cursor: pointer;
+}

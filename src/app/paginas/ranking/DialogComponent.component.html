@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Crear una Practica</h2>
+<div mat-dialog-content [formGroup]="nombrePractica">
+    <label>Nombre: </label>
+    <br>
+    <input id="nombre" formControlName="nombre" type="text" placeholder="Ponga el nombre de la practica">
+    <br>
+    <label>Descripción: </label>
+    <br>
+    <input id="descripcion" formControlName="descripcion" type="text" placeholder="Ponga la descripcion de la practica">
+    <br>
+    <label>Puntuación: </label>
+    <br>
+    <input id="puntuacion" formControlName="puntuacion" type="text"
+        placeholder="Ponga la puntuacion maxima de la practica">
+</div>
+<div mat-dialog-actions id="botones">
+    <button id="Si" mat-button [disabled]="!nombrePractica.valid" (click)="CrearPractica()">
+        <b>Crear</b>
+    </button>
+
+    <button id="No" mat-button (click)="onBackClick()">
+        <b>Volver</b>
+    </button>
+</div>

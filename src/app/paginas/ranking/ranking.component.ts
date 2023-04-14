@@ -2,9 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DialogComponent } from '../perfil/DialogComponent.component';
-import { PerfilComponent } from '../perfil/perfil.component';
 import { UsuariosService } from '../../servicio/usuarios.service';
+import { DialogComponent } from './DialogComponent.component';
 
 @Component({
   selector: 'app-ranking',
@@ -14,38 +13,30 @@ import { UsuariosService } from '../../servicio/usuarios.service';
 export class RankingComponent implements OnInit {
 
   httpOptions: any;
+  info: any;
+  contenido: any;
+  codigoRanking: any;
+  nombre: any;
 
   datos: any[] = [];
+  datosranking: any[] = [];
 
-  info: any;
-
-  contenido: any;
-
-  parametro: any;
+  element = true;
 
   constructor(public usuarios: UsuariosService, public dialog: MatDialog, public router: Router, private _http: HttpClient) { }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'home') {
-        localStorage.removeItem('currentUser');
-        this.info = null;
-        console.log(this.info);
-        this.router.navigate(['']);
-      }
-    });
-  }
   ngOnInit(): void {
 
     const currentUser = localStorage.getItem('currentUser');
 
+    this.nombre = this.usuarios.getNombreRanking();
+
     if (currentUser) {
       this.info = JSON.parse(currentUser).value;
+
       console.log(this.info);
+
+      this.usuarios.setIdProfesor(this.info.id);
     }
 
     this.httpOptions = {
@@ -55,13 +46,27 @@ export class RankingComponent implements OnInit {
       })
     };
 
-    this.parametro = this.usuarios.getParametro();
+    this.codigoRanking = this.usuarios.getCodigoRanking();
 
-    console.log(this.parametro);
+    console.log(this.codigoRanking);
 
-    this._http.post(this.usuarios.URL + `indexall/${this.parametro}`, this.parametro, this.httpOptions).subscribe((data: any) => {
+    this._http.post(this.usuarios.URL + `indexall/${this.codigoRanking}`, this.codigoRanking, this.httpOptions).subscribe((data: any) => {
       this.datos = data;
       console.log(this.datos);
+    });
+
+  }
+
+  openDialog(): void {
+
+    let dialogRef = this.dialog.open(DialogComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'home') {
+        this.router.navigate(['']);
+      }
     });
   }
 

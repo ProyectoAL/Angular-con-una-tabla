@@ -17,6 +17,10 @@ import { Rankings } from 'src/app/models/rankings.model';
 export class PerfilComponent implements OnInit {
 
   httpOptions: any;
+  foto: any;
+  info: any;
+  token: any;
+  update: any;
 
   datos: any[] = [];
 
@@ -24,8 +28,6 @@ export class PerfilComponent implements OnInit {
   element2 = true;
   element3 = true;
   element4 = true;
-
-  foto: any;
 
   cambiarFoto = new FormGroup({
     foto: new FormControl('', Validators.required)
@@ -40,10 +42,6 @@ export class PerfilComponent implements OnInit {
   });
 
   constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog, private _http: HttpClient) { }
-
-  info: any;
-  token: any;
-  update: any;
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
@@ -120,7 +118,7 @@ export class PerfilComponent implements OnInit {
         console.log(value);
         // Comando para ir a la paguina de perfiles.
         this.router.navigate(['../ranking']);
-        this.usuarios.setParametro(ranking.codigo);
+        this.usuarios.setCodigoRanking(ranking.codigo);
       }
     });
     // Comando para borrar el contenido de los inputs del formulario.
@@ -205,9 +203,11 @@ export class PerfilComponent implements OnInit {
     this.cambiarContra.reset();
   }
 
-  pillarCodigo(event: any, codigoranking: string) {
+  pillarCodigo(event: any, codigoranking: string, nombre: any) {
 
-    this.usuarios.setParametro(codigoranking);
+    this.usuarios.setCodigoRanking(codigoranking);
+
+    this.usuarios.setNombreRanking(nombre);
 
     console.log(codigoranking);
   }
