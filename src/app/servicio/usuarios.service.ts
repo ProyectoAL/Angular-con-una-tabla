@@ -20,8 +20,11 @@ export class UsuariosService {
     httpOptions: any;
     codigoRanking: any;
     datosusuario: any;
+    datospracticas: any;
     idProfesor: any;
     nombre: any;
+    idPractica: any;
+    nombrePractica: any;
 
     found = false;
 
@@ -39,6 +42,14 @@ export class UsuariosService {
         this.idProfesor = id;
     }
 
+    setIdPractica(id: any) {
+        this.idPractica = id;
+    }
+
+    setNombrePractica(nombre: any) {
+        this.nombrePractica = nombre;
+    }
+
     getCodigoRanking() {
         return this.codigoRanking;
     }
@@ -49,6 +60,14 @@ export class UsuariosService {
 
     getIdProfesor() {
         return this.idProfesor;
+    }
+
+    getIdPractica() {
+        return this.idPractica;
+    }
+
+    getNombrePractica() {
+        return this.nombrePractica;
     }
 
     addAlumnos(alumno: Alumnos) {
@@ -208,7 +227,7 @@ export class UsuariosService {
                 ));
     }
 
-    Practicas(practica: CrearPracticas) {
+    CreatePracticas(practica: CrearPracticas) {
         this.httpOptions = {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
@@ -216,22 +235,18 @@ export class UsuariosService {
             })
         };
 
-        // return this._http.post(this.URL + `unitedranking/${ranking.id_usuario}, ${ranking.codigo}`, ranking, this.httpOptions)
-        //     .pipe(
-        //         filter((response: any) => {
-        //             if (response != null) {
-        //                 this.found = true;
-        //             } else {
-        //                 this.found = false;
-        //             }
+        return this._http.post(this.URL + 'createp', practica, this.httpOptions)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
 
-        //             this.datosusuario = response;
-
-        //             localStorage.setItem('ranking', JSON.stringify(this.datosusuario));
-
-        //             return this.datosusuario;
-        //         }
-        //         ));
+                    return this.datosusuario;
+                }
+                ));
     }
 
 }
