@@ -2,14 +2,6 @@
 /*body{
     background-color: gainsboro;
 }*/
-.video{
-  position: absolute;
-  margin-top: 0;
-  margin-left: 0;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
 body {
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
