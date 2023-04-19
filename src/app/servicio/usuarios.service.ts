@@ -25,6 +25,9 @@ export class UsuariosService {
     nombre: any;
     idPractica: any;
     nombrePractica: any;
+    idAlumno: any;
+    nombreAlumno: any;
+    idRanking: any;
 
     found = false;
 
@@ -50,6 +53,18 @@ export class UsuariosService {
         this.nombrePractica = nombre;
     }
 
+    setIdAlumno(id: any) {
+        this.idAlumno = id;
+    }
+
+    setNombreAlumno(nombre: any) {
+        this.nombreAlumno = nombre;
+    }
+
+    setIdRanking(id: any) {
+        this.idRanking = id;
+    }
+
     getCodigoRanking() {
         return this.codigoRanking;
     }
@@ -68,6 +83,18 @@ export class UsuariosService {
 
     getNombrePractica() {
         return this.nombrePractica;
+    }
+
+    getIdAlumno() {
+        return this.idAlumno;
+    }
+
+    getNombreAlumno() {
+        return this.nombreAlumno;
+    }
+
+    getIdRanking() {
+        return this.idRanking;
     }
 
     addAlumnos(alumno: Alumnos) {

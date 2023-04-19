@@ -20,6 +20,9 @@
         <th id="th">Nick:</th>
         <th id="th">Puntos:</th>
     </tr>
+    <td colspan="2">
+        <hr>
+    </td>
     <!-- Contenido de los campos de la tabla -->
     <tr *ngFor="let dato of datos">
         <td id="td">{{dato.mote}}</td>
@@ -35,13 +38,22 @@
         <th id="th">Nombre:</th>
         <th id="th">Apellidos:</th>
         <th id="th">Puntos:</th>
+        <th id="th">Eliminar: </th>
     </tr>
+    <td colspan="5">
+        <hr>
+    </td>
     <!-- Contenido de los campos de la tabla -->
     <tr *ngFor="let dato of datos">
         <td id="td">{{dato.mote}}</td>
         <td id="td">{{dato.name}}</td>
         <td id="td">{{dato.lastname}}</td>
         <td id="td">{{dato.puntos}}</td>
+        <td>
+            <button id="Borrar" (click)="openBorrarAlumno($event, dato.id_usuario, dato.name)">
+                <b>Borrar</b>
+            </button>
+        </td>
     </tr>
 </table>
 
@@ -63,7 +75,8 @@
             </button>
         </td>
         <td>
-            <button id="Borrar" (click)="openBorrarDialog($event, dato.id, dato.nombre)">
+            <button id="Borrar" *ngIf="info.role === 'Profesor'"
+                (click)="openBorrarPractica($event, dato.id, dato.nombre)">
                 <b>Borrar</b>
             </button>
         </td>

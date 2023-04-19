@@ -92,8 +92,7 @@
     border-bottom-left-radius: 5px;
     border-radius: 10px;
 
-    border-left: 1px solid grey;
-    border-bottom: 1px solid grey;
+    border: 1px solid grey;
 
     width: 1050px;
     height: auto;
@@ -102,12 +101,6 @@
     font-size: 20px;
 
     background-color: rgb(255, 255, 255, 0.451);
-}
-
-/* Estilo para los tr y th de las tablas con la información de los usuarios */
-#InfoUser>tr>th {
-    text-align: left;
-    text-align: center;
 }
 
 /* Estilo para los tr y td de las tablas con la información de los usuarios */
@@ -125,8 +118,7 @@
     border-bottom-left-radius: 5px;
     border-radius: 10px;
 
-    border-left: 1px solid grey;
-    border-bottom: 1px solid grey;
+    border: 1px solid grey;
 
     width: 1050px;
     height: auto;
@@ -146,12 +138,6 @@
 /* Estilo para los tr y td de las tablas con la información de las practicas */
 #Entregas>tr>td {
     text-align: center;
-}
-
-/* Estilo para todos los th y td */
-#th,
-#td {
-    border-bottom: solid 1px grey;
 }
 
 /* Estilo para entrar a las entregas */

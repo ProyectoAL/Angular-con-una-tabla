@@ -5,7 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuariosService } from '../../servicio/usuarios.service';
 import { DialogComponent } from './DialogComponent.component';
-import { BorrarDialogComponent } from './BorrarDialogComponent.component';
+import { BorrarPracticaComponent } from './BorrarPractica.component';
+import { BorrarAlumnoComponent } from './BorrarAlumno.component';
 
 @Component({
   selector: 'app-ranking',
@@ -93,13 +94,23 @@ export class RankingComponent implements OnInit {
   }
 
   // Funcion para mostrar la pestaña para borrar la practica.
-  openBorrarDialog(event: any, idPractica: any, nombrePractica: any): void {
+  openBorrarPractica(event: any, idPractica: any, nombrePractica: any): void {
 
     this.usuarios.setIdPractica(idPractica);
     this.usuarios.setNombrePractica(nombrePractica);
 
     // Codigo para mostrar la pestaña.
-    let BorrardialogRef = this.dialog.open(BorrarDialogComponent, {
+    let BorrardialogRef = this.dialog.open(BorrarPracticaComponent, {
+      data: {}
+    });
+  }
+
+  openBorrarAlumno(event: any, idAlumno: any, nombreAlumno: any) {
+
+    this.usuarios.setIdAlumno(idAlumno);
+    this.usuarios.setNombreAlumno(nombreAlumno);
+
+    let BorrarAlumnoRef = this.dialog.open(BorrarAlumnoComponent, {
       data: {}
     });
   }

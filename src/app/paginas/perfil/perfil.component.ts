@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './DialogComponent.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Rankings } from 'src/app/models/rankings.model';
+import { CodigoComponent } from './Codigo.component';
 
 @Component({
   selector: 'app-perfil',
@@ -42,22 +43,6 @@ export class PerfilComponent implements OnInit {
   });
 
   constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog, private _http: HttpClient) { }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'home') {
-        localStorage.removeItem('currentUser');
-        this.info = null;
-        console.log(this.info);
-        this.router.navigate(['']);
-      }
-    });
-  }
-
 
   ngOnInit(): void {
     const currentUser = localStorage.getItem('currentUser');
@@ -210,6 +195,32 @@ export class PerfilComponent implements OnInit {
     this.usuarios.setNombreRanking(nombre);
 
     console.log(codigoranking);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'home') {
+        localStorage.removeItem('currentUser');
+        this.info = null;
+        console.log(this.info);
+        this.router.navigate(['']);
+      }
+    });
+  }
+
+  GenerarCodigo(event: any, idranking: string, nombreranking: any): void {
+    const dialogRef = this.dialog.open(CodigoComponent, {
+      data: {}
+    });
+
+    this.usuarios.setIdRanking(idranking);
+
+    this.usuarios.setNombreRanking(nombreranking);
+
   }
 
   showButton1() {

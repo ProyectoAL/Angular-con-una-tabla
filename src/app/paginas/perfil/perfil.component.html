@@ -53,25 +53,45 @@
         <td id="td">{{info.name}}</td>
     </tr>
 
+    <td colspan="2">
+        <hr>
+    </td>
+
     <tr>
         <th id="th">Apellidos:</th>
         <td id="td">{{info.lastname}}</td>
     </tr>
+
+    <td colspan="2">
+        <hr>
+    </td>
 
     <tr>
         <th id="th">Email:</th>
         <td id="td">{{info.email}}</td>
     </tr>
 
+    <td colspan="2">
+        <hr>
+    </td>
+
     <tr *ngIf="info.centro != null">
         <th id="th">Centro:</th>
         <td id="td">{{info.centro}}</td>
     </tr>
 
+    <td colspan="2">
+        <hr>
+    </td>
+
     <tr *ngIf="info.date != null">
         <th id="th">Fecha de nacimeinto:</th>
         <td id="td">{{info.date}}</td>
     </tr>
+
+    <td colspan="2">
+        <hr>
+    </td>
 
     <tr>
         <th>Contraseña:</th>
@@ -135,6 +155,12 @@
             <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
                 (click)="pillarCodigo($event, dato.codigo, dato.nombre)">
                 <b>Entrar</b>
+            </button>
+        </td>
+
+        <td>
+            <button id="GenerarCodigo" (click)="GenerarCodigo($event, dato.id, dato.nombre)">
+                <b>Nuevo Codigo</b>
             </button>
         </td>
 
