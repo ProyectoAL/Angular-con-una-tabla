@@ -34,6 +34,7 @@ export class DialogComponent {
 
     // Insertamos la infromación de getIdProfesor y de getCodigoRanking a unas nuevas variables.
     let id_profesor = this.usuarios.getIdProfesor();
+    let id_ranking = this.usuarios.getIdRanking();
     let codigo = this.usuarios.getCodigoRanking();
     // Insertamos la información del Formgroup en unas nuevas variables.
     let nombre = this.nombrePractica.controls.nombre.value!;
@@ -43,6 +44,7 @@ export class DialogComponent {
     // Insertamos la información de las variables anteriores en las variables del modelo "CrearPracticas".
     const practica: CrearPracticas = {
       "id_profesor": id_profesor,
+      "id_ranking": id_ranking,
       "codigo": codigo,
       "nombre": nombre,
       "descripcion": descripcion,

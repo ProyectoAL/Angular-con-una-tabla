@@ -17,6 +17,8 @@ export class CodigoComponent {
 
     nombre = this.usuarios.getNombreRanking();
 
+    codigo: any;
+
     // Constructor.
     constructor(public dialogRef: MatDialogRef<CodigoComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,11 +27,9 @@ export class CodigoComponent {
     // Funcion para guardar la información necesaria para la creación de las practicas al modelo CrearPracticas.
     GenerarCodigo(): void {
 
-        const id_ranking = {
-            "id": this.usuarios.getIdRanking()
-        };
+        let id = this.usuarios.getIdRanking();
 
-        console.log(id_ranking);
+        console.log(id);
 
         this.httpOptions = {
             headers: new HttpHeaders({
@@ -38,10 +38,39 @@ export class CodigoComponent {
             })
         };
 
-        // this._http.post(this.usuarios.URL + 'deleteuser', id_ranking, this.httpOptions).subscribe(() => {
-        //     // Redirigir al usuario a la página anterior
-        //     this.dialogRef.close('back');
-        // })
+        this._http.put(this.usuarios.URL + `updaterankingcode/${id}`, id, this.httpOptions).subscribe((data: any) => {
+            // Redirigir al usuario a la página anterior
+
+            const datos = data;
+
+            console.log(datos);
+
+            const codigo1 = datos.value;
+
+            console.log(codigo1);
+
+
+            this.codigo = codigo1.codigo;
+
+            const ids = {
+                "id_ranking": this.usuarios.getIdRanking(),
+                "id_usuario": this.usuarios.getIdAlumno(),
+                "codigo": this.codigo
+            };
+
+            console.log(ids);
+
+            this._http.post(this.usuarios.URL + `updateranking/${ids.id_usuario}, ${ids.id_ranking}`, ids, this.httpOptions).subscribe((data: any) => {
+                // Redirigir al usuario a la página anterior
+
+                const datos = data;
+
+                console.log(datos);
+
+                this.dialogRef.close('back');
+            });
+
+        });
     }
 
     // Funcion para cerrar la pestaña

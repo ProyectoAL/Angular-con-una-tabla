@@ -15,7 +15,7 @@ export class BorrarPracticaComponent {
     // Variable donde se guardara el token de acceso.
     httpOptions: any;
 
-    id: any;
+    id = this.usuarios.getIdPractica();
 
     nombre = this.usuarios.getNombrePractica();
 
@@ -27,8 +27,6 @@ export class BorrarPracticaComponent {
 
     // Funcion para guardar la información necesaria para la creación de las practicas al modelo CrearPracticas.
     BorrarPractica(): void {
-
-        this.id = this.usuarios.getIdPractica();
 
         console.log(this.id);
 

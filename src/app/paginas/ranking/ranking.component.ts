@@ -107,6 +107,8 @@ export class RankingComponent implements OnInit {
 
   openBorrarAlumno(event: any, idAlumno: any, nombreAlumno: any) {
 
+    console.log(idAlumno);
+
     this.usuarios.setIdAlumno(idAlumno);
     this.usuarios.setNombreAlumno(nombreAlumno);
 

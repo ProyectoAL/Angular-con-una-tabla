@@ -188,11 +188,13 @@ export class PerfilComponent implements OnInit {
     this.cambiarContra.reset();
   }
 
-  pillarCodigo(event: any, codigoranking: string, nombre: any) {
+  pillarCodigo(event: any, codigoranking: string, nombre: any, idranking: any) {
 
     this.usuarios.setCodigoRanking(codigoranking);
 
     this.usuarios.setNombreRanking(nombre);
+
+    this.usuarios.setIdRanking(idranking);
 
     console.log(codigoranking);
   }
@@ -212,12 +214,16 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  GenerarCodigo(event: any, idranking: string, nombreranking: any): void {
+  GenerarCodigo(event: any, idranking: string, nombreranking: any, codigo: any): void {
     const dialogRef = this.dialog.open(CodigoComponent, {
       data: {}
     });
 
     this.usuarios.setIdRanking(idranking);
+
+    this.usuarios.setIdAlumno(this.info.id);
+
+    this.usuarios.setCodigoRanking(codigo);
 
     this.usuarios.setNombreRanking(nombreranking);
 

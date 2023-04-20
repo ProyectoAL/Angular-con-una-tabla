@@ -130,7 +130,7 @@
 
         <td>
             <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
-                (click)="pillarCodigo($event, dato.codigo, dato.nombre)">
+                (click)="pillarCodigo($event, dato.codigo, dato.nombre, dato.id)">
                 <b>Entrar</b>
             </button>
         </td>
@@ -153,13 +153,13 @@
 
         <td>
             <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
-                (click)="pillarCodigo($event, dato.codigo, dato.nombre)">
+                (click)="pillarCodigo($event, dato.codigo, dato.nombre, dato.id)">
                 <b>Entrar</b>
             </button>
         </td>
 
         <td>
-            <button id="GenerarCodigo" (click)="GenerarCodigo($event, dato.id, dato.nombre)">
+            <button id="GenerarCodigo" (click)="GenerarCodigo($event, dato.id, dato.nombre, dato.codigo)">
                 <b>Nuevo Codigo</b>
             </button>
         </td>
