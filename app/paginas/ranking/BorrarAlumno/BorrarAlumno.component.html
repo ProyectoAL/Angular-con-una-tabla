@@ -1,0 +1,19 @@
+<!-- Titulo de la pestaña -->
+<h2 mat-dialog-title>Borrar un Alumno</h2>
+
+<!-- Div con los inputs del fromGroup -->
+<div mat-dialog-content>
+    Estas seguro que quieres borrar al alumno: {{nombre}}?
+</div>
+
+<!-- Div con los botones para crear la practica o para volver a la paguina del ranking. -->
+<div mat-dialog-actions id="botones">
+    <!-- Boton para crear la practica -->
+    <button id="Si" mat-button (click)="BorrarAlumno()">
+        <b>Borrar</b>
+    </button>
+    <!-- Boton para volver al ranking -->
+    <button id="No" mat-button (click)="onBackClick()">
+        <b>Volver</b>
+    </button>
+</div>

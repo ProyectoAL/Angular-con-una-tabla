@@ -1,0 +1,178 @@
+#registro {
+    text-align: center;
+
+    border: 3px outset rgb(173, 171, 171);
+    border-radius: 20px;
+
+    padding-left: 40px;
+    padding-right: 40px;
+
+    background-color: rgb(255, 255, 255, 0.451);
+
+    width: 475px;
+
+    margin: 0 auto;
+}
+
+#botonProfesor {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    height: 40px;
+    width: 150px;
+
+    margin-top: 20px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+
+    background-color: rgb(255, 255, 255, 0.451);
+    color: white;
+}
+
+#botonAlumno {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    height: 40px;
+    width: 150px;
+
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+
+    background-color: rgb(255, 255, 255, 0.451);
+    color: white;
+}
+
+#botonProfesor:hover {
+    color: black;
+    background-color: gainsboro;
+}
+
+#botonAlumno:hover {
+    color: black;
+    background-color: gainsboro;
+}
+
+#titulo1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+
+#titulo2{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+}
+
+#mote,
+#email,
+#contraseña,
+#contraseñaRepe,
+#nombre,
+#apellidos,
+#centro {
+    margin-top: 20px;
+
+    padding-left: 10px;
+
+    height: 50px;
+    width: 450px;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    border-radius: 10px;
+    border: 2px solid gainsboro;
+    
+    background-color: rgb(255, 255, 255, 0.451);
+}
+
+#tituloFecha {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    float: left;
+
+    padding-left: 10px;
+}
+
+#error {
+    margin-top: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    color: rgb(135, 16, 16);
+    background-color: rgba(221, 62, 62, 0.686);
+
+    border-radius: 10px;
+}
+
+#fecha {
+    padding-left: 10px;
+
+    height: 50px;
+    width: 450px;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    border-radius: 10px;
+    border: 2px solid gainsboro;
+    background-color: rgb(255, 255, 255, 0.451);
+}
+
+#registrar {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    height: 50px;
+    width: 316px;
+
+    border-radius: 10px;
+    border: none;
+
+    background-color: rgb(33, 33, 245);
+    color: white;
+
+    cursor: pointer;
+}
+
+#registrar:hover {
+    background-color: #6593e8;
+}
+
+#volver {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    height: 50px;
+    width: 316px;
+
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+
+    background-color: rgb(23, 168, 23);
+    color: white;
+}
+
+#volver:hover {
+    background-color: rgb(151, 213, 151);
+}

@@ -1,0 +1,91 @@
+<!-- Barra de la parte superior de la paguina  -->
+<div id="navegador" *ngFor="let dato of nombre">
+    <!-- Nombre del ranking -->
+    <p id="bienvenida">Bienvenido a la practica <b>{{dato.nombre}}</b></p>
+
+    <!-- Boton para volver al perfil -->
+    <button id="perfil" routerLink="/perfil" routerLinkActive="active">
+        <b>Perfil</b>
+    </button>
+</div>
+
+<!-- Tabla del ranking que solo se mostrara a los alumnos -->
+<table id="InfoUser" *ngIf="info.role === 'Alumno'">
+    <!-- Titulos de los campos de la tabla -->
+    <tr *ngFor="let dato of practicas1">
+        <th id="th">Puntuación:</th>
+        <th id="th">/{{dato.puntuacion}}</th>
+    </tr>
+    <td colspan="2">
+        <hr>
+    </td>
+    <!-- Contenido de los campos de la tabla -->
+    <tr>
+        <th id="th" colspan="2">Descripción:</th>
+    </tr>
+    <tr *ngFor="let dato of practicas1">
+        <td id="td" colspan="2">{{dato.descripcion}}</td>
+    </tr>
+    <td colspan="2">
+        <hr>
+    </td>
+    <tr>
+        <th colspan="2">Entregar:</th>
+    </tr>
+    <tr>
+        <td colspan="2">
+
+            <button id="ConfirmarEntrega" *ngIf="element1 == true" (click)="showButton1()">
+                <b>Subir entrega</b>
+            </button>
+
+            <form [formGroup]="subirentrega" *ngIf="element1 == false">
+                <input id="subirentrega" formControlName="entrega" type="file" (change)="onFileChange($event)">
+                <br>
+                <button id="entrega" [disabled]="!subirentrega.valid" (click)="Entrega(); hideButton1()">
+                    <b>Entregar</b>
+                </button>
+
+                <button id="volver" (click)="hideButton1()">
+                    <b>Volver</b>
+                </button>
+            </form>
+        </td>
+    </tr>
+
+</table>
+
+<!-- Tabla del ranking que solo se mostrara a los profesores -->
+<table id="InfoUser" *ngIf="info.role === 'Profesor' && practicas2.length != 0">
+    <!-- Titulos de los campos de la tabla -->
+    <tr>
+        <th id="th">Nick:</th>
+        <th id="th">Nombre:</th>
+        <th id="th">Apellidos:</th>
+        <th id="th">Entrega:</th>
+        <th id="th">Nota:</th>
+        <th id="th">Editar Puntuación:</th>
+    </tr>
+    <td colspan="6">
+        <hr>
+    </td>
+    <!-- Contenido de los campos de la tabla -->
+    <tr *ngFor="let dato of practicas2">
+        <td id="td">{{dato.mote}}</td>
+        <td id="td">{{dato.nombre}}</td>
+        <td id="td">{{dato.lastname}}</td>
+        <td id=""><img src="{{dato.entrega}}"></td>
+        <td id="td">{{dato.nota}}</td>
+        <td>
+            <button id="Editar" (click)="EditarPuntuacion($event, dato.id, dato.nombre, dato.lastname)">
+                <b>Editar</b>
+            </button>
+        </td>
+    </tr>
+</table>
+
+<div *ngIf="practicas2.length == 0 && info.role === 'Profesor'" id="MensajeRanking">
+
+    <p id="NoRanking">Ningun usuario a entregado la practica.</p>
+
+</div>

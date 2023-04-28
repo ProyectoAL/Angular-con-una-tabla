@@ -1,0 +1,90 @@
+<!-- Barra de la parte superior de la paguina  -->
+
+<div id="navegador" *ngFor="let dato of nombre">
+    <!-- Nombre del ranking -->
+    <p id="bienvenida">Bienvenido al ranking <b>{{dato.nombre}}</b></p>
+    <!-- Boton para crear las practicas -->
+    <button id="practica" *ngIf="info.role === 'Profesor'" (click)="openDialog()">
+        <b>Crear Practica</b>
+    </button>
+    <!-- Boton para volver al perfil -->
+    <button id="perfil" routerLink="/perfil" routerLinkActive="active">
+        <b>Perfil</b>
+    </button>
+</div>
+
+<!-- Tabla del ranking que solo se mostrara a los alumnos -->
+<table id="InfoUser" *ngIf="info.role === 'Alumno' && datos.length != 0">
+    <!-- Titulos de los campos de la tabla -->
+    <tr>
+        <th id="th">Nick:</th>
+        <th id="th">Puntos:</th>
+    </tr>
+    <td colspan="2">
+        <hr>
+    </td>
+    <!-- Contenido de los campos de la tabla -->
+    <tr *ngFor="let dato of datos">
+        <td id="td">{{dato.mote}}</td>
+        <td id="td">{{dato.puntos}}</td>
+    </tr>
+</table>
+
+<!-- Tabla del ranking que solo se mostrara a los profesores -->
+<table id="InfoUser" *ngIf="info.role === 'Profesor' && datos.length != 0">
+    <!-- Titulos de los campos de la tabla -->
+    <tr>
+        <th id="th">Nick:</th>
+        <th id="th">Nombre:</th>
+        <th id="th">Apellidos:</th>
+        <th id="th">Puntos:</th>
+        <th id="th">Eliminar: </th>
+    </tr>
+    <td colspan="5">
+        <hr>
+    </td>
+    <!-- Contenido de los campos de la tabla -->
+    <tr *ngFor="let dato of datos">
+        <td id="td">{{dato.mote}}</td>
+        <td id="td">{{dato.name}}</td>
+        <td id="td">{{dato.lastname}}</td>
+        <td id="td">{{dato.puntos}}</td>
+        <td>
+            <button id="Borrar" (click)="openBorrarAlumno($event, dato.id_usuario, dato.name)">
+                <b>Borrar</b>
+            </button>
+        </td>
+    </tr>
+</table>
+
+<div *ngIf="datos.length == 0" id="MensajeRanking">
+
+    <p id="NoRanking">No hay ningun alumno en este ranking.</p>
+
+</div>
+
+<!-- Tabla de las practicas del ranking que solo se mostrara a los profesores -->
+<table *ngIf="practicas != null" id="Entregas">
+    <tr *ngFor="let dato of practicas">
+        <!-- Titulo de los campos de la tabla -->
+        <th>Practica {{dato.nombre}}</th>
+        <!-- Boton para entrar en las entregas de la practica -->
+        <td>
+            <button id="Entrar" [routerLink]="['/entrega', dato.id, dato.id_ranking]" routerLinkActive="active">
+                <b>Entrar</b>
+            </button>
+        </td>
+        <td>
+            <button id="Borrar" *ngIf="info.role === 'Profesor'"
+                (click)="openBorrarPractica($event, dato.id, dato.nombre)">
+                <b>Borrar</b>
+            </button>
+        </td>
+    </tr>
+</table>
+
+<div *ngIf="practicas.length == 0" id="MensajePracticas">
+
+    <p id="NoRanking">No hay ninguna practica.</p>
+
+</div>

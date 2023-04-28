@@ -1,0 +1,180 @@
+#izquierda {
+  float: left;
+
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  margin-left: 300px;
+  margin-top: 250px;
+}
+
+h1 {
+  text-align: center;
+
+  font-size: 50px;
+
+  color: black;
+}
+
+p {
+  font-size: 30px;
+}
+
+#error {
+
+  margin-top: 10px;
+
+  text-align: center;
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+
+  border-radius: 10px;
+
+  background-color: rgba(221, 62, 62, 0.686);
+  color: rgb(135, 16, 16);
+}
+
+#derecha {
+  float: right;
+
+  margin-right: 350px;
+  margin-top: 250px;
+
+  padding-left: 40px;
+  padding-right: 40px;
+
+  border: 3px outset rgb(173, 171, 171);
+  border-radius: 20px;
+
+  background-color:rgb(255, 255, 255,0.451);
+
+  width: 475px;
+}
+
+input {
+  margin-top: 20px;
+
+  padding-left: 10px;
+
+  height: 50px;
+  width: 450px;
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+
+  border-radius: 10px;
+  border: 2px solid gainsboro;
+}
+
+#registro {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+
+  margin-top: 20px;
+  margin-left: 80px;
+  margin-bottom: 20px;
+
+  height: 50px;
+  width: 316px;
+
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+
+  background-color: rgb(23, 168, 23);
+  color: white;
+}
+#registro:hover {
+  background-color: rgb(151, 213, 151);
+}
+
+#login {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 15px;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 80px;
+
+  height: 50px;
+  width: 316px;
+
+  border-radius: 10px;
+  border: none;
+
+  background-color: rgb(33, 33, 245);
+  color: white;
+
+  cursor: pointer;
+}
+#login:hover{
+  background-color: #6593e8;
+}
+#mote,#password {
+  background-color: rgb(255, 255, 255,0.451);
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 0%;
+  }
+  50% {
+      background-position: 100% 100%;
+  }
+  100% {
+      background-position: 0% 0%;
+  }
+}
+
+.wave {
+  background: rgb(255 255 255 / 25%);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 12em;
+  animation: wave 10s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.8;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1.25em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2.5em;
+  animation: wave 20s -1s reverse infinite;
+  opacity: 0.9;
+}
+
+@keyframes wave {
+  2% {
+      transform: translateX(1);
+  }
+
+  25% {
+      transform: translateX(-25%);
+  }
+
+  50% {
+      transform: translateX(-50%);
+  }
+
+  75% {
+      transform: translateX(-25%);
+  }
+
+  100% {
+      transform: translateX(1);
+  }
+}
+::-webkit-input-placeholder{
+  color: black;
+}

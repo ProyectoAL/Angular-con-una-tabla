@@ -1,0 +1,149 @@
+<!-- Div con los formularios de los alumnos y de los profesores. -->
+<div id="registro">
+    <!-- Boton para cambiar al formulario de profesores. -->
+    <button id="botonProfesor" (click)="showData()">
+        <b>Profesor</b>
+    </button>
+
+    <!-- Boton para cambiar al formulario de los alumnos. -->
+    <button id="botonAlumno" (click)="hideData()">
+        <b>Alumno</b>
+    </button>
+
+    <!-- Formulario de los alumnos. -->
+    <form *ngIf="element == true" [formGroup]="AlumnosForm">
+        <hr>
+        <div id="titulo1">REGISTRO DE ALUMNOS</div>
+        <!-- Input para poner el mote del alumno. -->
+        <input formControlName="mote" id="mote" type="text" onkeydown="return /[a-z,0-9,_,A-Z]/i.test(event.key)"
+            placeholder="Ponga su mote">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.mote.hasError('required')">Campo vacio</p>
+
+        <!-- Input para poner el correo del alumno. -->
+        <input formControlName="correo" id="email" type="email" placeholder="Ponga su correo">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.correo.hasError('required')">Campo vacio</p>
+
+        <!-- Mensaje de error (input sin @). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.correo.hasError('email')">El correo debe de tener un @</p>
+
+        <!-- Input para poner la contraseña del usuario. -->
+        <input formControlName="password" id="contraseña" type="password" placeholder="Ponga su contraseña">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.password.hasError('required')">Campo vacio</p>
+
+        <!-- Input para comprobar la contraseña. -->
+        <input formControlName="passwordRepe" id="contraseñaRepe" type="password"
+            placeholder="Ponga de nuevo su contraseña">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.passwordRepe.hasError('required')">Campo vacio</p>
+
+        <!-- Mensaje de error (la contraseña no es la misma). -->
+        <p id="error" *ngIf="error == false">La contraseña no es la misma</p>
+
+        <!-- Input para poner el nombre del usuario. -->
+        <input formControlName="nombre" id="nombre" type="text" placeholder="Ponga su nombre" name="Nombre">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.nombre.hasError('required')">Campo vacio</p>
+
+        <!-- Input para poner los apellidos del alumno. -->
+        <input formControlName="apellidos" id="apellidos" type="text" placeholder="Ponga sus apellidos">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.apellidos.hasError('required')">Campo vacio</p>
+
+        <!-- Titulo del input para poner la fecha de necimiento. -->
+        <p id="tituloFecha">Ponga su fecha de nacimiento:</p>
+
+        <!-- Input para poner la fecha de nacimineto del alumno. -->
+        <input formControlName="date" id="fecha" type="date" placeholder="Ponga su fecha de nacimiento">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.AlumnosForm.controls.date.hasError('required')">Campo necesario</p>
+
+        <!-- Boton para registrar el alumno. -->
+        <button [disabled]="AlumnosForm.invalid" (click)="addAlumno()" id="registrar" title="Registrar Profesor">
+            <b>Registrar Alumno</b>
+        </button>
+
+        <hr>
+
+        <!-- Boton para volver al login. -->
+        <button id="volver" title="Volver" routerLink="">
+            <b>Volver</b>
+        </button>
+    </form>
+
+    <!-- Formulario de los profesores. -->
+    <form *ngIf="element == false" [formGroup]="ProfesoresForm">
+        <hr>
+        <div id="titulo2">REGISTRO DE PROFESORES</div>
+        <!-- Input para poner el mote del profesor. -->
+        <input formControlName="mote" id="mote" type="text" onkeydown="return /[a-z,0-9,_,A-Z]/i.test(event.key)"
+            placeholder="Ponga su mote">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.mote.hasError('required')">Campo vacio</p>
+
+        <!-- Input para poner el correo del profesor. -->
+        <input formControlName="correo" id="email" type="email" placeholder="Ponga su correo">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.correo.hasError('required')">Campo vacio</p>
+
+        <!-- Mensaje de error (input sin @). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.correo.hasError('email')">El correo debe de tener un @</p>
+
+        <!-- Input para poner la contraseña del profesor. -->
+        <input formControlName="password" id="contraseña" type="password" placeholder="Ponga su contraseña">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.password.hasError('required')">Campo vacio</p>
+
+        <!-- Input para comprobar la contraseña. -->
+        <input formControlName="passwordRepe" id="contraseñaRepe" type="password"
+            placeholder="Ponga de nuevo su contraseña">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.passwordRepe.hasError('required')">Campo vacio</p>
+
+        <!-- Mensaje de error (la contraseña no es la misma). -->
+        <p id="error" *ngIf="error == false">La contraseña no es la misma</p>
+
+        <!-- Input para poner el nombre del profesor. -->
+        <input formControlName="nombre" id="nombre" type="text" placeholder="Ponga su nombre" name="Nombre">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.nombre.hasError('required')">Campo vacio</p>
+
+        <!-- Input para poner los apellidos del profesor. -->
+        <input formControlName="apellidos" id="apellidos" type="text" placeholder="Ponga sus apellidos">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.apellidos.hasError('required')">Campo vacio</p>
+
+        <!-- Input para poner el centro de trabajo del profesor. -->
+        <input formControlName="centro" id="centro" type="text" placeholder="Ponga el centro de trabajo">
+
+        <!-- Mensaje de error (input vacio). -->
+        <p id="error" *ngIf="this.ProfesoresForm.controls.centro.hasError('required')">Campo vacio</p>
+
+        <!-- Boton para registrar el profesor. -->
+        <button [disabled]="ProfesoresForm.invalid" (click)="addProfesor()" id="registrar" title="Registrar Profesor">
+            <b>Registrar Profesor</b>
+        </button>
+
+        <hr>
+
+        <!-- Boton para volver al login. -->
+        <button id="volver" title="Volver" routerLink="">
+            <b>Volver</b>
+        </button>
+    </form>
+</div>
