@@ -6,6 +6,10 @@
         <b>Añadirse en un nuevo ranking</b>
     </button>
 
+    <button id="rankingbutton" *ngIf="info.role === 'Profesor'" (click)="CrearRanking()">
+        <b>Crear nuevo Ranking</b>
+    </button>
+
     <input id="codigo" formControlName="codigo" type="text" *ngIf="element2 == false"
         placeholder="Ponga el codigo del ranking">
 
@@ -129,8 +133,7 @@
         <th>Ranking {{dato.nombre}}</th>
 
         <td>
-            <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
-                (click)="pillarCodigo($event, dato.codigo, dato.nombre, dato.id)">
+            <button id="Entrar" [routerLink]="['../ranking',dato.id]" routerLinkActive="active">
                 <b>Entrar</b>
             </button>
         </td>
@@ -152,8 +155,7 @@
         <th>Ranking {{dato.nombre}}</th>
 
         <td>
-            <button id="Entrar" routerLink="../ranking" routerLinkActive="active"
-                (click)="pillarCodigo($event, dato.codigo, dato.nombre, dato.id)">
+            <button id="Entrar" [routerLink]="['../ranking',dato.id,dato.codigo]" routerLinkActive="active">
                 <b>Entrar</b>
             </button>
         </td>
@@ -164,6 +166,17 @@
             </button>
         </td>
 
+        <td>
+            <button id="Entrar" (click)="EditarRanking($event, dato.id, dato.nombre)">
+                <b>Editar Ranking</b>
+            </button>
+        </td>
+
+        <td>
+            <button id="Borrar" (click)="BorrarRanking($event, dato.id, dato.nombre)">
+                <b>Borrar</b>
+            </button>
+        </td>
     </tr>
 
 </table>

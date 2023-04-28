@@ -1,20 +1,20 @@
 <!-- Barra de la parte superior de la paguina  -->
 
-<div id="navegador">
+<div id="navegador" *ngFor="let dato of nombre">
     <!-- Nombre del ranking -->
-    <p id="bienvenida" *ngFor="let dato of datos">Bienvenido al ranking <b>{{nombre}}</b></p>
+    <p id="bienvenida">Bienvenido al ranking <b>{{dato.nombre}}</b></p>
     <!-- Boton para crear las practicas -->
     <button id="practica" *ngIf="info.role === 'Profesor'" (click)="openDialog()">
         <b>Crear Practica</b>
     </button>
     <!-- Boton para volver al perfil -->
-    <button id="perfil" routerLink="../perfil" routerLinkActive="active">
+    <button id="perfil" routerLink="/perfil" routerLinkActive="active">
         <b>Perfil</b>
     </button>
 </div>
 
 <!-- Tabla del ranking que solo se mostrara a los alumnos -->
-<table id="InfoUser" *ngIf="info.role === 'Alumno'">
+<table id="InfoUser" *ngIf="info.role === 'Alumno' && datos.length != 0">
     <!-- Titulos de los campos de la tabla -->
     <tr>
         <th id="th">Nick:</th>
@@ -70,7 +70,7 @@
         <th>Practica {{dato.nombre}}</th>
         <!-- Boton para entrar en las entregas de la practica -->
         <td>
-            <button id="Entrar" routerLink="../ranking" routerLinkActive="active">
+            <button id="Entrar" [routerLink]="['/entrega', dato.id, dato.id_ranking]" routerLinkActive="active">
                 <b>Entrar</b>
             </button>
         </td>

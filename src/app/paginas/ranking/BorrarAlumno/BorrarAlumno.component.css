@@ -1,0 +1,47 @@
+/* Estilo para el boton para borrar practicas */
+#Si {
+    background-color: #ea1818;
+    color: white;
+
+    border: none;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    border-radius: 2px;
+
+    width: 80px;
+    height: 30px;
+
+    margin-left: 70px;
+}
+
+/* Estilo para el boton de borrar practicas cuando el raton pase por encima */
+#Si:hover {
+    background-color: #e43232;
+
+    cursor: pointer;
+}
+
+/* Estilo para el boton para volver a la paguina del ranking */
+#No {
+    border-radius: 2px;
+
+    color: white;
+    background-color: rgb(23, 168, 23);
+
+    border: none;
+
+    margin-left: 20px;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    width: 80px;
+    height: 30px;
+}
+
+/* Estilo para el boton de volver a la paguina del ranking cuando el raton pase por encima */
+#No:hover {
+    background-color: rgb(151, 213, 151);
+
+    cursor: pointer;
+}

@@ -1,12 +1,12 @@
 // Imports.
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuariosService } from '../../servicio/usuarios.service';
-import { DialogComponent } from './DialogComponent.component';
-import { BorrarPracticaComponent } from './BorrarPractica.component';
-import { BorrarAlumnoComponent } from './BorrarAlumno.component';
+import { DialogComponent } from './CrearPractica/DialogComponent.component';
+import { BorrarPracticaComponent } from './BorrarPractica/BorrarPractica.component';
+import { BorrarAlumnoComponent } from './BorrarAlumno/BorrarAlumno.component';
 
 @Component({
   selector: 'app-ranking',
@@ -22,18 +22,24 @@ export class RankingComponent implements OnInit {
   info: any;
   // Variable donde se guardara el codigo del ranking. 
   codigo: any;
-  // Variable donde se guardara el nombre del ranking.
-  nombre: any;
+
   // Variable donde se guardara las practicas.
   practicas: any[] = [];
 
+  nombre: any;
+
   // Array donde se guardara la información del ranking.
   datos: any[] = [];
+
+  private sub: any;
+
+  id: number | undefined;
 
   //Contructor.
   constructor(public usuarios: UsuariosService,
     public dialog: MatDialog,
     public router: Router,
+    private route: ActivatedRoute,
     private _http: HttpClient) { }
 
   // Funcion que se ejecutara cada vez que se carge la paguina.
@@ -41,9 +47,6 @@ export class RankingComponent implements OnInit {
 
     // Asignando la información del navegador que esta dentro del item 'currentUser'.
     const currentUser = localStorage.getItem('currentUser');
-
-    // Asignando el nombre del ranking a la variable nombre.
-    this.nombre = this.usuarios.getNombreRanking();
 
     // If que se ejecutara si la variable currentUser no esta vacia.
     if (currentUser) {
@@ -63,29 +66,46 @@ export class RankingComponent implements OnInit {
       })
     };
 
-    //Guardamos el codigo del ranking en la funcion getCodigoRanking en el servicio usuarios.service.ts.
-    this.codigo = this.usuarios.getCodigoRanking();
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+      this.codigo = +params['codigo'];
+      console.log("La id del ranking es: " + this.id);
+      console.log("El codigo del ranking es: " + this.codigo);
 
-    // Mostrar por consola el codigo del ranking.
-    console.log(this.codigo);
 
-    // Codigo para ejecutar el select 'indexall' en Laravel.
-    this._http.post(this.usuarios.URL + `indexall/${this.codigo}`, this.codigo, this.httpOptions).subscribe((data: any) => {
-      // Asignamos el contenido del select a la varoable datos.
-      this.datos = data;
-      // Mostrar por consola el contenido de la variable datos.
-      console.log(this.datos);
-    });
+      this._http.get(this.usuarios.URL + `indexnombreranking/${this.id}`, this.httpOptions).subscribe((data: any) => {
+        // Asignamos el contenido del select a la varoable datos.
+        this.nombre = data;
+        // Mostrar por consola el contenido de la variable datos.
+        console.log(this.nombre);
+      });
 
-    this._http.post(this.usuarios.URL + `indexpractica/${this.codigo}`, this.codigo, this.httpOptions).subscribe((data: any) => {
-      this.practicas = data;
-      console.log(this.practicas);
-    });
+      // Codigo para ejecutar el select 'indexall' en Laravel.
+      this._http.get(this.usuarios.URL + `indexall/${this.id}`, this.httpOptions).subscribe((data: any) => {
+        // Asignamos el contenido del select a la varoable datos.
+        this.datos = data;
+        // Mostrar por consola el contenido de la variable datos.
+        console.log(this.datos);
+      });
+
+      this._http.get(this.usuarios.URL + `indexpractica/${this.id}`, this.httpOptions).subscribe((data: any) => {
+        this.practicas = data;
+        console.log(this.practicas);
+      });
+    })
 
   }
 
   // Funcion para mostrar la pestaña para crear la practica.
   openDialog(): void {
+
+    this.usuarios.setIdRanking(this.id);
+
+    this.usuarios.setCodigoRanking(this.codigo);
+
+
+    console.log(this.id);
+    console.log(this.codigo);
 
     // Codigo para mostrar la pestaña.
     let dialogRef = this.dialog.open(DialogComponent, {
@@ -107,14 +127,13 @@ export class RankingComponent implements OnInit {
 
   openBorrarAlumno(event: any, idAlumno: any, nombreAlumno: any) {
 
-    console.log(idAlumno);
-
     this.usuarios.setIdAlumno(idAlumno);
     this.usuarios.setNombreAlumno(nombreAlumno);
+
+    console.log(idAlumno);
 
     let BorrarAlumnoRef = this.dialog.open(BorrarAlumnoComponent, {
       data: {}
     });
   }
-
 }

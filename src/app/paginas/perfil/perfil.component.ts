@@ -5,10 +5,13 @@ import { Password } from 'src/app/models/password.model';
 import { Photo } from 'src/app/models/photo.model';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from './DialogComponent.component';
+import { DialogComponent } from './Logout/DialogComponent.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Rankings } from 'src/app/models/rankings.model';
-import { CodigoComponent } from './Codigo.component';
+import { CodigoComponent } from './GenerarCodigo/Codigo.component';
+import { CrearRankingComponent } from './crearRanking/CrearRanking.component';
+import { BorrarRankingComponent } from './BorrarRanking/BorrarRanking.component';
+import { UpdateRankingComponent } from './ActualizarRanking/UpdateRanking.component';
 
 @Component({
   selector: 'app-perfil',
@@ -62,7 +65,7 @@ export class PerfilComponent implements OnInit {
     };
 
     if (this.info.role === 'Alumno') {
-      this._http.post(this.usuarios.URL + `indexa/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
+      this._http.get(this.usuarios.URL + `indexa/${this.info.mote}`, this.httpOptions).subscribe((data: any) => {
         this.datos = data;
         console.log(this.datos);
 
@@ -70,7 +73,7 @@ export class PerfilComponent implements OnInit {
     }
 
     if (this.info.role === 'Profesor') {
-      this._http.post(this.usuarios.URL + `indexranking/${this.info.mote}`, this.info.mote, this.httpOptions).subscribe((data: any) => {
+      this._http.get(this.usuarios.URL + `indexranking/${this.info.mote}`, this.httpOptions).subscribe((data: any) => {
         this.datos = data;
         console.log(this.datos);
 
@@ -188,17 +191,6 @@ export class PerfilComponent implements OnInit {
     this.cambiarContra.reset();
   }
 
-  pillarCodigo(event: any, codigoranking: string, nombre: any, idranking: any) {
-
-    this.usuarios.setCodigoRanking(codigoranking);
-
-    this.usuarios.setNombreRanking(nombre);
-
-    this.usuarios.setIdRanking(idranking);
-
-    console.log(codigoranking);
-  }
-
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {}
@@ -214,10 +206,14 @@ export class PerfilComponent implements OnInit {
     });
   }
 
-  GenerarCodigo(event: any, idranking: string, nombreranking: any, codigo: any): void {
-    const dialogRef = this.dialog.open(CodigoComponent, {
+  CrearRanking(): void {
+    const dialogRef = this.dialog.open(CrearRankingComponent, {
       data: {}
     });
+
+  }
+
+  GenerarCodigo(event: any, idranking: string, nombreranking: any, codigo: any): void {
 
     this.usuarios.setIdRanking(idranking);
 
@@ -226,6 +222,34 @@ export class PerfilComponent implements OnInit {
     this.usuarios.setCodigoRanking(codigo);
 
     this.usuarios.setNombreRanking(nombreranking);
+
+    const dialogRef = this.dialog.open(CodigoComponent, {
+      data: {}
+    });
+
+  }
+
+  EditarRanking(event: any, idRanking: any, nombreRanking: any): void {
+
+    this.usuarios.setIdRanking(idRanking);
+
+    this.usuarios.setNombreRanking(nombreRanking);
+
+    const dialogRef = this.dialog.open(UpdateRankingComponent, {
+      data: {}
+    });
+
+  }
+
+  BorrarRanking(event: any, idRanking: any, nombreRanking: any): void {
+
+    this.usuarios.setIdRanking(idRanking);
+
+    this.usuarios.setNombreRanking(nombreRanking);
+
+    const dialogRef = this.dialog.open(BorrarRankingComponent, {
+      data: {}
+    });
 
   }
 
