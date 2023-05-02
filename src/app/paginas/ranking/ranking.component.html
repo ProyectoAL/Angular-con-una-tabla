@@ -19,14 +19,20 @@
     <tr>
         <th id="th">Nick:</th>
         <th id="th">Puntos:</th>
+        <th id="th" colspan="5">Medallas:</th>
     </tr>
-    <td colspan="2">
+    <td colspan="7">
         <hr>
     </td>
     <!-- Contenido de los campos de la tabla -->
     <tr *ngFor="let dato of datos">
         <td id="td">{{dato.mote}}</td>
         <td id="td">{{dato.puntos}}</td>
+        <td id="td" title="nivel 1 puntos 2000">ejemplo</td>
+        <td id="td" title="nivel 1 puntos 2000">ejemplo</td>
+        <td id="td" title="nivel 1 puntos 2000">ejemplo</td>
+        <td id="td" title="nivel 1 puntos 2000">ejemplo</td>
+        <td id="td" title="nivel 1 puntos 2000">ejemplo</td>
     </tr>
 </table>
 
@@ -50,7 +56,7 @@
         <td id="td">{{dato.lastname}}</td>
         <td id="td">{{dato.puntos}}</td>
         <td>
-            <button id="Borrar" (click)="openBorrarAlumno($event, dato.id_usuario, dato.name)">
+            <button id="Borrar" (click)="openBorrarAlumno($event, dato.id_usuario, dato.name, dato.id_ranking)">
                 <b>Borrar</b>
             </button>
         </td>

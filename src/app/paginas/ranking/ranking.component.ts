@@ -67,13 +67,12 @@ export class RankingComponent implements OnInit {
     };
 
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
-      this.codigo = +params['codigo'];
+      this.id = params['id'];
+      this.codigo = params['codigo'];
       console.log("La id del ranking es: " + this.id);
       console.log("El codigo del ranking es: " + this.codigo);
 
-
-      this._http.get(this.usuarios.URL + `indexnombreranking/${this.id}`, this.httpOptions).subscribe((data: any) => {
+      this._http.get(this.usuarios.URL + `index/${this.id}`, this.httpOptions).subscribe((data: any) => {
         // Asignamos el contenido del select a la varoable datos.
         this.nombre = data;
         // Mostrar por consola el contenido de la variable datos.
@@ -125,12 +124,15 @@ export class RankingComponent implements OnInit {
     });
   }
 
-  openBorrarAlumno(event: any, idAlumno: any, nombreAlumno: any) {
+  openBorrarAlumno(event: any, idAlumno: any, nombreAlumno: any, idRanking: any) {
 
     this.usuarios.setIdAlumno(idAlumno);
     this.usuarios.setNombreAlumno(nombreAlumno);
+    this.usuarios.setIdRanking(idRanking);
 
     console.log(idAlumno);
+    console.log(nombreAlumno);
+    console.log(idRanking);
 
     let BorrarAlumnoRef = this.dialog.open(BorrarAlumnoComponent, {
       data: {}

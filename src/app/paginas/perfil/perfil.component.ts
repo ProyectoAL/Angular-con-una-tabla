@@ -65,7 +65,7 @@ export class PerfilComponent implements OnInit {
     };
 
     if (this.info.role === 'Alumno') {
-      this._http.get(this.usuarios.URL + `indexa/${this.info.mote}`, this.httpOptions).subscribe((data: any) => {
+      this._http.get(this.usuarios.URL + `indexnombreranking/${this.info.id}`, this.httpOptions).subscribe((data: any) => {
         this.datos = data;
         console.log(this.datos);
 
@@ -105,7 +105,6 @@ export class PerfilComponent implements OnInit {
       next: (value: Rankings) => {
         console.log(value);
         // Comando para ir a la paguina de perfiles.
-        this.router.navigate(['../ranking']);
         this.usuarios.setCodigoRanking(ranking.codigo);
       }
     });

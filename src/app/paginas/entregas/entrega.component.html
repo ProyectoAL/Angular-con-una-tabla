@@ -1,5 +1,4 @@
 <!-- Barra de la parte superior de la paguina  -->
-
 <div id="navegador" *ngFor="let dato of nombre">
     <!-- Nombre del ranking -->
     <p id="bienvenida">Bienvenido a la practica <b>{{dato.nombre}}</b></p>
@@ -15,7 +14,16 @@
     <!-- Titulos de los campos de la tabla -->
     <tr *ngFor="let dato of practicas1">
         <th id="th">Puntuación:</th>
-        <th id="th">/{{dato.puntuacion}}</th>
+        <ng-container *ngIf="mostrarpuntos == true">
+            <th id="th" *ngFor="let nota of notaentrega">
+                {{nota.nota}}/{{dato.puntuacion}}
+            </th>
+        </ng-container>
+        <ng-container *ngIf="mostrarpuntos == false">
+            <th id="th">
+                /{{dato.puntuacion}}
+            </th>
+        </ng-container>
     </tr>
     <td colspan="2">
         <hr>
@@ -55,7 +63,6 @@
     </tr>
 
 </table>
-
 <!-- Tabla del ranking que solo se mostrara a los profesores -->
 <table id="InfoUser" *ngIf="info.role === 'Profesor' && practicas2.length != 0">
     <!-- Titulos de los campos de la tabla -->
@@ -64,9 +71,10 @@
         <th id="th">Nombre:</th>
         <th id="th">Apellidos:</th>
         <th id="th">Entrega:</th>
-        <th id="th">Puntos:</th>
+        <th id="th">Nota:</th>
+        <th id="th">Editar Puntuación:</th>
     </tr>
-    <td colspan="5">
+    <td colspan="6">
         <hr>
     </td>
     <!-- Contenido de los campos de la tabla -->
@@ -76,7 +84,11 @@
         <td id="td">{{dato.lastname}}</td>
         <td id=""><img src="{{dato.entrega}}"></td>
         <td id="td">{{dato.nota}}</td>
-
+        <td>
+            <button id="Editar" (click)="EditarPuntuacion($event, dato.id, dato.nombre, dato.lastname)">
+                <b>Editar</b>
+            </button>
+        </td>
     </tr>
 </table>
 

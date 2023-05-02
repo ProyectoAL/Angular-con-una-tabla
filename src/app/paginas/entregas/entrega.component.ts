@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuariosService } from '../../servicio/usuarios.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EditarPuntuacionComponent } from './EditarPuntuación/EditarPuntuacion.component';
 
 @Component({
   selector: 'app-ranking',
@@ -25,7 +26,9 @@ export class EntregaComponent implements OnInit {
 
   practicas2: any[] = [];
 
-  nombre: any[] = [];
+  notaentrega: any;
+
+  nombre: any;
 
   entrega: any;
 
@@ -39,6 +42,8 @@ export class EntregaComponent implements OnInit {
 
   // Array donde se guardara la información del ranking.
   datos: any[] = [];
+
+  mostrarpuntos = false;
 
   //Contructor.
   constructor(public usuarios: UsuariosService,
@@ -81,7 +86,7 @@ export class EntregaComponent implements OnInit {
       console.log("La id de la practica es: " + this.id);
       console.log("La id del ranking es: " + this.id_ranking);
 
-      this._http.get(this.usuarios.URL + `indexpractica/${this.id}`, this.httpOptions).subscribe((data: any) => {
+      this._http.get(this.usuarios.URL + `practicanombre/${this.id},${this.id_ranking}`, this.httpOptions).subscribe((data: any) => {
         this.nombre = data;
         console.log(this.nombre);
       });
@@ -99,6 +104,17 @@ export class EntregaComponent implements OnInit {
         this._http.get(this.usuarios.URL + `indexindividual/${this.id},${this.id_ranking}`, this.httpOptions).subscribe((data: any) => {
           this.practicas1 = data;
           console.log(this.practicas1);
+        });
+
+        this._http.get(this.usuarios.URL + `indexentregaAlumno/${this.id},${this.info.id}`, this.httpOptions).subscribe((data: any) => {
+          this.notaentrega = data.Value;
+          console.log(this.notaentrega);
+
+          if (this.notaentrega.length == 0) {
+            this.mostrarpuntos = false;
+          } else if (this.notaentrega.length != 0) {
+            this.mostrarpuntos = true;
+          }
         });
       })
     }
@@ -143,18 +159,33 @@ export class EntregaComponent implements OnInit {
       "mote": this.info.mote,
       "nombre": this.info.name,
       "lastname": this.info.lastname,
-      "id_practicas": this.usuarios.getIdPractica(),
-      "nota": "NaN"
+      "id_practicas": this.id,
+      "nota": "NaN",
+      "id_ranking": this.id_ranking
     };
 
     console.log(entregar);
 
     this._http.post(this.usuarios.URL + 'entrega', entregar, this.httpOptions).subscribe((data: any) => {
-      this.practicas1 = data;
+      this.practicas1 = JSON.parse(data).value;
       console.log(this.practicas1);
     });
 
     this.subirentrega.reset();
+  }
+
+  EditarPuntuacion(event: any, idEntrega: any, nombrePractica: any, apellidos: any): void {
+
+    this.usuarios.setIdEntrega(idEntrega);
+
+    this.usuarios.setNombreAlumno(nombrePractica);
+
+    this.usuarios.setApellidosAlumno(apellidos);
+
+    const dialogRef = this.dialog.open(EditarPuntuacionComponent, {
+      data: {}
+    });
+
   }
 
   showButton1() {

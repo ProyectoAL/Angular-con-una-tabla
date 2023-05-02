@@ -27,7 +27,9 @@ export class UsuariosService {
     nombrePractica: any;
     idAlumno: any;
     nombreAlumno: any;
+    apellidosAlumno: any;
     idRanking: any;
+    idEntrega: any;
 
     found = false;
 
@@ -61,8 +63,16 @@ export class UsuariosService {
         this.nombreAlumno = nombre;
     }
 
+    setApellidosAlumno(apellidos: any) {
+        this.apellidosAlumno = apellidos;
+    }
+
     setIdRanking(id: any) {
         this.idRanking = id;
+    }
+
+    setIdEntrega(id: any) {
+        this.idEntrega = id;
     }
 
     getCodigoRanking() {
@@ -97,6 +107,14 @@ export class UsuariosService {
         return this.idRanking;
     }
 
+    getIdEntrega() {
+        return this.idEntrega;
+    }
+
+    getApellidosAlumno() {
+        return this.apellidosAlumno;
+    }
+    
     addAlumnos(alumno: Alumnos) {
         return this._http.post(this.URL + "signup", alumno)
             .pipe(

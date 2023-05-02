@@ -27,7 +27,8 @@ export class BorrarAlumnoComponent {
     BorrarAlumno(): void {
 
         const id_alumno = {
-            "id": this.usuarios.getIdAlumno()
+            "id_usuario": this.usuarios.getIdAlumno(),
+            "id_ranking": this.usuarios.getIdRanking()
         };
 
         console.log(id_alumno);
