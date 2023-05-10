@@ -6,13 +6,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegistroComponent } from './registro/registro.component';
 import { UpdateRankingComponent } from './perfil/ActualizarRanking/UpdateRanking.component';
 import { EditarPuntuacionComponent } from './entregas/EditarPuntuación/EditarPuntuacion.component';
+import { SoftSkillsComponent } from './ranking/SoftSkills/SoftSkillsComponent.component';
+import { RepartirComponent } from './ranking/RepartirPuntos/RepartirComponent.component';
 
 @NgModule({
   declarations: [
     PerfilComponent,
     RegistroComponent,
     UpdateRankingComponent,
-    EditarPuntuacionComponent
+    EditarPuntuacionComponent,
+    SoftSkillsComponent,
+    RepartirComponent
   ],
   imports: [
     CommonModule,

@@ -30,6 +30,13 @@ export class UsuariosService {
     apellidosAlumno: any;
     idRanking: any;
     idEntrega: any;
+    nombreSoftSkill: any;
+    niveles: any;
+    medalla1: any;
+    medalla2: any;
+    medalla3: any;
+    medalla4: any;
+    medalla5: any;
 
     found = false;
 
@@ -75,6 +82,11 @@ export class UsuariosService {
         this.idEntrega = id;
     }
 
+    setNombreSoftSkill(nombre: any) {
+        this.nombreSoftSkill = nombre;
+    }
+
+
     getCodigoRanking() {
         return this.codigoRanking;
     }
@@ -114,7 +126,11 @@ export class UsuariosService {
     getApellidosAlumno() {
         return this.apellidosAlumno;
     }
-    
+
+    getNombreSoftSkill() {
+        return this.nombreSoftSkill;
+    }
+
     addAlumnos(alumno: Alumnos) {
         return this._http.post(this.URL + "signup", alumno)
             .pipe(
@@ -290,6 +306,126 @@ export class UsuariosService {
                     }
 
                     return this.datosusuario;
+                }
+                ));
+    }
+
+    Medalla1(puntos: number) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        console.log(puntos);
+
+        return this._http.get(this.URL + `selectResponsabilidad/${puntos}`, this.httpOptions)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+                    this.medalla1 = response;
+                    return this.medalla1;
+                }
+                ));
+    }
+
+    Medalla2(puntos: number) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        console.log(puntos);
+
+        return this._http.get(this.URL + `selectCooperacion/${puntos}`, this.httpOptions)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+                    this.medalla2 = response;
+                    return this.medalla2;
+                }
+                ));
+    }
+
+    Medalla3(puntos: number) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        console.log(puntos);
+
+        return this._http.get(this.URL + `selectAutonomia_e_iniciativa/${puntos}`, this.httpOptions)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+                    this.medalla3 = response;
+                    return this.medalla3;
+                }
+                ));
+    }
+
+    Medalla4(puntos: number) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        console.log(puntos);
+
+        return this._http.get(this.URL + `selectGestion_emocional/${puntos}`, this.httpOptions)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+                    this.medalla4 = response;
+                    return this.medalla4;
+                }
+                ));
+    }
+
+    Medalla5(puntos: number) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        console.log(puntos);
+
+        return this._http.get(this.URL + `selectHabilidades_de_pensamiento/${puntos}`, this.httpOptions)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+                    this.medalla5 = response;
+                    return this.medalla5;
                 }
                 ));
     }

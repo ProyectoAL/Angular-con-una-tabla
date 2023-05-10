@@ -7,6 +7,9 @@ import { UsuariosService } from '../../servicio/usuarios.service';
 import { DialogComponent } from './CrearPractica/DialogComponent.component';
 import { BorrarPracticaComponent } from './BorrarPractica/BorrarPractica.component';
 import { BorrarAlumnoComponent } from './BorrarAlumno/BorrarAlumno.component';
+import { SoftSkillsComponent } from './SoftSkills/SoftSkillsComponent.component';
+import { RepartirComponent } from './RepartirPuntos/RepartirComponent.component';
+
 
 @Component({
   selector: 'app-ranking',
@@ -22,11 +25,17 @@ export class RankingComponent implements OnInit {
   info: any;
   // Variable donde se guardara el codigo del ranking. 
   codigo: any;
-
   // Variable donde se guardara las practicas.
   practicas: any[] = [];
 
   nombre: any;
+
+  medalla1: any[] = [];
+  medalla2: any[] = [];
+  medalla3: any[] = [];
+  medalla4: any[] = [];
+  medalla5: any[] = [];
+
 
   // Array donde se guardara la información del ranking.
   datos: any[] = [];
@@ -34,6 +43,8 @@ export class RankingComponent implements OnInit {
   private sub: any;
 
   id: number | undefined;
+
+  softskills: any[] = [];
 
   //Contructor.
   constructor(public usuarios: UsuariosService,
@@ -75,6 +86,7 @@ export class RankingComponent implements OnInit {
       this._http.get(this.usuarios.URL + `index/${this.id}`, this.httpOptions).subscribe((data: any) => {
         // Asignamos el contenido del select a la varoable datos.
         this.nombre = data;
+
         // Mostrar por consola el contenido de la variable datos.
         console.log(this.nombre);
       });
@@ -83,16 +95,63 @@ export class RankingComponent implements OnInit {
       this._http.get(this.usuarios.URL + `indexall/${this.id}`, this.httpOptions).subscribe((data: any) => {
         // Asignamos el contenido del select a la varoable datos.
         this.datos = data;
+
+        for (let puntos of this.datos) {
+
+          console.log(puntos.Responsabilidad);
+          console.log(puntos.Cooperacion);
+          console.log(puntos.Autonomia_e_iniciativa);
+          console.log(puntos.Gestion_emocional);
+          console.log(puntos.abilidades_de_pensamiento);
+
+          this.usuarios.Medalla1(puntos.Responsabilidad).subscribe({
+            next: (value: any) => {
+              this.medalla1.push(value);
+              console.log(this.medalla1);
+            }
+          });
+
+          this.usuarios.Medalla2(puntos.Cooperacion).subscribe({
+            next: (value: any) => {
+              this.medalla2.push(value);
+              console.log(this.medalla2);
+            }
+          });
+
+          this.usuarios.Medalla3(puntos.Autonomia_e_iniciativa).subscribe({
+            next: (value: any) => {
+              this.medalla3.push(value);
+              console.log(this.medalla3);
+            }
+          });
+
+          this.usuarios.Medalla4(puntos.Gestion_emocional).subscribe({
+            next: (value: any) => {
+              this.medalla4.push(value);
+              console.log(this.medalla4);
+            }
+          });
+
+          this.usuarios.Medalla5(puntos.abilidades_de_pensamiento).subscribe({
+            next: (value: any) => {
+              this.medalla5.push(value);
+              console.log(this.medalla5);
+            }
+          });
+        }
+
         // Mostrar por consola el contenido de la variable datos.
         console.log(this.datos);
       });
+
+      console.log(this.datos);
 
       this._http.get(this.usuarios.URL + `indexpractica/${this.id}`, this.httpOptions).subscribe((data: any) => {
         this.practicas = data;
         console.log(this.practicas);
       });
-    })
 
+    });
   }
 
   // Funcion para mostrar la pestaña para crear la practica.
@@ -112,6 +171,15 @@ export class RankingComponent implements OnInit {
     });
   }
 
+  openRepartirPuntos(event: any, idRanking: any) {
+    this.usuarios.setIdRanking(idRanking);
+
+    // Codigo para mostrar la pestaña.
+    let RepartirdialogRef = this.dialog.open(RepartirComponent, {
+      data: {}
+    });
+  }
+
   // Funcion para mostrar la pestaña para borrar la practica.
   openBorrarPractica(event: any, idPractica: any, nombrePractica: any): void {
 
@@ -119,7 +187,7 @@ export class RankingComponent implements OnInit {
     this.usuarios.setNombrePractica(nombrePractica);
 
     // Codigo para mostrar la pestaña.
-    let BorrardialogRef = this.dialog.open(BorrarPracticaComponent, {
+    let BorrardialogRef = this.dialog.open(RepartirComponent, {
       data: {}
     });
   }
@@ -135,6 +203,17 @@ export class RankingComponent implements OnInit {
     console.log(idRanking);
 
     let BorrarAlumnoRef = this.dialog.open(BorrarAlumnoComponent, {
+      data: {}
+    });
+  }
+
+  openSoftSkills(event: any, nombreSoftSkill: any) {
+
+    this.usuarios.setNombreSoftSkill(nombreSoftSkill);
+
+    console.log(nombreSoftSkill);
+
+    let BorrarAlumnoRef = this.dialog.open(SoftSkillsComponent, {
       data: {}
     });
   }

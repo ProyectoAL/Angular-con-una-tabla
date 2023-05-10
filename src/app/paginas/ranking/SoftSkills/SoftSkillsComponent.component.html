@@ -1,0 +1,190 @@
+<!-- Titulo de la pestaña -->
+<h2 mat-dialog-title>{{nombre}}</h2>
+
+<!-- Div con los inputs del fromGroup -->
+<div mat-dialog-content>
+    <div *ngIf="nombre == 'Responsabilidad'">
+        <p>
+            Habilidad que hace referencia a la autodisciplina para alcanzar un objetivo,
+            y a mantener una actitud de trabajo y esfuerzo hacia las tareas a realizar.
+        </p>
+        <b>COMPORTAMIENTOS</b>
+        <li>
+            Trabaja de forma constante.
+        </li>
+        <li>
+            Se mantiene conectado/a a la actividad del grupo.
+        </li>
+
+        <li>
+            Hace comentarios relacionados con la tarea a realizar.
+        </li>
+
+        <li>
+            Realiza las tareas de forma eficiente.
+        </li>
+
+        <li>
+            Realiza las tareas con cuidado.
+        </li>
+
+        <li>
+            Persevera ante las dificultades.
+        </li>
+
+        <li>
+            Respeta las normas.
+        </li>
+    </div>
+
+
+    <div *ngIf="nombre == 'Cooperación'">
+        <p>
+            Habilidad que incluye los comportamientos que facilitan el trabajo en grupo: acciones relacionadas con la
+            participación,
+            la escucha activa, la toma de decisiones compartidas y la resolución de conflictos.
+        </p>
+        <b>COMPORTAMIENTOS</b>
+        <li>
+            Escucha a los demás.
+        </li>
+        <li>
+            Incorpora lo que dicen los demás.
+        </li>
+
+        <li>
+            Fomenta la participación de los miembros del grupo.
+        </li>
+
+        <li>
+            Participa en la toma de decisiones consensuadas.
+        </li>
+
+        <li>
+            Facilita la resolución de conflictos.
+        </li>
+
+        <li>
+            Reconoce sus responsabilidades y las de los demás.
+        </li>
+
+        <li>
+            Ayuda a los demás de forma desinteresada.
+        </li>
+    </div>
+
+    <div *ngIf="nombre == 'Autonomía e iniciativa'">
+        <p>
+            La Autonomía implica trabajar de forma independiente,
+            sin necesidad de supervisión y pidiendo ayuda sólo cuando se requiere.
+            La Iniciativa indica confianza para sacar adelante las tareas y proyectos,
+            por ejemplo proponiendo ideas y buscando soluciones a los problemas cuando es necesario.
+        </p>
+        <b>COMPORTAMIENTOS</b>
+        <li>
+            Aporta ideas.
+        </li>
+        <li>
+            Hace preguntas cuando se encalla.
+        </li>
+
+        <li>
+            Toma decisiones para que el proyecto avance.
+        </li>
+
+        <li>
+            Sabe convencer al grupo de sus propuestas.
+        </li>
+
+        <li>
+            Trabaja con determinación.
+        </li>
+
+        <li>
+            Cree que puede iniciar cambios.
+        </li>
+    </div>
+
+    <div *ngIf="nombre == 'Gestión emocional'">
+        <p>
+            Habilidad que implica ser consciente de las emociones propias y las de los demás,
+            y gestionarlas adecuadamente.
+        </p>
+        <b>COMPORTAMIENTOS</b>
+        <li>
+            Transmite alegría.
+        </li>
+        <li>
+            Se muestra tranquilo/a en situaciones de presión.
+        </li>
+
+        <li>
+            Controla las emociones en situaciones de conflicto.
+        </li>
+
+        <li>
+            Asume la posibilidad de equivocarse.
+        </li>
+
+        <li>
+            Acepta que los cambios que propone no salgan adelante.
+        </li>
+
+        <li>
+            Adecúa el comportamiento a las circunstancias.
+        </li>
+    </div>
+
+    <div *ngIf="nombre == 'Habilidades de pensamiento'">
+        <p>
+            Habilidades que permiten captar información y procesarla para construir y organizar el conocimiento,
+            de manera que se pueda utilizar para resolver problemas en diferentes situaciones.
+            Implican indagación intelectual, generación de ideas y habilidades de metacognición.
+        </p>
+        <b>COMPORTAMIENTOS</b>
+        <li>
+            Relaciona contenidos nuevos con conocimientos previos.
+        </li>
+        <li>
+            Hace buenas reflexiones sobre los contenidos trabajados.
+        </li>
+
+        <li>
+            Hace buenas reflexiones sobre sus procesos personales internos.
+        </li>
+
+        <li>
+            Hace buenas preguntas (para entender o para permitir avanzar).
+        </li>
+
+        <li>
+            Tiene ideas creativas (explora caminos alternativos).
+        </li>
+
+        <li>
+            Plantea buenas estrategias de resolución de problemas.
+        </li>
+
+        <li>
+            Planifica y prioriza las tareas.
+        </li>
+
+        <li>
+            Tiene interés en explorar perspectivas diferentes.
+        </li>
+
+
+        <li>
+            Expresa eficazmente las ideas (corrección, precisión y estructura).
+        </li>
+    </div>
+
+</div>
+
+<!-- Div con los botones para crear la practica o para volver a la paguina del ranking. -->
+<div mat-dialog-actions id="botones">
+    <!-- Boton para volver al ranking -->
+    <button id="No" mat-button (click)="onBackClick()">
+        <b>Volver</b>
+    </button>
+</div>

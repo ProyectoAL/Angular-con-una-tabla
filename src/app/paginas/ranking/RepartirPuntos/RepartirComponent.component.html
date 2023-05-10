@@ -1,0 +1,36 @@
+<!-- Titulo de la pestaña -->
+<h2 mat-dialog-title>Repartir Puntos</h2>
+
+<!-- Div con los inputs del fromGroup -->
+<div mat-dialog-content>
+    <form [formGroup]="puntosSoftskills">
+        <label>A que alumno quieres darle tus puntos?</label>
+        <select #mote (change)="confirmarAlumno(mote)">
+            <option *ngFor="let dato of datos">
+                {{dato.mote}}
+            </option>
+        </select>
+        <br>
+        <label>A que soft skill le quieres ponerle los puntos?</label>
+        <select #rango (change)="confirmarSoftSkill(rango)">
+            <option *ngFor="let nombre of softskills">
+                {{nombre.rango}}
+            </option>
+        </select>
+        <br>
+        <label>Cuantos puntos le quieres dar?</label>
+        <input formControlName="puntos">
+    </form>
+</div>
+
+<!-- Div con los botones para crear la practica o para volver a la paguina del ranking. -->
+<div mat-dialog-actions id="botones">
+    <!-- Boton para volver al ranking -->
+    <button id="Si" [disabled]="!puntosSoftskills.valid" mat-button (click)="EnviarPuntos(mote, rango)">
+        <b>Enviar</b>
+    </button>
+
+    <button id="No" mat-button (click)="onBackClick()">
+        <b>Volver</b>
+    </button>
+</div>
