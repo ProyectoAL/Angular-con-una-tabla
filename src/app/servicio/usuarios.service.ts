@@ -37,6 +37,9 @@ export class UsuariosService {
     medalla3: any;
     medalla4: any;
     medalla5: any;
+    idEvaluacion: any;
+
+    motes: any;
 
     found = false;
 
@@ -86,6 +89,9 @@ export class UsuariosService {
         this.nombreSoftSkill = nombre;
     }
 
+    setIdEvaluacion(id: any) {
+        this.idEvaluacion = id;
+    }
 
     getCodigoRanking() {
         return this.codigoRanking;
@@ -129,6 +135,10 @@ export class UsuariosService {
 
     getNombreSoftSkill() {
         return this.nombreSoftSkill;
+    }
+
+    getIdEvaluacion() {
+        return this.idEvaluacion;
     }
 
     addAlumnos(alumno: Alumnos) {
@@ -426,6 +436,32 @@ export class UsuariosService {
                     }
                     this.medalla5 = response;
                     return this.medalla5;
+                }
+                ));
+    }
+
+    motesfiltrados(id_usuario: any, id_ranking: any) {
+        this.httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
+            })
+        };
+
+        console.log(id_usuario);
+        console.log(id_ranking);
+
+        return this._http.get(this.URL + `motealumnos/${id_usuario},${id_ranking}`, this.httpOptions)
+            .pipe(
+                filter((response: any) => {
+                    if (response != null) {
+                        this.found = true;
+                    } else {
+                        this.found = false;
+                    }
+
+                    this.motes = response;
+                    return this.motes;
                 }
                 ));
     }

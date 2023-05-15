@@ -8,10 +8,16 @@
         <b>Crear Practica</b>
     </button>
     <ng-container *ngFor="let id of datos">
-        <button id="practica" *ngIf="info.role == 'Alumno'" (click)="openRepartirPuntos($event, id.id_ranking)">
+        <button id="practica" *ngIf="info.role == 'Alumno'"
+            (click)="openRepartirPuntos($event, id.id_ranking, info.id)">
             <b>Repartir Puntos</b>
         </button>
     </ng-container>
+
+    <button id="historial" *ngIf="info.role == 'Profesor'" [routerLink]="['/historial', id]" routerLinkActive="active">
+        <b>Historial Evaluaciones</b>
+    </button>
+
     <!-- Boton para volver al perfil -->
     <button id="perfil" routerLink="/perfil" routerLinkActive="active">
         <b>Perfil</b>
@@ -116,10 +122,10 @@
         <th id="th">Nombre:</th>
         <th id="th">Apellidos:</th>
         <th id="th">Puntos:</th>
-        <th id="th" colspan="5">Soft Skills:</th>
+        <th id="th">Soft Skills:</th>
         <th id="th">Eliminar: </th>
     </tr>
-    <td colspan="10">
+    <td colspan="6">
         <hr>
     </td>
     <!-- Contenido de los campos de la tabla -->

@@ -1,0 +1,52 @@
+<!-- Barra de la parte superior de la paguina  -->
+
+<div id="navegador" *ngFor="let dato of nombre">
+    <!-- Nombre del ranking -->
+    <p id="bienvenida">Bienvenido al historial de evaluaciones del ranking <b>{{dato.nombre}}</b></p>
+    <!-- Boton para volver al perfil -->
+    <button id="perfil" routerLink="/perfil" routerLinkActive="active">
+        <b>Perfil</b>
+    </button>
+</div>
+
+<!-- Tabla del ranking que solo se mostrara a los alumnos -->
+<table id="InfoUser" *ngIf="datos.length != 0">
+    <!-- Titulos de los campos de la tabla -->
+    <tr>
+        <th id="th">Alumno evaluador:</th>
+        <th id="th">Alumno evaluado:</th>
+        <th id="th">Cantidad de puntos dados:</th>
+        <th id="th">Soft Skills:</th>
+        <th id="th">Fecha:</th>
+        <th id="th">Eliminar:</th>
+    </tr>
+    <td colspan="6">
+        <hr>
+    </td>
+    <!-- Contenido de los campos de la tabla -->
+    <ng-container *ngFor="let nombre1 of Alumno_evaluador">
+        <ng-container *ngFor="let nombre2 of Alumno_evaluado">
+            <tr *ngFor="let dato of datos; index as i">
+                <td id="td">{{nombre1.mote}}</td>
+                <td id="td">{{nombre2.mote}}</td>
+                <td id="td">{{dato.puntos_dados}}</td>
+                <td id="td">{{dato.soft_skill}}</td>
+                <td id="td">{{dato.created_at}}</td>
+                <td id="td">
+                    <button id="Borrar"
+                        (click)="openBorrarPuntos($event, nombre2.mote, dato.soft_skill, dato.id, dato.alumno_evaluado)">
+                        <b>
+                            Eliminar
+                        </b>
+                    </button>
+                </td>
+            </tr>
+        </ng-container>
+    </ng-container>
+</table>
+
+<div *ngIf="datos.length == 0" id="MensajeRanking">
+
+    <p id="NoRanking">Ningun usuario a sido evaluado.</p>
+
+</div>

@@ -30,6 +30,8 @@ export class RankingComponent implements OnInit {
 
   nombre: any;
 
+  idDistinct: any[] = [];
+
   medalla1: any[] = [];
   medalla2: any[] = [];
   medalla3: any[] = [];
@@ -171,8 +173,9 @@ export class RankingComponent implements OnInit {
     });
   }
 
-  openRepartirPuntos(event: any, idRanking: any) {
+  openRepartirPuntos(event: any, idRanking: any, idAlumno: any) {
     this.usuarios.setIdRanking(idRanking);
+    this.usuarios.setIdAlumno(idAlumno);
 
     // Codigo para mostrar la pestaña.
     let RepartirdialogRef = this.dialog.open(RepartirComponent, {

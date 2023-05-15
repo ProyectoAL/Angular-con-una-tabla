@@ -8,6 +8,7 @@ import { UpdateRankingComponent } from './perfil/ActualizarRanking/UpdateRanking
 import { EditarPuntuacionComponent } from './entregas/EditarPuntuación/EditarPuntuacion.component';
 import { SoftSkillsComponent } from './ranking/SoftSkills/SoftSkillsComponent.component';
 import { RepartirComponent } from './ranking/RepartirPuntos/RepartirComponent.component';
+import { HistorialComponent } from './ranking/HistorialEvaluaciones/historial.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RepartirComponent } from './ranking/RepartirPuntos/RepartirComponent.co
     UpdateRankingComponent,
     EditarPuntuacionComponent,
     SoftSkillsComponent,
-    RepartirComponent
+    RepartirComponent,
+    HistorialComponent
   ],
   imports: [
     CommonModule,

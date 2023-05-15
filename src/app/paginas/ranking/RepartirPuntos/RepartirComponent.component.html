@@ -6,15 +6,29 @@
     <form [formGroup]="puntosSoftskills">
         <label>A que alumno quieres darle tus puntos?</label>
         <select #mote (change)="confirmarAlumno(mote)">
-            <option *ngFor="let dato of datos">
-                {{dato.mote}}
-            </option>
+            <ng-container *ngFor="let dato of motes; index as i">
+                <option value="{{dato[i]?.id_usuario}}">
+                    {{dato[i]?.mote}}
+                </option>
+            </ng-container>
         </select>
         <br>
         <label>A que soft skill le quieres ponerle los puntos?</label>
         <select #rango (change)="confirmarSoftSkill(rango)">
-            <option *ngFor="let nombre of softskills">
-                {{nombre.rango}}
+            <option>
+                Responsabilidad
+            </option>
+            <option>
+                Cooperacion
+            </option>
+            <option>
+                Autonomia_e_iniciativa
+            </option>
+            <option>
+                Gestion_emocional
+            </option>
+            <option>
+                abilidades_de_pensamiento
             </option>
         </select>
         <br>
