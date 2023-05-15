@@ -11,6 +11,20 @@
 
 <!-- Tabla del ranking que solo se mostrara a los alumnos -->
 <table id="InfoUser" *ngIf="datos.length != 0">
+    <tr [formGroup]="BuscadorForm">
+        <td>
+            <b id="titulobuscador">Buscador:</b>
+        </td>
+        <td colspan="3">
+            <input id="Buscador" formControlName="buscador" placeholder="Buscador">
+        </td>
+        <td colspan="5">
+            <button id="botonbuscar" (click)="Buscador()"><b>Buscar</b></button>
+        </td>
+    </tr>
+    <td colspan="6">
+        <hr>
+    </td>
     <!-- Titulos de los campos de la tabla -->
     <tr>
         <th id="th">Alumno evaluador:</th>

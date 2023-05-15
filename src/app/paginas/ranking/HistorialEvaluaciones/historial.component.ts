@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuariosService } from 'src/app/servicio/usuarios.service';
 import { BorrarPuntosComponent } from '../BorrarPuntos/BorrarPuntos.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-historial',
@@ -28,6 +29,10 @@ export class HistorialComponent implements OnInit {
   private sub: any;
 
   id_ranking: number | undefined;
+
+  BuscadorForm = new FormGroup({
+    buscador: new FormControl('', Validators.required)
+  });
 
   //Contructor.
   constructor(public usuarios: UsuariosService,
@@ -105,6 +110,19 @@ export class HistorialComponent implements OnInit {
     // Codigo para mostrar la pestaña.
     let BorrardialogRef = this.dialog.open(BorrarPuntosComponent, {
       data: {}
+    });
+  }
+
+  Buscador() {
+    let dato = this.BuscadorForm.value.buscador
+
+    console.log(dato);
+
+    this._http.get(this.usuarios.URL + `filtro/${dato}`, this.httpOptions).subscribe((data: any) => {
+      // Asignamos el contenido del select a la varoable datos.
+      this.datos = data;
+      // Mostrar por consola el contenido de la variable datos.
+      console.log(this.datos);
     });
   }
 

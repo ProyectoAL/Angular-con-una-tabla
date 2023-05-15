@@ -24,6 +24,10 @@ export class RepartirComponent {
 
   info: any;
 
+  maxpuntos: any;
+
+  element = false;
+
   id_usuario = this.usuarios.getIdAlumno();
 
   // Constructor.
@@ -88,35 +92,41 @@ export class RepartirComponent {
 
   EnviarPuntos(mote: any, rango: any): void {
 
-    const puntos = {
-      "id_usuario": Number(mote.value),
-      "id_ranking": this.id_ranking,
-      "rango": rango.value,
-      "puntos": Number(this.puntosSoftskills.controls.puntos.value!)
-    };
+    this.maxpuntos = Number(this.puntosSoftskills.controls.puntos.value!);
 
-    console.log(puntos);
+    if (this.maxpuntos >= 1500) {
+      this.element = true;
+    } else {
+      this.element = false;
+      const puntos = {
+        "id_usuario": Number(mote.value),
+        "id_ranking": this.id_ranking,
+        "rango": rango.value,
+        "puntos": Number(this.puntosSoftskills.controls.puntos.value!)
+      };
 
-    this._http.put(this.usuarios.URL + 'updatepuntosmedallas', puntos, this.httpOptions).subscribe(() => {
-      // Redirigir al usuario a la página anterior
-      this.dialogRef.close('back');
-    });
+      console.log(puntos);
 
-    const historial = {
-      "id_ranking": this.id_ranking,
-      "alumno_evaluador": this.info.id,
-      "alumno_evaluado": mote.value,
-      "puntos_dados": Number(this.puntosSoftskills.controls.puntos.value!),
-      "soft_skill": rango.value
-    };
+      this._http.put(this.usuarios.URL + 'updatepuntosmedallas', puntos, this.httpOptions).subscribe(() => {
+        // Redirigir al usuario a la página anterior
+        this.dialogRef.close('back');
+      });
 
-    console.log(historial);
+      const historial = {
+        "id_ranking": this.id_ranking,
+        "alumno_evaluador": this.info.id,
+        "alumno_evaluado": mote.value,
+        "puntos_dados": Number(this.puntosSoftskills.controls.puntos.value!),
+        "soft_skill": rango.value
+      };
 
-    this._http.post(this.usuarios.URL + 'createhistorial', historial, this.httpOptions).subscribe(() => {
-      // Redirigir al usuario a la página anterior
-      this.dialogRef.close('back');
-    });
+      console.log(historial);
 
+      this._http.post(this.usuarios.URL + 'createhistorial', historial, this.httpOptions).subscribe(() => {
+        // Redirigir al usuario a la página anterior
+        this.dialogRef.close('back');
+      });
+    }
   }
 
 
