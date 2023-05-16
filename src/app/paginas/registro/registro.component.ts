@@ -60,6 +60,7 @@ export class RegistroComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    document.title = "Registro - GAMIFI-K"
   }
 
   // Funcion que se ejecutara una vez se haya hecho clic en el boton de registro con los campos llenos.

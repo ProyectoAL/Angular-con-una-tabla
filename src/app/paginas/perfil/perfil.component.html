@@ -2,22 +2,26 @@
 
     <p id="bienvenida">Bienvenido a tu perfil <b>{{info.mote}}</b></p>
 
-    <button id="rankingbutton" *ngIf="info.role === 'Alumno' && element2 == true" (click)="showButton2()">
+    <button id="rankingbutton"
+        *ngIf="info.role === 'Alumno' && element2 == true" (click)="showButton2()">
         <b>Añadirse en un nuevo ranking</b>
     </button>
 
-    <button id="rankingbutton" *ngIf="info.role === 'Profesor'" (click)="CrearRanking()">
+    <button id="rankingbutton" *ngIf="info.role === 'Profesor'"
+        (click)="CrearRanking()">
         <b>Crear nuevo Ranking</b>
     </button>
 
     <input id="codigo" formControlName="codigo" type="text" *ngIf="element2 == false"
         placeholder="Ponga el codigo del ranking">
 
-    <button id="Si1" *ngIf="element2 == false" (click)="Ranking(); hideButton2()">
+    <button id="Si1" *ngIf="element2 == false"
+        (click)="Ranking(); hideButton2()">
         <b>Unirse</b>
     </button>
 
-    <button id="No1" *ngIf="element2 == false" (click)="hideButton2()">
+    <button id="No1" *ngIf="element2 == false"
+        (click)="hideButton2()">
         <b>Volver</b>
     </button>
 
@@ -29,16 +33,20 @@
 
 <form id="Usuario" [formGroup]="cambiarFoto">
 
-    <img id="ProPic" src="{{info.img}}" alt="FotoHumanoNormal" (click)="showButton3()">
+
+    <img id="ProPic" src="{{info.img}}" alt="Foto del usuario" title="Haz click para poner o cambiar la foto del perfil"
+        (click)="showButton3()">
 
     <input id="cambiarFoto" formControlName="foto" type="file" *ngIf="element3 == false"
         (change)="onFileChange($event)">
 
-    <button id="Si3" [disabled]="!cambiarFoto.valid" *ngIf="element3 == false" (click)="changephoto(); hideButton3()">
+    <button id="Si3"
+        [disabled]="!cambiarFoto.valid" *ngIf="element3 == false" (click)="changephoto(); hideButton3()">
         <b>Cambiar</b>
     </button>
 
-    <button id="No3" *ngIf="element3 == false" (click)="hideButton3()">
+    <button id="No3" *ngIf="element3 == false"
+        (click)="hideButton3()">
         <b>Volver</b>
     </button>
 
@@ -102,7 +110,8 @@
 
         <td [formGroup]="cambiarContra">
 
-            <button id="BtnPsw" *ngIf="element1 == true" (click)="showButton1()">
+            <button id="BtnPsw" *ngIf="element1 == true"
+                (click)="showButton1()">
                 <b>Cambiar contraseña</b>
             </button>
 
@@ -111,12 +120,13 @@
 
             <br>
 
-            <button id="Si2" [disabled]="!cambiarContra.valid" *ngIf="element1 == false"
-                (click)="changepassword(); hideButton1()">
+            <button id="Si2" [disabled]="!cambiarContra.valid"
+                *ngIf="element1 == false" (click)="changepassword(); hideButton1()">
                 <b>Cambiar</b>
             </button>
 
-            <button id="No2" *ngIf="element1 == false" (click)="hideButton1()">
+            <button id="No2" *ngIf="element1 == false"
+                (click)="hideButton1()">
                 <b>Volver</b>
             </button>
 
@@ -133,7 +143,8 @@
         <th>Ranking {{dato.nombre}}</th>
 
         <td>
-            <button id="Entrar" [routerLink]="['../ranking',dato.id,dato.codigo]" routerLinkActive="active">
+            <button id="Entrar"
+                [routerLink]="['../ranking',dato.id,dato.codigo]" routerLinkActive="active">
                 <b>Entrar</b>
             </button>
         </td>

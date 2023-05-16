@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(private usuarios: UsuariosService, public router: Router) { }
 
   ngOnInit(): void {
+    document.title = "Iniciar Sesión - GAMIFI-K"
   }
   // Funcion que se ejecutara una vez se haya hecho clic en el boton de login con los campos llenos.
   login(): void {

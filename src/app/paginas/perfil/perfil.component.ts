@@ -48,6 +48,9 @@ export class PerfilComponent implements OnInit {
   constructor(public usuarios: UsuariosService, public router: Router, public dialog: MatDialog, private _http: HttpClient) { }
 
   ngOnInit(): void {
+    
+    document.title = "Página Principal - GAMIFI-K"
+
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
       this.info = JSON.parse(currentUser).value;

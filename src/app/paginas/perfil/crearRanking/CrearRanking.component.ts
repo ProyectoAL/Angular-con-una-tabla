@@ -31,6 +31,10 @@ export class CrearRankingComponent {
         nombre: new FormControl('', Validators.required)
     });
 
+    ngOnInit(): void {
+        document.title = "Crear Ranking - GAMIFI-K"
+    }
+
     CrearRanking(): void {
 
         const currentUser = localStorage.getItem('currentUser');

@@ -2,7 +2,7 @@
 <div id="izquierda">
   <h1>¡¡Bienvenido!!</h1>
 
-  <p>a la paguina para alumnos y profesores.</p>
+  <p>a la página para alumnos y profesores.</p>
 </div>
 
 <!-- Formulario con los componentes del login. -->
@@ -17,8 +17,8 @@
     <!-- Mensaje de error (campo vacio). -->
     <p id="error" *ngIf="this.loginForm.controls.password.hasError('required')">Campo vacio</p>
     <!-- Boton para enviar los datos de los inputs al servidor. -->
-    <button id="login" [disabled]="!loginForm.valid" title="Iniciar Sesion" (click)="login()">
-      <b>Iniciar Sesion</b>
+    <button id="login" [disabled]="!loginForm.valid" (click)="login()">
+      <b>Iniciar Sesión</b>
     </button>
     <p id="error" *ngIf="error == true">El usuario y/o la contraseña no existe</p>
   </div>
@@ -27,7 +27,7 @@
 
   <!-- Boton para ir al registro de usuarios. -->
   <div>
-    <button id="registro" routerLink="./registro" routerLinkActive="active" title="Registrar">
+    <button id="registro" routerLink="./registro" routerLinkActive="active">
       <b>Registro</b>
     </button>
   </div>

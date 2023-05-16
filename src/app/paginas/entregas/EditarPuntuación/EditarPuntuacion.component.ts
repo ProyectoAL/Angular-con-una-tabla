@@ -33,6 +33,10 @@ export class EditarPuntuacionComponent {
         nota: new FormControl('', Validators.required)
     });
 
+    ngOnInit(): void {
+        document.title = "Puntuación Entrega - GAMIFI-K"
+    }
+
     EditarRanking(): void {
 
         console.log(this.id);

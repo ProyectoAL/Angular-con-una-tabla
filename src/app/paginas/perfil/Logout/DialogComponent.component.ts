@@ -23,6 +23,9 @@ export class DialogComponent {
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, public usuarios: UsuariosService, private _http: HttpClient) { }
 
+  ngOnInit(): void {
+    document.title = "Cerrar Sesión - GAMIFI-K"
+  }
 
   onHomeClick() {
 

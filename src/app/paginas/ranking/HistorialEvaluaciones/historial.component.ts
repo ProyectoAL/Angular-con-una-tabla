@@ -44,6 +44,8 @@ export class HistorialComponent implements OnInit {
   // Funcion que se ejecutara cada vez que se carge la paguina.
   ngOnInit(): void {
 
+    document.title = "Historial Evaluaciones - GAMIFI-K"
+
     // Asignamos el tipo de Content-Type y el token de acceso a la varible httpOptions.
     this.httpOptions = {
       headers: new HttpHeaders({

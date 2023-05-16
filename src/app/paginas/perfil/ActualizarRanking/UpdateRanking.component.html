@@ -10,11 +10,11 @@
 <!-- Div con los botones para crear la practica o para volver a la paguina del ranking. -->
 <div mat-dialog-actions id="botones">
     <!-- Boton para crear la practica -->
-    <button id="Si" mat-button [disabled]="!EditRanking.valid" (click)="EditarRanking()">
+    <button id="Si" title="Haz click para aceptar el nuevo nombre del ranking" mat-button [disabled]="!EditRanking.valid" (click)="EditarRanking()">
         <b>Guardar</b>
     </button>
     <!-- Boton para volver al ranking -->
-    <button id="No" mat-button (click)="onBackClick()">
+    <button id="No" title="HAz click para cancelar el nuevo nombre del ranking" mat-button (click)="onBackClick()">
         <b>Volver</b>
     </button>
 </div>

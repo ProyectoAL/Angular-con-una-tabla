@@ -29,6 +29,10 @@ export class DialogComponent {
     puntuacion: new FormControl('', Validators.required)
   });
 
+  ngOnInit(): void {
+    document.title = "Crear Practica - GAMIFI-K"
+  }
+
   // Funcion para guardar la información necesaria para la creación de las practicas al modelo CrearPracticas.
   CrearPractica(): void {
 

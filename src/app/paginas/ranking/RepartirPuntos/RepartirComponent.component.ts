@@ -45,6 +45,8 @@ export class RepartirComponent {
 
   ngOnInit(): void {
 
+    document.title = "Repartir Puntos - GAMIFI-K"
+
     const currentUser = localStorage.getItem('currentUser');
 
     // If que se ejecutara si la variable currentUser no esta vacia.

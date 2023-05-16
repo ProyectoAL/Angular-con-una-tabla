@@ -31,6 +31,10 @@ export class UpdateRankingComponent {
         nombre: new FormControl('', Validators.required)
     });
 
+    ngOnInit(): void {
+        document.title = "Cambiar Nombre Ranking - GAMIFI-K"
+    }
+
     EditarRanking(): void {
 
         console.log(this.id);

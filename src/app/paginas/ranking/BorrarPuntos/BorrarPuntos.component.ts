@@ -28,6 +28,10 @@ export class BorrarPuntosComponent {
         @Inject(MAT_DIALOG_DATA) public data: any,
         private _http: HttpClient, public usuarios: UsuariosService) { }
 
+    ngOnInit(): void {
+        document.title = "Borrar Puntos - GAMIFI-K"
+    }
+
     // Funcion para guardar la información necesaria para la creación de las practicas al modelo CrearPracticas.
     BorrarPuntos(): void {
 

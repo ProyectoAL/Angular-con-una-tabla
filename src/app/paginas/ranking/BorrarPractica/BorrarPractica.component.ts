@@ -25,6 +25,10 @@ export class BorrarPracticaComponent {
         @Inject(MAT_DIALOG_DATA) public data: any,
         private _http: HttpClient, public usuarios: UsuariosService) { }
 
+    ngOnInit(): void {
+        document.title = "Borrar Practica - GAMIFI-K"
+    }
+
     // Funcion para guardar la información necesaria para la creación de las practicas al modelo CrearPracticas.
     BorrarPractica(): void {
 

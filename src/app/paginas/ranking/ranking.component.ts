@@ -58,6 +58,8 @@ export class RankingComponent implements OnInit {
   // Funcion que se ejecutara cada vez que se carge la paguina.
   ngOnInit(): void {
 
+    document.title = "Ranking - GAMIFI-K"
+
     // Asignando la información del navegador que esta dentro del item 'currentUser'.
     const currentUser = localStorage.getItem('currentUser');
 

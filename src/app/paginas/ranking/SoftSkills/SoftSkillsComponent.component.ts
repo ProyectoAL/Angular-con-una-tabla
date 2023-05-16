@@ -23,6 +23,9 @@ export class SoftSkillsComponent {
 
 
   ngOnInit(): void {
+
+    document.title = "Características Soft Skill - GAMIFI-K"
+
     this.nombre = this.usuarios.getNombreSoftSkill();
   }
 
