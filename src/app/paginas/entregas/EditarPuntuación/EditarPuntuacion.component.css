@@ -63,3 +63,7 @@
 
     cursor: pointer;
 }
+
+#error{
+    margin-left: 150px;
+}

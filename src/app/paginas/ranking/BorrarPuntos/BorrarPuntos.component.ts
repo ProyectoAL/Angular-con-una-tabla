@@ -17,7 +17,7 @@ export class BorrarPuntosComponent {
 
     id = this.usuarios.getIdEvaluacion();
 
-    alumno = this.usuarios.getNombreAlumno();
+    alumno = this.usuarios.getEvaluador();
 
     rango = this.usuarios.getNombreSoftSkill();
 
@@ -38,11 +38,11 @@ export class BorrarPuntosComponent {
         console.log("La id de la evaluacion es " + this.id);
 
         let rango = this.usuarios.getNombreSoftSkill();
-        let id_usuario = this.usuarios.getIdAlumno();
+        let evaluado = this.usuarios.getEvaluado();
         let id_ranking = this.usuarios.getIdRanking();
 
         console.log(rango);
-        console.log(id_usuario);
+        console.log(evaluado);
         console.log(id_ranking);
 
         this.httpOptions = {
@@ -72,7 +72,7 @@ export class BorrarPuntosComponent {
                 const resta = {
                     "puntos": Number(punto.puntos_dados),
                     "rango": rango,
-                    "id_usuario": id_usuario,
+                    "mote_usuario": evaluado,
                     "id_ranking": id_ranking
                 };
 

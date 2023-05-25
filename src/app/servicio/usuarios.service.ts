@@ -38,6 +38,9 @@ export class UsuariosService {
     medalla4: any;
     medalla5: any;
     idEvaluacion: any;
+    AlumnoEvaluador: any;
+    AlumnoEvaluado: any;
+    puntosactuales: any;
 
     motes: any;
 
@@ -93,6 +96,18 @@ export class UsuariosService {
         this.idEvaluacion = id;
     }
 
+    setEvaluador(mote: any) {
+        this.AlumnoEvaluador = mote;
+    }
+
+    setEvaluado(mote: any) {
+        this.AlumnoEvaluado = mote;
+    }
+
+    setPuntosActuales(puntos: any) {
+        this.puntosactuales = puntos;
+    }
+
     getCodigoRanking() {
         return this.codigoRanking;
     }
@@ -139,6 +154,18 @@ export class UsuariosService {
 
     getIdEvaluacion() {
         return this.idEvaluacion;
+    }
+
+    getEvaluador(){
+        return this.AlumnoEvaluador;
+    }
+
+    getEvaluado(){
+        return this.AlumnoEvaluado;
+    }
+
+    getPuntosActuales(){
+        return this.puntosactuales;
     }
 
     addAlumnos(alumno: Alumnos) {
@@ -328,8 +355,6 @@ export class UsuariosService {
             })
         };
 
-        console.log(puntos);
-
         return this._http.get(this.URL + `selectResponsabilidad/${puntos}`, this.httpOptions)
             .pipe(
                 filter((response: any) => {
@@ -351,8 +376,6 @@ export class UsuariosService {
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
             })
         };
-
-        console.log(puntos);
 
         return this._http.get(this.URL + `selectCooperacion/${puntos}`, this.httpOptions)
             .pipe(
@@ -376,8 +399,6 @@ export class UsuariosService {
             })
         };
 
-        console.log(puntos);
-
         return this._http.get(this.URL + `selectAutonomia_e_iniciativa/${puntos}`, this.httpOptions)
             .pipe(
                 filter((response: any) => {
@@ -399,8 +420,6 @@ export class UsuariosService {
                 'Authorization': `Bearer ${JSON.parse(localStorage.getItem('currentUser') || '').access_token}`
             })
         };
-
-        console.log(puntos);
 
         return this._http.get(this.URL + `selectGestion_emocional/${puntos}`, this.httpOptions)
             .pipe(
@@ -424,7 +443,6 @@ export class UsuariosService {
             })
         };
 
-        console.log(puntos);
 
         return this._http.get(this.URL + `selectHabilidades_de_pensamiento/${puntos}`, this.httpOptions)
             .pipe(

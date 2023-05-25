@@ -18,6 +18,8 @@ export class RepartirComponent {
 
   id_ranking = this.usuarios.getIdRanking();
 
+  puntosactuales = this.usuarios.getPuntosActuales()
+
   datos: any[] = [];
 
   motes: any[] = [];
@@ -26,7 +28,9 @@ export class RepartirComponent {
 
   maxpuntos: any;
 
-  element = false;
+  element1 = false;
+  element2 = false;
+  element3 = false;
 
   id_usuario = this.usuarios.getIdAlumno();
 
@@ -95,12 +99,25 @@ export class RepartirComponent {
 
   EnviarPuntos(mote: any, rango: any): void {
 
-    this.maxpuntos = Number(this.puntosSoftskills.controls.puntos.value!);
+    let resultadoresta = Number(this.puntosactuales) - Number(this.puntosSoftskills.controls.puntos.value!);
 
     if (this.maxpuntos >= 1500) {
-      this.element = true;
+      this.element1 = true;
+      this.element2 = false;
+      this.element3 = false;
+    } else if (this.maxpuntos <= 0) {
+      this.element1 = false;
+      this.element2 = true;
+      this.element3 = false;
+    } else if (resultadoresta < 0) {
+      this.element1 = false;
+      this.element2 = false;
+      this.element3 = true;
     } else {
-      this.element = false;
+      this.element1 = false;
+      this.element2 = false;
+      this.element3 = false;
+
       const puntos = {
         "mote_usuario": mote.value,
         "id_ranking": this.id_ranking,
@@ -127,9 +144,22 @@ export class RepartirComponent {
 
       this._http.post(this.usuarios.URL + 'createhistorial', historial, this.httpOptions).subscribe(() => {
         // Redirigir al usuario a la página anterior
+      });
+
+      const restapuntos = {
+        "mote_usuario": this.info.mote,
+        "puntosactual": Number(this.puntosactuales),
+        "puntosdados": Number(this.puntosSoftskills.controls.puntos.value!)
+      };
+
+      console.log(restapuntos);
+
+      this._http.put(this.usuarios.URL + 'updatepuntosemanales', restapuntos, this.httpOptions).subscribe(() => {
+        // Redirigir al usuario a la página anterior
         this.dialogRef.close('back');
       });
     }
+
   }
 
 

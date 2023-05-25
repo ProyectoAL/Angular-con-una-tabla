@@ -40,7 +40,9 @@
 <!-- Div con los botones para crear la practica o para volver a la paguina del ranking. -->
 <div mat-dialog-actions id="botones">
     <!-- Boton para volver al ranking -->
-    <p *ngIf="element == true"><b>¡¡Estas pasando demasiados puntos!!</b></p>
+    <p *ngIf="element1 == true"><b>¡¡Estas pasando demasiados puntos!!</b></p>
+    <p *ngIf="element2 == true"><b>¡¡No se puede pasar una puntuacióin menor o igual a 0!!</b></p>
+    <p *ngIf="element3 == true"><b>¡¡Su puntuación no puede ser menor a 0!!</b></p>
     <button id="Si" [disabled]="!puntosSoftskills.valid" mat-button (click)="EnviarPuntos(mote, rango)">
         <b>Enviar</b>
     </button>

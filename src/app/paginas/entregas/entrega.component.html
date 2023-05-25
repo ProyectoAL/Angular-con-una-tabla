@@ -61,8 +61,12 @@
             </form>
         </td>
     </tr>
-
 </table>
+
+<div id="yaentregada" *ngIf="info.role === 'Alumno' && mostrarpuntos == true">
+    <p><b>Practica ya entregada</b></p>
+</div>
+
 <!-- Tabla del ranking que solo se mostrara a los profesores -->
 <table id="InfoUser" *ngIf="info.role === 'Profesor' && practicas2.length != 0">
     <!-- Titulos de los campos de la tabla -->
@@ -85,7 +89,7 @@
         <td id=""><img src="{{dato.entrega}}"></td>
         <td id="td">{{dato.nota}}</td>
         <td>
-            <button id="Editar" (click)="EditarPuntuacion($event, dato.id, dato.nombre, dato.lastname)">
+            <button id="Editar" (click)="EditarPuntuacion($event, dato.id, dato.nombre, dato.lastname, dato.id_practicas, dato.id_ranking)">
                 <b>Editar</b>
             </button>
         </td>

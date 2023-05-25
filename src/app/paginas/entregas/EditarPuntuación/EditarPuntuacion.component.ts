@@ -22,6 +22,15 @@ export class EditarPuntuacionComponent {
 
     apellido = this.usuarios.getApellidosAlumno();
 
+    ranking = this.usuarios.getIdRanking();
+
+    practica = this.usuarios.getIdPractica();
+
+    maxnota: any;
+
+    element1 = false;
+    element2 = false;
+
     // Constructor.
     constructor(public dialogRef: MatDialogRef<EditarPuntuacionComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -35,11 +44,6 @@ export class EditarPuntuacionComponent {
 
     ngOnInit(): void {
         document.title = "Puntuación Entrega - GAMIFI-K"
-    }
-
-    EditarRanking(): void {
-
-        console.log(this.id);
 
         this.httpOptions = {
             headers: new HttpHeaders({
@@ -48,15 +52,43 @@ export class EditarPuntuacionComponent {
             })
         };
 
-        const editnota = {
-            "id": this.id,
-            "nota": this.EditPuntuacion.value.nota,
-        }
+        this._http.get(this.usuarios.URL + `indexindividual/${this.ranking},${this.practica}`, this.httpOptions).subscribe((data: any) => {
 
-        this._http.put(this.usuarios.URL + `actualizarnota/${this.id}`, editnota, this.httpOptions).subscribe(() => {
-            // Redirigir al usuario a la página anterior
-            this.dialogRef.close('back');
-        })
+            console.log(data);
+
+            for (let dato of data) {
+                this.maxnota = dato.puntuacion;
+
+                console.log(this.maxnota);
+            }
+
+        });
+    }
+
+    EditarRanking(): void {
+
+        if (this.EditPuntuacion.value.nota! > this.maxnota) {
+            this.element1 = true;
+            this.element2 = false;
+        } else if (Number(this.EditPuntuacion.value.nota!) < 0) {
+            this.element1 = false;
+            this.element2 = true;
+        } else {
+            this.element1 = false;
+            this.element2 = false;
+
+            console.log(this.id);
+
+            const editnota = {
+                "id": this.id,
+                "nota": this.EditPuntuacion.value.nota!,
+            }
+
+            this._http.put(this.usuarios.URL + `actualizarnota/${this.id}`, editnota, this.httpOptions).subscribe(() => {
+                // Redirigir al usuario a la página anterior
+                this.dialogRef.close('back');
+            })
+        }
     }
 
     // Funcion para cerrar la pestaña

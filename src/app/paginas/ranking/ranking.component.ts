@@ -102,6 +102,18 @@ export class RankingComponent implements OnInit {
 
         for (let puntos of this.datos) {
 
+          this._http.get(this.usuarios.URL + `puntossemanalesespec/${this.info.id},${puntos.id_ranking}`, this.httpOptions).subscribe((data: any) => {
+           
+            console.log(data);
+
+            for (let puntossemanales of data){
+
+              console.log(puntossemanales.puntos_semanales);
+
+              this.usuarios.setPuntosActuales(puntossemanales.puntos_semanales);
+            }
+          });
+
           this.usuarios.Medalla1(puntos.Responsabilidad).subscribe({
             next: (value: any) => {
               this.medalla1.push(value);

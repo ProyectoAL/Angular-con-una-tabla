@@ -176,13 +176,17 @@ export class EntregaComponent implements OnInit {
     this.subirentrega.reset();
   }
 
-  EditarPuntuacion(event: any, idEntrega: any, nombrePractica: any, apellidos: any): void {
+  EditarPuntuacion(event: any, idEntrega: any, nombrePractica: any, apellidos: any, practica: any, ranking: any): void {
 
     this.usuarios.setIdEntrega(idEntrega);
 
     this.usuarios.setNombreAlumno(nombrePractica);
 
     this.usuarios.setApellidosAlumno(apellidos);
+
+    this.usuarios.setIdRanking(ranking);
+
+    this.usuarios.setIdPractica(practica);
 
     const dialogRef = this.dialog.open(EditarPuntuacionComponent, {
       data: {}

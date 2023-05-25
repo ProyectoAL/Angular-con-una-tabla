@@ -77,18 +77,18 @@ export class HistorialComponent implements OnInit {
     });
   }
 
-  openBorrarPuntos(event: any, nombreAlumno: any, nombreSoftSkill: any, idEvaluacio: any, idAlumno: any): void {
+  openBorrarPuntos(event: any, evaluador: any, nombreSoftSkill: any, idEvaluacio: any, evaluado: any): void {
 
-    console.log("Nombre del alumno " + nombreAlumno);
+    console.log("Nombre del alumno evaluador " + evaluador);
     console.log("Nombre del rango " + nombreSoftSkill);
     console.log("Id evaluacion " + idEvaluacio);
-    console.log("Id alumno " + idAlumno);
+    console.log("Nombre alumno evaluado " + evaluado);
     console.log("Id ranking " + this.id_ranking);
 
-    this.usuarios.setNombreAlumno(nombreAlumno);
+    this.usuarios.setEvaluador(evaluador);
     this.usuarios.setNombreSoftSkill(nombreSoftSkill);
     this.usuarios.setIdEvaluacion(idEvaluacio);
-    this.usuarios.setIdAlumno(idAlumno);
+    this.usuarios.setEvaluado(evaluado);
     this.usuarios.setIdRanking(this.id_ranking);
 
     // Codigo para mostrar la pestaña.

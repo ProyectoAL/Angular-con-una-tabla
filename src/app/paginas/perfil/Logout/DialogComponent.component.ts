@@ -6,7 +6,7 @@ import { UsuariosService } from 'src/app/servicio/usuarios.service';
 @Component({
   selector: 'app-dialog',
   template: `
-    <h2 mat-dialog-title>Logout</h2>
+    <h2 mat-dialog-title>Cerrar Sesión</h2>
     <div mat-dialog-content>
       <p>¿Quieres cerrar la sesión?</p>
     </div>
