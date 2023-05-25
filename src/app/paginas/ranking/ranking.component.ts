@@ -102,12 +102,6 @@ export class RankingComponent implements OnInit {
 
         for (let puntos of this.datos) {
 
-          console.log(puntos.Responsabilidad);
-          console.log(puntos.Cooperacion);
-          console.log(puntos.Autonomia_e_iniciativa);
-          console.log(puntos.Gestion_emocional);
-          console.log(puntos.abilidades_de_pensamiento);
-
           this.usuarios.Medalla1(puntos.Responsabilidad).subscribe({
             next: (value: any) => {
               this.medalla1.push(value);
@@ -192,7 +186,7 @@ export class RankingComponent implements OnInit {
     this.usuarios.setNombrePractica(nombrePractica);
 
     // Codigo para mostrar la pestaña.
-    let BorrardialogRef = this.dialog.open(RepartirComponent, {
+    let BorrardialogRef = this.dialog.open(BorrarPracticaComponent, {
       data: {}
     });
   }

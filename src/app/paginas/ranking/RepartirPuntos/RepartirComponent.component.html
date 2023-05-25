@@ -7,7 +7,7 @@
         <label>A que alumno quieres darle tus puntos?</label>
         <select #mote (change)="confirmarAlumno(mote)">
             <ng-container *ngFor="let dato of motes; index as i">
-                <option value="{{dato[i]?.id_usuario}}">
+                <option value="{{dato[i]?.mote}}">
                     {{dato[i]?.mote}}
                 </option>
             </ng-container>

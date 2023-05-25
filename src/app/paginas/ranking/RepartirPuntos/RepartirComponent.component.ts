@@ -77,6 +77,7 @@ export class RepartirComponent {
         this.usuarios.motesfiltrados(dato.id_usuario, dato.id_ranking).subscribe({
           next: (value: any) => {
             this.motes.push(value);
+            JSON.stringify(this.motes);
             console.log(this.motes);
           }
         });
@@ -101,7 +102,7 @@ export class RepartirComponent {
     } else {
       this.element = false;
       const puntos = {
-        "id_usuario": Number(mote.value),
+        "mote_usuario": mote.value,
         "id_ranking": this.id_ranking,
         "rango": rango.value,
         "puntos": Number(this.puntosSoftskills.controls.puntos.value!)
@@ -116,7 +117,7 @@ export class RepartirComponent {
 
       const historial = {
         "id_ranking": this.id_ranking,
-        "alumno_evaluador": this.info.id,
+        "alumno_evaluador": this.info.mote,
         "alumno_evaluado": mote.value,
         "puntos_dados": Number(this.puntosSoftskills.controls.puntos.value!),
         "soft_skill": rango.value

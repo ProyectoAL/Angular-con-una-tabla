@@ -72,24 +72,6 @@ export class HistorialComponent implements OnInit {
 
         // Mostrar por consola el contenido de la variable datos.
         console.log(this.datos);
-
-        for (let dato of this.datos) {
-          this._http.get(this.usuarios.URL + `indexalumno_evaluador/${dato.alumno_evaluador}`, this.httpOptions).subscribe((data: any) => {
-            // Asignamos el contenido del select a la varoable datos.
-            this.Alumno_evaluador = data;
-
-            // Mostrar por consola el contenido de la variable datos.
-            console.log(this.Alumno_evaluador);
-          });
-
-          this._http.get(this.usuarios.URL + `indexalumno_evaluado/${dato.alumno_evaluado}`, this.httpOptions).subscribe((data: any) => {
-            // Asignamos el contenido del select a la varoable datos.
-            this.Alumno_evaluado = data;
-
-            // Mostrar por consola el contenido de la variable datos.
-            console.log(this.Alumno_evaluado);
-          });
-        }
       });
 
     });

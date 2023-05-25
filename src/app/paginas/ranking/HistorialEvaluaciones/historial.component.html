@@ -38,25 +38,21 @@
         <hr>
     </td>
     <!-- Contenido de los campos de la tabla -->
-    <ng-container *ngFor="let nombre1 of Alumno_evaluador">
-        <ng-container *ngFor="let nombre2 of Alumno_evaluado">
             <tr *ngFor="let dato of datos; index as i">
-                <td id="td">{{nombre1.mote}}</td>
-                <td id="td">{{nombre2.mote}}</td>
+                <td id="td">{{dato.alumno_evaluador}}</td>
+                <td id="td">{{dato.alumno_evaluado}}</td>
                 <td id="td">{{dato.puntos_dados}}</td>
                 <td id="td">{{dato.soft_skill}}</td>
                 <td id="td">{{dato.created_at}}</td>
                 <td id="td">
                     <button id="Borrar"
-                        (click)="openBorrarPuntos($event, nombre2.mote, dato.soft_skill, dato.id, dato.alumno_evaluado)">
+                        (click)="openBorrarPuntos($event, dato.alumno_evaluador, dato.soft_skill, dato.id, dato.alumno_evaluado)">
                         <b>
                             Eliminar
                         </b>
                     </button>
                 </td>
             </tr>
-        </ng-container>
-    </ng-container>
 </table>
 
 <div *ngIf="datos.length == 0" id="MensajeRanking">
