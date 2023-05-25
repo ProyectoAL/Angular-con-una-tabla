@@ -3,6 +3,9 @@
 <div id="navegador" *ngFor="let dato of nombre">
     <!-- Nombre del ranking -->
     <p id="bienvenida">Bienvenido al ranking <b>{{dato.nombre}}</b></p>
+
+    <p id="codigo">Código: <b>{{dato.codigo}}</b></p>
+
     <!-- Boton para crear las practicas -->
     <button id="practica" *ngIf="info.role === 'Profesor'" (click)="openDialog()">
         <b>Crear Practica</b>

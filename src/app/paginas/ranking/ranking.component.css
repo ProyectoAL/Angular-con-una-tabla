@@ -26,6 +26,16 @@
     margin-top: 28px;
 }
 
+#codigo {
+    position: absolute;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+
+    margin-left: 600px;
+    margin-top: 28px;
+}
+
 /* Estilo para el boton para crear practicas */
 #practica {
     position: absolute;
